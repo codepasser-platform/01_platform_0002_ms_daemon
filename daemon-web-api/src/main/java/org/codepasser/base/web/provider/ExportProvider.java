@@ -1,4 +1,4 @@
-package org.codepasser.base.web.basement.provider;
+package org.codepasser.base.web.provider;
 
 import static org.codepasser.base.model.entity.inner.AttachmentCategory.EXPORT;
 

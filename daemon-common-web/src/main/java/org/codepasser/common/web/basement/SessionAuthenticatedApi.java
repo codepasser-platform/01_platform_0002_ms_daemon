@@ -1,4 +1,4 @@
-package org.codepasser.base.web.basement;
+package org.codepasser.common.web.basement;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * MasterDataApi.
+ * SessionAuthenticatedApi.
  *
  * @author codepasser.
  * @version 0.0.1.

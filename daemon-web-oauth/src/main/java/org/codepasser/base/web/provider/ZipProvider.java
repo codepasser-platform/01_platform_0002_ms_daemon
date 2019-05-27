@@ -1,4 +1,4 @@
-package org.codepasser.base.web.basement.provider;
+package org.codepasser.base.web.provider;
 
 import com.google.common.base.Throwables;
 import java.io.File;

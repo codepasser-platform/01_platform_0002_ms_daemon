@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import javax.validation.Valid;
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.service.sample.bo.SampleDateBo;
-import org.codepasser.base.web.basement.provider.FileProvider;
+import org.codepasser.base.web.provider.FileProvider;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.service.response.AssertResponse;
 import org.springframework.beans.factory.annotation.Autowired;

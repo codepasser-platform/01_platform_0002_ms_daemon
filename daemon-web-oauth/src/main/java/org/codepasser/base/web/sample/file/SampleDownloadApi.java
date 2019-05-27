@@ -82,7 +82,8 @@ public class SampleDownloadApi {
               "Content-Disposition",
               String.format(
                   "attachment;filename=\"%s\"",
-                  new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
+                  new String(
+                      fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
         }
       }
       is = new FileInputStream(new File(attachmentItem.getPath()));

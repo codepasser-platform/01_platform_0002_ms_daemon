@@ -7,7 +7,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import org.codepasser.base.service.basement.vo.ExcelTitle;
 import org.codepasser.base.service.basement.vo.ResourceId;
 import org.codepasser.base.service.sample.excel.SampleExcelService;
-import org.codepasser.base.web.basement.provider.ExportProvider;
+import org.codepasser.base.web.provider.ExportProvider;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.service.helper.ExcelResponseBuilder;
 import org.codepasser.common.service.response.ExcelResponse;
