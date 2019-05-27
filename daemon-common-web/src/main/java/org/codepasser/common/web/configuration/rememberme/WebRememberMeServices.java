@@ -68,7 +68,6 @@ public class WebRememberMeServices extends PersistentTokenBasedRememberMeService
 
   @Override
   protected void cancelCookie(HttpServletRequest request, HttpServletResponse response) {
-    super.cancelCookie(request, response);
     logger.debug("Cancelling cookie > Override");
     Cookie cookie = new Cookie(this.getCookieName(), null);
     cookie.setMaxAge(0);
