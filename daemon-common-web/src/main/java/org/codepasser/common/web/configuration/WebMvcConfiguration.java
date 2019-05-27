@@ -167,6 +167,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     private String[] corsMappings;
     private String cookieDomainNamePattern;
+    private String cookiePath;
     private String rememberMeCookieDomain;
 
     public String[] getCorsMappings() {
@@ -183,6 +184,14 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     public void setCookieDomainNamePattern(String cookieDomainNamePattern) {
       this.cookieDomainNamePattern = cookieDomainNamePattern;
+    }
+
+    public String getCookiePath() {
+      return cookiePath;
+    }
+
+    public void setCookiePath(String cookiePath) {
+      this.cookiePath = cookiePath;
     }
 
     public String getRememberMeCookieDomain() {

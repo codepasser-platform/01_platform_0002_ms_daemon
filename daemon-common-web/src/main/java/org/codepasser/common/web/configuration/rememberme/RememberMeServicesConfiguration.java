@@ -32,7 +32,8 @@ public class RememberMeServicesConfiguration {
             SessionInterface.SESSION_REMEMBER_ME_COOKIE,
             userIdentityService,
             persistentTokenRepository(),
-            webSettings.getRememberMeCookieDomain());
+            webSettings.getRememberMeCookieDomain(),
+            webSettings.getCookiePath());
     return rememberMeServices;
   }
 

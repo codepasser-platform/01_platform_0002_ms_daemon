@@ -129,6 +129,7 @@ daemon:
       - http://www.codepasser.com
       - https://www.codepasser.com
     cookie-domain-name-pattern: ^(?:.+\.)?(codepasser\.com)$
+    cookie-path: /
     remember-me-cookie-domain: codepasser.com
   storage:
     relative: /storage/

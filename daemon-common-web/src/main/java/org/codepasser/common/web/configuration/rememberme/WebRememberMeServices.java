@@ -20,17 +20,20 @@ public class WebRememberMeServices extends PersistentTokenBasedRememberMeService
 
   private final Method setHttpOnlyMethod;
   private String cookieDomain;
+  private String cookiePath;
   private int cookieValidity = TOKEN_VALIDITY_ONE_WEEK_SECONDS;
 
   public WebRememberMeServices(
       String key,
       UserDetailsService userDetailsService,
       PersistentTokenRepository tokenRepository,
-      @Nullable String cookieDomain) {
+      @Nullable String cookieDomain,
+      @Nullable String cookiePath) {
     super(key, userDetailsService, tokenRepository);
     this.setCookieName(key);
     this.setHttpOnlyMethod = ReflectionUtils.findMethod(Cookie.class, "setHttpOnly", boolean.class);
     this.cookieDomain = cookieDomain;
+    this.cookiePath = cookiePath;
   }
 
   @Override
@@ -39,12 +42,16 @@ public class WebRememberMeServices extends PersistentTokenBasedRememberMeService
     String cookieValue = this.encodeCookie(tokens);
     Cookie cookie = new Cookie(this.getCookieName(), cookieValue);
     cookie.setMaxAge(this.cookieValidity);
-    cookie.setPath(this.getCookiePath(request));
 
-    // TODO SSO security domain
+    // SSO security domain
     if (!isNullOrEmpty(this.cookieDomain)) {
-      // cookie.setDomain(this.cookieDomain);
+      cookie.setDomain(this.cookieDomain);
     }
+    // cookie.setPath(this.getCookiePath(request));
+    if (!isNullOrEmpty(this.cookiePath)) {
+      cookie.setPath(this.cookiePath);
+    }
+
     if (maxAge < 1) {
       cookie.setVersion(1);
     }
@@ -56,6 +63,22 @@ public class WebRememberMeServices extends PersistentTokenBasedRememberMeService
           "Note: Cookie will not be marked as HttpOnly because you are not using Servlet 3.0 (Cookie#setHttpOnly(boolean) was not found).");
     }
 
+    response.addCookie(cookie);
+  }
+
+  @Override
+  protected void cancelCookie(HttpServletRequest request, HttpServletResponse response) {
+    super.cancelCookie(request, response);
+    logger.debug("Cancelling cookie > Override");
+    Cookie cookie = new Cookie(this.getCookieName(), null);
+    cookie.setMaxAge(0);
+    // SSO security domain
+    if (!isNullOrEmpty(this.cookieDomain)) {
+      cookie.setDomain(this.cookieDomain);
+    }
+    if (!isNullOrEmpty(this.cookiePath)) {
+      cookie.setPath(this.cookiePath);
+    }
     response.addCookie(cookie);
   }
 

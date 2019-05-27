@@ -35,7 +35,8 @@ public class HttpSessionConfiguration {
 
   @Bean
   public HttpSessionIdResolver httpSessionStrategy(WebMvcConfiguration.WebSettings webSettings) {
-    return new WebSessionIdResolver(webSettings.getCookieDomainNamePattern());
+    return new WebSessionIdResolver(
+        webSettings.getCookieDomainNamePattern(), webSettings.getCookiePath());
   }
 
   @SuppressWarnings("WeakerAccess")
@@ -44,13 +45,16 @@ public class HttpSessionConfiguration {
     private HeaderHttpSessionIdResolver headerHttpSessionIdResolver;
     private CookieHttpSessionIdResolver cookieHttpSessionIdResolver;
 
-    public WebSessionIdResolver(String cookieDomainNamePattern) {
+    public WebSessionIdResolver(String cookieDomainNamePattern, String cookiePath) {
       this.headerHttpSessionIdResolver = new HeaderHttpSessionIdResolver(SESSION_AUTH_TOKEN_NAME);
       this.cookieHttpSessionIdResolver = new CookieHttpSessionIdResolver();
       DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
       cookieSerializer.setCookieName(SESSION_AUTH_COOKIE_NAME);
       if (!isNullOrEmpty(cookieDomainNamePattern)) {
         cookieSerializer.setDomainNamePattern(cookieDomainNamePattern);
+      }
+      if (!isNullOrEmpty(cookiePath)) {
+        cookieSerializer.setCookiePath(cookiePath);
       }
       this.cookieHttpSessionIdResolver.setCookieSerializer(cookieSerializer);
     }

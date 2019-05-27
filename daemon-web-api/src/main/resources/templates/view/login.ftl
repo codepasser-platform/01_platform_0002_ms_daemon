@@ -55,6 +55,7 @@
           <div class="col-sm-4"></div>
           <div class="col-sm-4">
             <input type="hidden" class="form-control" name="target-url" value="/index">
+            <input type="hidden" class="form-control" name="remember-me" value="true">
             <button type="submit" class="btn btn-primary w-100">登录</button>
           </div>
           <div class="col-sm-4">
