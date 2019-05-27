@@ -1,0 +1,16 @@
+# Server configuration
+spring:
+  application:
+    name: cloud-configuration
+  profiles:
+    active: native
+  cloud:
+    config:
+      enabled: true
+      server:
+        #git:
+        #uri:http://ip:port/repository.git
+        #username: username
+        #password: password
+        native:
+          search-locations: classpath:/

@@ -1,0 +1,8 @@
+# Server configuration
+server:
+  port: ${cloud.configuration.port:8888}
+
+# Log configuration
+logging:
+  level:
+    org.springframework.cloud: DEBUG

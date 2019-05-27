@@ -1,0 +1,2978 @@
+{
+  "info": {
+    "_postman_id": "f8b4903d-e4e5-422d-972c-5ae3f769d8cb",
+    "name": "PROJECT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Codepasser IO Platform",
+      "item": [
+        {
+          "name": "管理平台",
+          "item": [
+            {
+              "name": "角色",
+              "item": [
+                {
+                  "name": "API-角色列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/role",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "role"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "用户",
+              "item": [
+                {
+                  "name": "API-用户条件查询（分页）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user?page=1&size=3",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "3"
+                        },
+                        {
+                          "key": "username",
+                          "value": "ad1",
+                          "disabled": true
+                        },
+                        {
+                          "key": "authorities",
+                          "value": "ADMIN",
+                          "disabled": true
+                        },
+                        {
+                          "key": "authorities",
+                          "value": "MGR",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户详情",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user/39022833",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user",
+                        "39022833"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户新增",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"username\":\"joker\",\n\t\"password\":\"123qwe\",\n\t\"phone\":\"15668681432\",\n\t\"authorities\":[\"MGR\"]\n}"
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户编辑",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"id\": \"39028481\",\n    \"email\": \"joker@aliyun.com\",\n    \"phone\":\"15668681432\",\n    \"authorities\": [\n        \"ADMIN\"\n    ]\n}"
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户删除",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user/39022833",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user",
+                        "39022833"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户锁定",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user/lock/39091382",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user",
+                        "lock",
+                        "39091382"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户解锁",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user/unlock/39091382",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user",
+                        "unlock",
+                        "39091382"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-用户密码重置",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"id\": \"1\",\n\t\"password\":\"123qwe\"\n}"
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/admin/user/recover",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "admin",
+                        "user",
+                        "recover"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "手册",
+              "item": [
+                {
+                  "name": "车载手册",
+                  "item": [
+                    {
+                      "name": "API-车载用户手册-属性查询",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual/attributes",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual",
+                            "attributes"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "API-车载用户手册-条件查询（分页）",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual?page=1&size=10",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "API-车载用户手册-上传",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "model",
+                              "value": "S01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "version",
+                              "value": "PRO版",
+                              "type": "text"
+                            },
+                            {
+                              "key": "edition",
+                              "value": "2018",
+                              "type": "text"
+                            },
+                            {
+                              "key": "mileage",
+                              "value": "380KM",
+                              "type": "text"
+                            },
+                            {
+                              "key": "lang",
+                              "value": "zh-cn",
+                              "type": "text"
+                            },
+                            {
+                              "key": "name",
+                              "value": "车载手册1-dark",
+                              "type": "text"
+                            },
+                            {
+                              "key": "file",
+                              "type": "file",
+                              "src": ""
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "API-车载用户手册-解析",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual/41861743",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual",
+                            "41861743"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "API-车载用户手册-应用",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual/apply/41861739",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual",
+                            "apply",
+                            "41861739"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "API-车载用户手册-删除",
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/rest/console/mgr/vehicle/manual/41861743",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "rest",
+                            "console",
+                            "mgr",
+                            "vehicle",
+                            "manual",
+                            "41861743"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ],
+                  "_postman_isSubFolder": true
+                },
+                {
+                  "name": "API-手册上传",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "type": "file",
+                          "src": ""
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/upload",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册ZIP下载信息",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/resource/8629221667",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "resource",
+                        "8629221667"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册ZIP下载-文件流",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/resource/stream/39284109",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "resource",
+                        "stream",
+                        "39284109"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册条件查询（分页）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual?page=0&size=10",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册删除",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/8629234460",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "8629234460"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册解析",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/4334334511",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "4334334511"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册应用",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/apply/4334334511",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "apply",
+                        "4334334511"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册发布列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/releasese?page=1&size=10",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "releasese"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册发布",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/release/8629471954",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "release",
+                        "8629471954"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册撤销发布",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/rest/console/mgr/manual/revoke/8629471954",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "rest",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "revoke",
+                        "8629471954"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "\b公开平台",
+          "item": [
+            {
+              "name": "订单",
+              "item": [
+                {
+                  "name": "API-订单-费率查询",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order/fee",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order",
+                        "fee"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-订单-手册付费检查",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order/check?schemeId=4334855619",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order",
+                        "check"
+                      ],
+                      "query": [
+                        {
+                          "key": "schemeId",
+                          "value": "4334855619"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-订单-\b生成",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order?schemeId=30104398267&feeId=39973177",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order"
+                      ],
+                      "query": [
+                        {
+                          "key": "schemeId",
+                          "value": "30104398267"
+                        },
+                        {
+                          "key": "feeId",
+                          "value": "39973177"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-订单-条件查询（分页）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order?page=1&size=10&statuses=INIT,PAY,PAYOFF,ERROR",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        },
+                        {
+                          "key": "statuses",
+                          "value": "INIT,PAY,PAYOFF,ERROR"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-订单-支付到账通知TODO",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order/notice/8629989393?status=PAYOFF",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order",
+                        "notice",
+                        "8629989393"
+                      ],
+                      "query": [
+                        {
+                          "key": "status",
+                          "value": "PAYOFF"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-订单-删除",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/order/8629989436",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "order",
+                        "8629989436"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "手册",
+              "item": [
+                {
+                  "name": "API-最新发布手册列表（TOP10）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/news",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "news"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-最常访问手册列表（TOP10）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/visits",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "visits"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册类型-查询车型列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/models?category=CIRCUIT",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "CIRCUIT"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册类型-车型-查询手册列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual?category=CIRCUIT&model=S01",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "CIRCUIT"
+                        },
+                        {
+                          "key": "model",
+                          "value": "S01"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册访问记录",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/manual/visit?manualId=39626993",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "manual",
+                        "visit"
+                      ],
+                      "query": [
+                        {
+                          "key": "manualId",
+                          "value": "39626993"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "API-外部系统",
+              "item": [
+                {
+                  "name": "对外接口-手册车型列表查询",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/master/models?category=USERS",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "master",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "USERS"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "对外接口-手册类型-车型-查询手册列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/master?category=USERS&model=S01",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "master"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "USERS"
+                        },
+                        {
+                          "key": "model",
+                          "value": "S01"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "对外接口-车载系统-手册类型-查询车型列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/master/vehicle/models?category=USERS",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "master",
+                        "vehicle",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "USERS"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "对外接口-车载系统-手册类型-车型-查询手册列表",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/master/vehicle?category=USERS&model=S01",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "master",
+                        "vehicle"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "USERS"
+                        },
+                        {
+                          "key": "model",
+                          "value": "S01"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "对外接口-车载系统-精确查询手册信息",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/open/master/vehicle/single?category=USERS&model=S01&version=PRO版&edition=2017&mileage=300KM&lang=zh-cn",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "open",
+                        "master",
+                        "vehicle",
+                        "single"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "USERS",
+                          "description": "用户手册"
+                        },
+                        {
+                          "key": "model",
+                          "value": "S01",
+                          "description": "车型"
+                        },
+                        {
+                          "key": "version",
+                          "value": "PRO版",
+                          "description": "配置"
+                        },
+                        {
+                          "key": "edition",
+                          "value": "2017",
+                          "description": "年款"
+                        },
+                        {
+                          "key": "mileage",
+                          "value": "300KM",
+                          "description": "里程"
+                        },
+                        {
+                          "key": "lang",
+                          "value": "zh-cn",
+                          "description": "语言"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "API-签名登陆-TODO",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/open/sign/in?token=1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "open",
+                    "sign",
+                    "in"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "API-签名登陆状态",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/open/sign/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "open",
+                    "sign",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "API-签名登陆用户信息",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/open/session/me",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "open",
+                    "session",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "查询平台",
+          "item": [
+            {
+              "name": "手册",
+              "item": [
+                {
+                  "name": "API-属性查询（维修手册-电路图手册-维修案例）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/attributes",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册查询（维修手册-\b电路图-维修案例）",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/scheme?model=S01&version=普通&edition=2017&mileage=300KM&lang=zh-cn",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "scheme"
+                      ],
+                      "query": [
+                        {
+                          "key": "model",
+                          "value": "S01"
+                        },
+                        {
+                          "key": "version",
+                          "value": "普通"
+                        },
+                        {
+                          "key": "edition",
+                          "value": "2017"
+                        },
+                        {
+                          "key": "mileage",
+                          "value": "300KM"
+                        },
+                        {
+                          "key": "lang",
+                          "value": "zh-cn"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-手册目录检索",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/indexes/40318015?keyword=",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "indexes",
+                        "40318015"
+                      ],
+                      "query": [
+                        {
+                          "key": "keyword",
+                          "value": ""
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "API-最新发布的维修案例",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/news",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "news"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "feedback",
+              "item": [
+                {
+                  "name": "repairs",
+                  "item": [
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/40317800/dtc",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/40317800/dtc",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "40317800",
+                            "dtc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/save",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "id",
+                              "value": "",
+                              "type": "text"
+                            },
+                            {
+                              "key": "model",
+                              "value": "S01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "version",
+                              "value": "普通",
+                              "type": "text"
+                            },
+                            {
+                              "key": "\bedition",
+                              "value": "2017",
+                              "type": "text"
+                            },
+                            {
+                              "key": "mileage",
+                              "value": "300KM",
+                              "type": "text"
+                            },
+                            {
+                              "key": "lang",
+                              "value": "zh-cn",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[0].level",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[0].catalogId",
+                              "value": "150364173177",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[1].level",
+                              "value": "1",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[1].catalogId",
+                              "value": "158954107769",
+                              "type": "text"
+                            },
+                            {
+                              "key": "partName",
+                              "value": "零件1",
+                              "type": "text"
+                            },
+                            {
+                              "key": "technician",
+                              "value": "技师",
+                              "type": "text"
+                            },
+                            {
+                              "key": "phone",
+                              "value": "18617172738",
+                              "type": "text"
+                            },
+                            {
+                              "key": "subject",
+                              "value": "故障主题",
+                              "type": "text"
+                            },
+                            {
+                              "key": "center",
+                              "value": "维修中心",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[0].controller",
+                              "value": "V01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[0].dtc",
+                              "value": "V01-01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[0].summary",
+                              "value": "V01-SUMMARY",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[1].controller",
+                              "value": "X01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[1].dtc",
+                              "value": "X01-01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "dtcs[1].summary",
+                              "value": "X01-SUMMARY",
+                              "type": "text"
+                            },
+                            {
+                              "key": "attachments",
+                              "type": "file",
+                              "src": ""
+                            },
+                            {
+                              "key": "attachments",
+                              "type": "file",
+                              "src": ""
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/save?",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "save"
+                          ],
+                          "query": [
+                            {
+                              "key": "account",
+                              "value": "codepasser",
+                              "disabled": true
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/send/123",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/send/12925661874",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "send",
+                            "12925661874"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/owner",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/owner?page=1&size=10",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "owner"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/remove/17220698990",
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/remove/12925718479",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "remove",
+                            "12925718479"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/repairs/17220709466",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/repairs/17220709466",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "repairs",
+                            "17220709466"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ],
+                  "_postman_isSubFolder": true
+                },
+                {
+                  "name": "review",
+                  "item": [
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/review/save",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "id",
+                              "value": "8630706347",
+                              "type": "text"
+                            },
+                            {
+                              "key": "model",
+                              "value": "S01",
+                              "type": "text"
+                            },
+                            {
+                              "key": "version",
+                              "value": "普通",
+                              "type": "text"
+                            },
+                            {
+                              "key": "\bedition",
+                              "value": "2017",
+                              "type": "text"
+                            },
+                            {
+                              "key": "mileage",
+                              "value": "300KM",
+                              "type": "text"
+                            },
+                            {
+                              "key": "lang",
+                              "value": "zh-cn",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[0].level",
+                              "value": "0",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[0].catalogId",
+                              "value": "150364173177",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[1].level",
+                              "value": "1",
+                              "type": "text"
+                            },
+                            {
+                              "key": "matchHierarchy[1].catalogId",
+                              "value": "158954107769",
+                              "type": "text"
+                            },
+                            {
+                              "key": "technician",
+                              "value": "技师",
+                              "type": "text"
+                            },
+                            {
+                              "key": "phone",
+                              "value": "18617172738",
+                              "type": "text"
+                            },
+                            {
+                              "key": "subject",
+                              "value": "反馈主题",
+                              "type": "text"
+                            },
+                            {
+                              "key": "content",
+                              "value": "反馈内容",
+                              "type": "text"
+                            },
+                            {
+                              "key": "attachments",
+                              "type": "file",
+                              "src": ""
+                            },
+                            {
+                              "key": "attachments",
+                              "type": "file",
+                              "src": ""
+                            },
+                            {
+                              "key": "manualId",
+                              "value": "1",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/review/save?",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "review",
+                            "save"
+                          ],
+                          "query": [
+                            {
+                              "key": "account",
+                              "value": "codepasser",
+                              "disabled": true
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/review/send/12925661874",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/review/send/8630706347",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "review",
+                            "send",
+                            "8630706347"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/review/owner?page=1&size=10",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/review/owner?page=1&size=10",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "review",
+                            "owner"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/review/remove/12925719538",
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/review/remove/17220641360",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "review",
+                            "remove",
+                            "17220641360"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "http://localhost:8001/base-api/search/feedback/review/17220709466",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": ""
+                        },
+                        "url": {
+                          "raw": "http://localhost:8001/base-api/search/feedback/review/8630778724",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "8001",
+                          "path": [
+                            "base-api",
+                            "search",
+                            "feedback",
+                            "review",
+                            "8630778724"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ],
+                  "_postman_isSubFolder": true
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/maintenance/attributes",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/maintenance/attributes",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "maintenance",
+                        "attributes"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/maintenance/scheme?model=S01&version=普通&edition=2017&mileage=300KM&lang=zh-cn",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/maintenance/scheme?model=T01&version=PRO版&edition=2019&mileage=300KM&lang=zh-cn",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "maintenance",
+                        "scheme"
+                      ],
+                      "query": [
+                        {
+                          "key": "model",
+                          "value": "T01"
+                        },
+                        {
+                          "key": "version",
+                          "value": "PRO版"
+                        },
+                        {
+                          "key": "edition",
+                          "value": "2019"
+                        },
+                        {
+                          "key": "mileage",
+                          "value": "300KM"
+                        },
+                        {
+                          "key": "lang",
+                          "value": "zh-cn"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/indexes/40317800",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/indexes/40317800",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "indexes",
+                        "40317800"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/indexes/42989990777",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/indexes/150364173177",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "indexes",
+                        "150364173177"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/statistics/repairs?start=2018-09-30&end=2019-04-23",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/statistics/repairs?start=2018-09-30&end=2019-04-23",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "statistics",
+                        "repairs"
+                      ],
+                      "query": [
+                        {
+                          "key": "start",
+                          "value": "2018-09-30"
+                        },
+                        {
+                          "key": "end",
+                          "value": "2019-04-23"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/statistics/review?start=2018-09-30&end=2019-04-23",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/statistics/review?start=2018-09-30&end=2019-04-23",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "statistics",
+                        "review"
+                      ],
+                      "query": [
+                        {
+                          "key": "start",
+                          "value": "2018-09-30"
+                        },
+                        {
+                          "key": "end",
+                          "value": "2019-04-23"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/statistics/export/repairs?start=2018-09-30&end=2019-04-25",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/statistics/export/repairs?start=2018-09-30&end=2019-04-25",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "statistics",
+                        "export",
+                        "repairs"
+                      ],
+                      "query": [
+                        {
+                          "key": "start",
+                          "value": "2018-09-30"
+                        },
+                        {
+                          "key": "end",
+                          "value": "2019-04-25"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/statistics/export/review?start=2018-09-30&end=2019-04-25",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/statistics/export/review?start=2018-09-30&end=2019-04-30",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "statistics",
+                        "export",
+                        "review"
+                      ],
+                      "query": [
+                        {
+                          "key": "start",
+                          "value": "2018-09-30"
+                        },
+                        {
+                          "key": "end",
+                          "value": "2019-04-30"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "workflow",
+              "item": [
+                {
+                  "name": "http://localhost:8001/base-api/search/workflow/repairsr?page=1&size=10",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/workflow/repairs?page=1&size=10",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "workflow",
+                        "repairs"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/workflow/review?page=1&size=10",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/workflow/review?page=1&size=10&statuses=INIT,REJECT",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "workflow",
+                        "review"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        },
+                        {
+                          "key": "statuses",
+                          "value": "INIT,REJECT"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/workflow/repairs/{workflowId}/audit",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "status",
+                          "value": "ACCEPT",
+                          "type": "text"
+                        },
+                        {
+                          "key": "score",
+                          "value": "10",
+                          "type": "text"
+                        },
+                        {
+                          "key": "attachments",
+                          "type": "file",
+                          "src": ""
+                        },
+                        {
+                          "key": "attachments",
+                          "type": "file",
+                          "src": ""
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/workflow/repairs/4335882422/audit",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "workflow",
+                        "repairs",
+                        "4335882422",
+                        "audit"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/workflow/review/{workflowId}/audit",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "status",
+                          "value": "REJECT",
+                          "type": "text"
+                        },
+                        {
+                          "key": "score",
+                          "value": "0",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/workflow/review/4335882528/audit",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "workflow",
+                        "review",
+                        "4335882528",
+                        "audit"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:9001/base-service/console/mgr/manual/revoke/4334510383?userId=1",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:9001/base-service/console/mgr/manual/revoke/21515758084?userId=1",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9001",
+                      "path": [
+                        "base-service",
+                        "console",
+                        "mgr",
+                        "manual",
+                        "revoke",
+                        "21515758084"
+                      ],
+                      "query": [
+                        {
+                          "key": "userId",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "cart",
+              "item": [
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/cart?page=0&size=10",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/cart?page=0&size=10",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "cart"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/cart",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"code\":\"0002\",\n\t\"name\":\"零件名称2\",\n\t\"quantity\":10\n}"
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/cart",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "cart"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/cart/41287827",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/cart/41287827",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "cart",
+                        "41287827"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/cart/fluash",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/cart/fluash",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "cart",
+                        "fluash"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "http://localhost:8001/base-api/search/manual/cart/export",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "http://localhost:8001/base-api/search/manual/cart/export",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8001",
+                      "path": [
+                        "base-api",
+                        "search",
+                        "manual",
+                        "cart",
+                        "export"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "API-签名登陆-TODO",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/search/sign/in?token=2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "search",
+                    "sign",
+                    "in"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "API-签名登陆状态",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/search/sign/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "search",
+                    "sign",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "API-签名登陆用户信息",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/search/session/me?token=1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "search",
+                    "session",
+                    "me"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "API-共同-文件存储信息",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8001/base-api/search/file/download/41342434",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "base-api",
+                    "search",
+                    "file",
+                    "download",
+                    "41342434"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ]
+    }
+  ]
+}

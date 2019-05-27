@@ -1,0 +1,138 @@
+# Server configuration
+server:
+  port: ${web.api.port:8001}
+  servlet:
+    context-path: /web-api
+  tomcat:
+    uri-encoding: UTF-8
+
+# Eureka configuration
+eureka:
+  client:
+    # 指定服务注册中心地址，类型为 HashMap，并设置有一组默认值，默认的Key为 defaultZone；默认的Value为 http://localhost:8761/eureka ，如果服务注册中心为高可用集群时，多个注册中心地址以逗号分隔。
+    # 如果服务注册中心加入了安全验证，这里配置的地址格式为： http://<username>:<password>@localhost:8761/eureka 其中 <username> 为安全校验的用户名；<password> 为该用户的密码
+    service-url:
+      defaultZone: ${cloud.registry.uri:http://eureka:eureka_pw@127.0.0.1:8761/eureka}
+  instance:
+    # 设置当前实例的主机名称
+    hostname: ${spring.cloud.client.hostname}
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}:${web.api.version:1.0.0.RELEASE}:${random.value}
+    # 定义服务续约任务（心跳）的调用间隔，单位：秒 默认: 30s
+    lease-renewal-interval-in-seconds: 3
+    # 设置状态页面路径
+    status-page-url-path: ${server.servlet.context-path}/actuator/info
+    # 设置信息页面路径
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
+
+#feign:
+#  hystrix:
+#    enabled: false
+
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeout-in-milliseconds: 10000
+
+ribbon:
+  #请求处理的超时时间
+  ReadTimeout: 90000
+  #请求连接的超时时间
+  ConnectTimeout: 90000
+
+# Spring configuration
+spring:
+  # Jackson
+  jackson:
+    # 配置mapper忽略空属性
+    serialization-inclusion: non_null
+    # 属性命名转化策略:将驼峰转为下划线
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: true
+  # Freemarker
+  freemarker:
+    checkTemplateLocation: false
+    templateLoaderPath: classpath:/templates/view
+    prefix: /
+    suffix: .ftl
+    request-context-attribute: rc
+  # Datasource for oauth2 client
+  datasource:
+    #platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.20.121:3306/daemon?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: daemon
+    password: daemon_pw
+  # Redis
+  redis:
+    host: 172.16.20.121
+    port: 6379
+    database: 0
+    password: daemon_pw
+    timeout: 10000
+    # TODO
+    #    cluster:
+    #      max-redirects: 3
+    #      nodes:
+    #      - 172.16.20.121:6379
+    #      - 172.16.20.121:6379
+    #      - 172.16.20.121:6379
+    #      - 172.16.20.121:6379
+    #      - 172.16.20.121:6379
+    #      - 172.16.20.121:6379
+    lettuce:
+      pool:
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 10
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 10
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1
+  # Spring Data
+  data:
+    # Spring Data Mongo
+    mongodb:
+      host: 172.16.20.121
+      port: 27017
+      database: daemon
+      username: daemon
+      password: daemon_pw
+# Spring Data ElasticSearch 关闭ES健康检查
+management:
+  health:
+    elasticsearch:
+      enabled: false
+
+# Application configuration
+daemon:
+  base-url: //www.codepasser.com
+  web:
+    cors-mappings:
+      - http://127.0.0.1:7000
+      - http://localhost:7000
+      - http://127.0.0.1:7001
+      - http://localhost:7001
+      - http://127.0.0.1:7002
+      - http://localhost:7002
+      - http://127.0.0.1:8000
+      - http://localhost:8000
+      - http://127.0.0.1:8001
+      - http://localhost:8001
+      - http://127.0.0.1:8002
+      - http://localhost:8002
+      - http://www.codepasser.com
+      - https://www.codepasser.com
+    cookie-domain-name-pattern: ^(?:.+\.)?(codepasser\.com)$
+    remember-me-cookie-domain: codepasser.com
+  storage:
+    relative: /storage/
+    link: ${daemon.base-url}/storage/
+    volume: /data/storage/
+    max-file-size: 2048 # MEGABYTES
+    max-request-size: 5120 # MEGABYTES

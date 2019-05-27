@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.codepasser</groupId>
+    <artifactId>daemon-io</artifactId>
+    <version>1.0.0.RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>daemon-common-service</artifactId>
+  <packaging>jar</packaging>
+  <name>daemon-common-service</name>
+  <url>http://maven.apache.org</url>
+  <description>Codepasser IO Platform</description>
+
+  <dependencies>
+
+    <!-- # Spring IO Platform # -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+
+    <!-- # Codepasser IO Platform # -->
+    <dependency>
+      <groupId>org.codepasser</groupId>
+      <artifactId>daemon-common-service-api</artifactId>
+    </dependency>
+
+  </dependencies>
+
+
+</project>

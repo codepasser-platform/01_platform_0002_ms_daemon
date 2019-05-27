@@ -1,0 +1,23 @@
+# Server configuration
+server:
+  port: ${cloud.registry.port:8761}
+
+# Eureka configuration
+eureka:
+  client:
+    # 关闭服务注册
+    register-with-eureka: false
+    # 关闭检索服务
+    fetch-registry: false
+    # 指定服务注册中心地址，类型为 HashMap，并设置有一组默认值，默认的Key为 defaultZone；默认的Value为 http://localhost:8761/eureka ，如果服务注册中心为高可用集群时，多个注册中心地址以逗号分隔。
+    # 如果服务注册中心加入了安全验证，这里配置的地址格式为： http://<username>:<password>@localhost:8761/eureka 其中 <username> 为安全校验的用户名；<password> 为该用户的密码
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    # 设置当前实例的主机名称
+    hostname: 127.0.0.1
+    #server:
+    # 在Eureka服务器获取不到集群里对等服务器上的实例时，需要等待的时间，单位为毫秒，默认为1000 * 60 * 5
+    #waitTimeInMsWhenSyncEmpty: 0
+    # 关闭注册中心的保护机制: (默认值:false)，Eureka 会统计15分钟之内心跳失败的比例低于85%将会触发保护机制，不剔除服务提供者，如果关闭服务注册中心将不可用的实例正确剔除
+    #enableSelfPreservation: false

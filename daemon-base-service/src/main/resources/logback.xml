@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+  <property resource="logback.properties"/>
+
+  <!-- 控制台日志配置 -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!-- 格式化 -->
+      <!--
+        %d | date     : 日志时间
+        %p | -5level  : 日志级别
+        %t | thread   : 线程
+        %c | class    : 类
+        %m | %msg     : 日志消息
+        %n |          : 是换行符
+      -->
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%t] %c{36} - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- info级别日志控制 -->
+  <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 文件路径 -->
+    <file>${logback.path}/info.log</file>
+    <!-- 是否追加 默认为true -->
+    <append>true</append>
+    <!-- 滚动策略 日期+大小 策略 -->
+    <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${logback.zip.path}/%d{yyyy-MM-dd}/info/info-%i.zip</fileNamePattern>
+      <!-- 单个日志大小 -->
+      <maxFileSize>${logback.maxFileSize}</maxFileSize>
+      <!-- 日志保存周期 -->
+      <maxHistory>${logback.maxHistory}</maxHistory>
+      <!-- 总大小 -->
+      <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
+    </rollingPolicy>
+    <!-- 格式化 -->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%t] %c{36} - %m%n</pattern>
+    </encoder>
+    <!-- 级别过滤 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- warn级别日志控制 -->
+  <appender name="FILE_WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 文件路径 -->
+    <file>${logback.path}/warn.log</file>
+    <!-- 是否追加 默认为true -->
+    <append>true</append>
+    <!-- 滚动策略 日期+大小 策略 -->
+    <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${logback.zip.path}/%d{yyyy-MM-dd}/warn/warn-%i.zip</fileNamePattern>
+      <!-- 单个日志大小 -->
+      <maxFileSize>${logback.maxFileSize}</maxFileSize>
+      <!-- 日志保存周期 -->
+      <maxHistory>${logback.maxHistory}</maxHistory>
+      <!-- 总大小 -->
+      <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
+    </rollingPolicy>
+    <!-- 格式化 -->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%t] %c{36} - %m%n</pattern>
+    </encoder>
+    <!-- 级别过滤 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>WARN</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- ERROR级别日志控制 -->
+  <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 文件路径 -->
+    <file>${logback.path}/error.log</file>
+    <!-- 是否追加 默认为true -->
+    <append>true</append>
+    <!-- 滚动策略 日期+大小 策略 -->
+    <rollingPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${logback.zip.path}/%d{yyyy-MM-dd}/error/error-%i.zip</fileNamePattern>
+      <!-- 单个日志大小 -->
+      <maxFileSize>${logback.maxFileSize}</maxFileSize>
+      <!-- 日志保存周期 -->
+      <maxHistory>${logback.maxHistory}</maxHistory>
+      <!-- 总大小 -->
+      <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
+    </rollingPolicy>
+    <!-- 格式化 -->
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%t] %c{36} - %m%n</pattern>
+    </encoder>
+    <!-- 级别过滤 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- Redis log configure -->
+  <!--<logger name="org.springframework.data.redis.core.RedisConnectionUtils" level="DEBUG"/>-->
+  <!--<logger name="io.lettuce.core.RedisChannelHandler" level="DEBUG"/>-->
+  <!--<logger name="io.lettuce.core.protocol.DefaultEndpoint" level="DEBUG"/>-->
+  <!--<logger name="io.lettuce.core.protocol.CommandHandler" level="DEBUG"/>-->
+
+  <!-- Mongo log configure -->
+  <logger name="org.springframework.data.mongodb.core" level="DEBUG"/>
+  <!--<logger name="org.mongodb.driver.protocol.command" level="DEBUG"/>-->
+
+  <!-- JPA log configure -->
+  <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="DEBUG"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG"/>
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  <logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>
+  <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>
+
+  <!-- Mybatis log configure -->
+  <logger name="org.mybatis.spring" level="DEBUG"/>
+  <logger name="java.sql.Connection" level="DEBUG"/>
+  <logger name="java.sql.Statement" level="DEBUG"/>
+  <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+  <logger name="org.codepasser.base.dao.repository.mapper" level="DEBUG"/>
+
+  <root level="${logback.level}">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="FILE_INFO"/>
+    <appender-ref ref="FILE_WARN"/>
+    <appender-ref ref="FILE_ERROR"/>
+  </root>
+</configuration>

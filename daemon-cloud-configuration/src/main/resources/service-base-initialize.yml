@@ -1,0 +1,20 @@
+# Application configuration
+daemon:
+  service:
+    initializer:
+      # 区域数据
+      area-settings:
+        provinces-json: 'initializer/area/provinces.object.json'
+        cities-json: 'initializer/area/cities.object.json'
+        districts-json: 'initializer/area/districts.object.json'
+      # 组织机构
+      org-settings:
+        root-org-id: 0
+        root-org-name: codepasser.com
+      # 管理员账户
+      admin-settings:
+        admin-id: 1
+        admin-name: admin
+        admin-password: 123qwe
+        admin-phone: 18516171342
+        admin-email: admin@codepasser.com
