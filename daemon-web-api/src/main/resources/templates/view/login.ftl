@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="${rc.contextPath}/favicon.ico">
 
   <title>Codepasser IO Platform - Login </title>
 
@@ -64,10 +65,36 @@
         </div>
       </form>
     </div>
-    <div class="layout-footer">
-      <div class="form-group row">
-        <button id="corsBtn" class="btn btn-primary w-100">testing cors request</button>
+    <div class="layout-footer d-flex p-2 justify-content-around">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">CORS request</h5>
+          <p class="card-text">CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。它允许浏览器向跨源(协议
+            + 域名 + 端口)服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</p>
+          <button id="corsBtn" class="btn btn-primary w-100">TEST</button>
+        </div>
       </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">SSO</h5>
+          <p class="card-text">SSO英文全称Single Sign
+            On，单点登录。SSO是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。它包括可以将这次主要的登录映射到其他应用中用于同一个用户的登录的机制.</p>
+          <a class="btn btn-primary w-100" href="/web-oauth">WEB-API</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">OAuth2.0</h5>
+          <p class="card-text">OAuth2.0是OAuth协议的延续版本，但不向后兼容OAuth 2.0即完全废止了OAuth1.0。 OAuth
+            2.0关注客户端开发者的简易性。要么通过组织在资源拥有者和HTTP服务商之间的被批准的交互动作代表用户，要么允许第三方应用代表用户获得访问的权限。同时为Web应用，桌面应用和手机，和起居室设备提供专门的认证流程。2012年10月，OAuth
+            2.0协议正式发布为RFC.</p>
+          <a class="btn btn-primary w-100" href="/web-oauth/login/github">Github</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -79,7 +106,8 @@
     $("#corsBtn").click(function () {
       $.ajax({
         type: 'GET',
-        url: 'http://www.codepasser.com${rc.contextPath}/sample/log/info',
+        // CORS : www.codepasser.com
+        url: 'http://127.0.0.1:8001${rc.contextPath}/sample/log/info',
         cache: false,
         // data: JSON.stringify(data),
         contentType: "application/json",
