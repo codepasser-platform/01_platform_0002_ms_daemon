@@ -1,4 +1,4 @@
-package org.codepasser.base.model.entity;
+package org.codepasser.base.model.entity.security;
 
 import java.io.Serializable;
 import java.util.Date;

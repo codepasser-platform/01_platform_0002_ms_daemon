@@ -20,6 +20,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,6 +30,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
@@ -45,11 +48,11 @@ import org.springframework.web.filter.CompositeFilter;
  */
 @Configuration
 @EnableOAuth2Client
-// @EnableAuthorizationServer
-// @Order(2)
+@EnableAuthorizationServer
+@Order(6)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  //  @Autowired private AuthenticationManager authenticationManager;
+  @Autowired private AuthenticationManager authenticationManager;
 
   @Autowired private UserDetailsService userIdentityService;
 
@@ -64,9 +67,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private PersistentTokenBasedRememberMeServices oauth2RememberMeServices;
 
   @Override
+  @Bean
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
+
+  @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    //    auth.parentAuthenticationManager(authenticationManager)
-    auth.userDetailsService(userIdentityService).passwordEncoder(passwordEncoder);
+    auth.parentAuthenticationManager(authenticationManager)
+        .userDetailsService(userIdentityService)
+        .passwordEncoder(passwordEncoder);
   }
 
   @Override
