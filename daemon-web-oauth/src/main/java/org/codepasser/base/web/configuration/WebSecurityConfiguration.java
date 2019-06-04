@@ -1,7 +1,12 @@
 package org.codepasser.base.web.configuration;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.springframework.http.HttpMethod.GET;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.Filter;
+import org.codepasser.base.web.configuration.oauth2.clients.DefaultClientResources;
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.web.configuration.security.handler.ApiAuthenticationResponseHandler;
 import org.codepasser.common.web.configuration.security.handler.AuthenticationResponseEntryPoint;
@@ -11,16 +16,25 @@ import org.codepasser.common.web.configuration.security.handler.WebAuthenticatio
 import org.codepasser.common.web.configuration.security.handler.WebLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.filter.CompositeFilter;
 
 /**
  * WebSecurityConfiguration.
@@ -30,7 +44,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  * @serial 2018/8/20 : base version.
  */
 @Configuration
-// @EnableOAuth2Client
+@EnableOAuth2Client
 // @EnableAuthorizationServer
 // @Order(2)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -44,6 +58,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Autowired
   @Qualifier("formLoginRememberMe")
   private PersistentTokenBasedRememberMeServices formLoginRememberMeServices;
+
+  @Autowired
+  @Qualifier("oauth2")
+  private PersistentTokenBasedRememberMeServices oauth2RememberMeServices;
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -94,7 +112,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         /* Security sign out. */
         .and()
         .logout()
-        // TODO should using constant instead, and also should support the ajax logout
         .deleteCookies("SESSION")
         .invalidateHttpSession(true)
         .logoutUrl("/logout")
@@ -104,8 +121,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // * Security sso & oauth2 remember me. */
         .and()
-        // .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
-        // .addFilterBefore(rememberMeFilter(), BasicAuthenticationFilter.class)
+        .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
+        .addFilterBefore(rememberMeFilter(), BasicAuthenticationFilter.class)
         .csrf()
         .disable()
         .headers()
@@ -144,12 +161,45 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return new WebLogoutSuccessHandler();
   }
 
-  // TODO SSO
-  //  private Filter rememberMeFilter() {
-  //    ProviderManager providerManager =
-  //        new ProviderManager(
-  //            newArrayList(
-  //                new RememberMeAuthenticationProvider(oauth2RememberMeServices.getKey())));
-  //    return new RememberMeAuthenticationFilter(providerManager, oauth2RememberMeServices);
+  @Bean(name = "github")
+  @ConfigurationProperties("github")
+  protected DefaultClientResources github() {
+    return new DefaultClientResources();
+  }
+
+  @Bean
+  protected FilterRegistrationBean oAuth2ClientFilterRegistration() {
+    FilterRegistrationBean<OAuth2ClientContextFilter> registrationBean =
+        new FilterRegistrationBean<>();
+    registrationBean.setFilter(new OAuth2ClientContextFilter());
+    registrationBean.setOrder(-100);
+    return registrationBean;
+  }
+
+  private Filter ssoFilter() {
+    CompositeFilter filter = new CompositeFilter();
+    List<Filter> filters = new ArrayList<>();
+    filters.add(github().filter("/login/github"));
+    //    filters.add(weibo().filter("/login/weibo"));
+    //    filters.add(qq().filter("/login/qq"));
+    //    filters.add(wechatWeb().filter("/login/wechat/connect"));
+    //    filters.add(wechat().filter("/login/wechat"));
+    filter.setFilters(filters);
+    return filter;
+  }
+
+  private Filter rememberMeFilter() {
+    ProviderManager providerManager =
+        new ProviderManager(
+            newArrayList(new RememberMeAuthenticationProvider(oauth2RememberMeServices.getKey())));
+    return new RememberMeAuthenticationFilter(providerManager, oauth2RememberMeServices);
+  }
+
+  // TODO CSRF filter
+  //  @Bean
+  //  public CsrfTokenRepository csrfTokenRepository() {
+  //    HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+  //    repository.setHeaderName(Header.HEADER_X_XSRF_TOKEN);
+  //    return repository;
   //  }
 }

@@ -1,7 +1,10 @@
 package org.codepasser.common.web.configuration.security.auth;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import org.codepasser.common.model.security.UserBasic;
+import org.codepasser.common.model.security.UserExternalBasic;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
@@ -9,13 +12,17 @@ public class UserIdentity implements org.springframework.security.core.userdetai
 
   private static final long serialVersionUID = 689793518503603124L;
 
-  // TODO OAUTH-2.0
-  // private BasicExternalUser externalUser;
-
   private UserBasic user;
+
+  private UserExternalBasic externalUser;
 
   public UserIdentity(UserBasic user) {
     this.user = user;
+  }
+
+  public UserIdentity(UserExternalBasic user) {
+    this.externalUser = user;
+    this.user = user.getInnerUser();
   }
 
   @Override
@@ -63,7 +70,25 @@ public class UserIdentity implements org.springframework.security.core.userdetai
     return this.getUsername().equals(((UserIdentity) obj).getUsername());
   }
 
+  public Long getId() {
+    return this.user.getId();
+  }
+
   public UserBasic getUser() {
     return user;
+  }
+
+  public UserExternalBasic getExternalUser() {
+    return this.externalUser;
+  }
+
+  public Map<String, String> getDetails() {
+    if (this.externalUser != null) {
+      Map<String, String> details = this.externalUser.getDetails();
+      if (details != null) {
+        return details;
+      }
+    }
+    return new HashMap<>();
   }
 }

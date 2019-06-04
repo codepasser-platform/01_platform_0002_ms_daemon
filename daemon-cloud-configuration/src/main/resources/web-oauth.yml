@@ -137,3 +137,19 @@ daemon:
     volume: /data/storage/
     max-file-size: 2048 # MEGABYTES
     max-request-size: 5120 # MEGABYTES
+
+github:
+  client:
+    id: GITHUB
+    clientId: 62196feed56f1d10445c
+    clientSecret: af902797e625b792f6a3e59b89e90e4229d64089
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+    authenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+  definition:
+    id: id
+    nickname: login
+    avatar: avatar_url

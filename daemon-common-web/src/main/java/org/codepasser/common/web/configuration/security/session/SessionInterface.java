@@ -14,4 +14,5 @@ public interface SessionInterface {
   String SESSION_AUTH_COOKIE_NAME = "DAEMON-X-AUTH-SESSION"; // Default SESSION
   String SESSION_AUTH_TOKEN_NAME = "DAEMON-X-AUTH-TOKEN"; // Default X-Auth-Token
   String SESSION_REMEMBER_ME_COOKIE = "DAEMON-REMEMBER-SESSION"; // Default remember-me
+  String OAUTH2_REMEMBER_ME_COOKIE = "DAEMON-REMEMBER-OAUTH2"; // Default oauth-remember-me
 }

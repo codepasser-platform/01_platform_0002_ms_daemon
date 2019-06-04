@@ -30,9 +30,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  * @serial 2018/8/20 : base version.
  */
 @Configuration
-// @EnableOAuth2Client
-// @EnableAuthorizationServer
-// @Order(2)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   //  @Autowired private AuthenticationManager authenticationManager;
@@ -94,7 +91,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         /* Security sign out. */
         .and()
         .logout()
-        // TODO should using constant instead, and also should support the ajax logout
         .deleteCookies("SESSION")
         .invalidateHttpSession(true)
         .logoutUrl("/logout")
@@ -143,13 +139,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   public LogoutSuccessHandler webLogoutSuccessHandler() {
     return new WebLogoutSuccessHandler();
   }
-
-  // TODO SSO
-  //  private Filter rememberMeFilter() {
-  //    ProviderManager providerManager =
-  //        new ProviderManager(
-  //            newArrayList(
-  //                new RememberMeAuthenticationProvider(oauth2RememberMeServices.getKey())));
-  //    return new RememberMeAuthenticationFilter(providerManager, oauth2RememberMeServices);
-  //  }
 }
