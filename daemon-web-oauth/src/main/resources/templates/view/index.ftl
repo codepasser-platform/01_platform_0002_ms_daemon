@@ -12,7 +12,7 @@
   <title>Codepasser IO Platform - Index </title>
 
   <!-- Bootstrap core CSS -->
-  <link href="${rc.contextPath}/static/library/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${rc.contextPath}/library/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -28,8 +28,8 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="${rc.contextPath}/static/library/jquery/1.12.4/jquery.min.js"></script>
-<script src="${rc.contextPath}/static/library/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="${rc.contextPath}/library/jquery/1.12.4/jquery.min.js"></script>
+<script src="${rc.contextPath}/library/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <div class="app-container">
   <div class="layout-container layout-screen">
