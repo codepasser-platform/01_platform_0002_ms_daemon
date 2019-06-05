@@ -15,6 +15,7 @@ import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
 import org.codepasser.base.model.entity.User;
+import org.codepasser.base.model.entity.security.OAuthClientDetails;
 import org.codepasser.base.service.bootstrap.DataFinder;
 import org.codepasser.base.service.bootstrap.DataLoader;
 import org.codepasser.base.service.bootstrap.InitializerConfiguration;
@@ -141,6 +142,21 @@ public class DefaultDataFinder implements DataFinder {
     admin.setCreateTime(new Date());
     admin.setOrgId(settings.getOrgSettings().getRootOrgId());
     return admin;
+  }
+
+  @Override
+  public OAuthClientDetails findOAuthClient() {
+    OAuthClientDetails clientDetails = new OAuthClientDetails();
+    clientDetails.setClientId(settings.getOauthSettings().getClientId());
+    clientDetails.setClientSecret(settings.getOauthSettings().getClientSecret());
+    clientDetails.setScope(settings.getOauthSettings().getScope());
+    clientDetails.setAuthorizedGrantTypes(settings.getOauthSettings().getAuthorizedGrantTypes());
+    clientDetails.setWebServerRedirectUri(settings.getOauthSettings().getWebServerRedirectUri());
+    clientDetails.setAuthorities(settings.getOauthSettings().getAuthorities());
+    clientDetails.setAccessTokenValidity(settings.getOauthSettings().getAccessTokenValidity());
+    clientDetails.setRefreshTokenValidity(settings.getOauthSettings().getRefreshTokenValidity());
+    clientDetails.setAutoApprove(settings.getOauthSettings().getAutoapprove());
+    return clientDetails;
   }
 
   private String readFile(File file) {

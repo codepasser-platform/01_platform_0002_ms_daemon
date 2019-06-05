@@ -48,14 +48,14 @@ create table oauth_code
   authentication BLOB
 );
 
-create table oauth_approvals
+CREATE TABLE oauth_approvals
 (
-  userId         VARCHAR(256),
-  clientId       VARCHAR(256),
-  scope          VARCHAR(256),
-  status         VARCHAR(10),
-  expiresAt      TIMESTAMP,
-  lastModifiedAt TIMESTAMP
+  userid VARCHAR(256), -- 登录的用户名
+  clientid VARCHAR(256), -- 客户端ID
+  scope VARCHAR(256), -- 申请的权限
+  status VARCHAR(256), -- 状态（Approve或Deny）
+  expiresat timestamp, -- 过期时间
+  lastmodifiedat timestamp-- 最终修改时间
 );
 
 # COMMENT ON COLUMN oauth_access_token.token_id IS 'MD5加密的access_token的值';

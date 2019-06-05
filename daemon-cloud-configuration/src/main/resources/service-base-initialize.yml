@@ -18,3 +18,13 @@ daemon:
         admin-password: 123qwe
         admin-phone: 18516171342
         admin-email: admin@codepasser.com
+      oauth-settings:
+        client-id: '0000'
+        client-secret: 'MDAwMA=='
+        scope: 'read,write'
+        authorized-grant-types: 'authorization_code,refresh_token'
+        web-server-redirect-uri: 'http://www.codepasser.com/web-client/login'
+        authorities: 'ROLE_USER'
+        access-token-validity: 1800
+        refresh-token-validity: 86400
+        autoapprove: 'false'

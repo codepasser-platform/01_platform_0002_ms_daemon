@@ -25,7 +25,7 @@
 
 ```
 # 方式一 授权地址
-http://www.codepasser.com/web-oauth/oauth/authorize?response_type=code&client_id=oauth_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
+http://www.codepasser.com/web-oauth/oauth/authorize?response_type=code&client_id=0000&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
 # 方式二 登录后转向授权地址
 http://www.codepasser.com/web-oauth/login?target-url=http://www.codepasser.com/web-oauth/oauth/authorize?response_type=code&client_id=oauth_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
 ```
@@ -33,7 +33,7 @@ http://www.codepasser.com/web-oauth/login?target-url=http://www.codepasser.com/w
 > 4  令牌
 ```
 # 令牌地址 
-http://www.codepasser.com/web-oauth/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=CALLBACK_URL 
+http://www.codepasser.com/web-oauth/oauth/token?client_id=0000&client_secret=MDAwMA==&code=Bw27I1&grant_type=authorization_code&redirect_uri=http://www.codepasser.com/web-client/login
 ```
 
 > 5 TODO

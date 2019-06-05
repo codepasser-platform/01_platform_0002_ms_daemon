@@ -8,6 +8,7 @@ import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
 import org.codepasser.base.model.entity.User;
+import org.codepasser.base.model.entity.security.OAuthClientDetails;
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.codepasser.common.service.exception.ServiceException;
 import org.slf4j.Logger;
@@ -35,13 +36,15 @@ public class DatabaseInitializer {
   private void initialize() throws ServiceException {
 
     // Initialize area
-    initializeArea();
+    //    initializeArea();
     // Initialize organization
     initializeOrg();
     // Initialize role
     initializeRole();
     // Initialize admin
     initializeAdmin();
+    // Initialize oauth client
+    initializeOAuth();
   }
 
   private void initializeArea() {
@@ -79,5 +82,15 @@ public class DatabaseInitializer {
         "Initializer admin process finish, process admin-id [{}],org-id [{}]",
         admin.getId(),
         admin.getOrgId());
+  }
+
+  private void initializeOAuth() {
+    logger.info("Initializer oauth client process start");
+    OAuthClientDetails client = dataFinder.findOAuthClient();
+    dataCreator.oauthClient(client);
+    logger.info(
+        "Initializer oauth client process finish, process client-id [{}],client-secret [{}]",
+        client.getClientId(),
+        client.getClientSecret());
   }
 }

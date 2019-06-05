@@ -20,6 +20,8 @@ public class InitializerConfiguration {
 
   private AdminSettings adminSettings;
 
+  private OauthSettings oauthSettings;
+
   public AreaSettings getAreaSettings() {
     return areaSettings;
   }
@@ -42,6 +44,14 @@ public class InitializerConfiguration {
 
   public void setAdminSettings(AdminSettings adminSettings) {
     this.adminSettings = adminSettings;
+  }
+
+  public OauthSettings getOauthSettings() {
+    return oauthSettings;
+  }
+
+  public void setOauthSettings(OauthSettings oauthSettings) {
+    this.oauthSettings = oauthSettings;
   }
 
   public static class AreaSettings {
@@ -143,6 +153,91 @@ public class InitializerConfiguration {
 
     public void setAdminEmail(String adminEmail) {
       this.adminEmail = adminEmail;
+    }
+  }
+
+  public static class OauthSettings {
+
+    private String clientId;
+    private String clientSecret;
+    private String scope;
+    private String authorizedGrantTypes;
+    private String webServerRedirectUri;
+    private String authorities;
+    private int accessTokenValidity;
+    private int refreshTokenValidity;
+    private String autoapprove;
+
+    public String getClientId() {
+      return clientId;
+    }
+
+    public void setClientId(String clientId) {
+      this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+      return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+      this.clientSecret = clientSecret;
+    }
+
+    public String getScope() {
+      return scope;
+    }
+
+    public void setScope(String scope) {
+      this.scope = scope;
+    }
+
+    public String getAuthorizedGrantTypes() {
+      return authorizedGrantTypes;
+    }
+
+    public void setAuthorizedGrantTypes(String authorizedGrantTypes) {
+      this.authorizedGrantTypes = authorizedGrantTypes;
+    }
+
+    public String getWebServerRedirectUri() {
+      return webServerRedirectUri;
+    }
+
+    public void setWebServerRedirectUri(String webServerRedirectUri) {
+      this.webServerRedirectUri = webServerRedirectUri;
+    }
+
+    public String getAuthorities() {
+      return authorities;
+    }
+
+    public void setAuthorities(String authorities) {
+      this.authorities = authorities;
+    }
+
+    public int getAccessTokenValidity() {
+      return accessTokenValidity;
+    }
+
+    public void setAccessTokenValidity(int accessTokenValidity) {
+      this.accessTokenValidity = accessTokenValidity;
+    }
+
+    public int getRefreshTokenValidity() {
+      return refreshTokenValidity;
+    }
+
+    public void setRefreshTokenValidity(int refreshTokenValidity) {
+      this.refreshTokenValidity = refreshTokenValidity;
+    }
+
+    public String getAutoapprove() {
+      return autoapprove;
+    }
+
+    public void setAutoapprove(String autoapprove) {
+      this.autoapprove = autoapprove;
     }
   }
 }

@@ -4,10 +4,12 @@ import org.codepasser.base.dao.repository.OrgRepository;
 import org.codepasser.base.dao.repository.RoleRepository;
 import org.codepasser.base.dao.repository.UserRepository;
 import org.codepasser.base.dao.repository.mongo.AreaRepository;
+import org.codepasser.base.dao.repository.security.OAuthClientDetailsRepository;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
 import org.codepasser.base.model.entity.User;
+import org.codepasser.base.model.entity.security.OAuthClientDetails;
 import org.codepasser.base.service.bootstrap.DataCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,6 +32,8 @@ public class DefaultDataCreator implements DataCreator {
 
   @Autowired private UserRepository userRepository;
 
+  @Autowired private OAuthClientDetailsRepository oAuthClientDetailsRepository;
+
   @Override
   public DataCreator area(Area area) {
     areaRepository.save(area);
@@ -51,6 +55,12 @@ public class DefaultDataCreator implements DataCreator {
   @Override
   public DataCreator userAdmin(User admin) {
     userRepository.save(admin);
+    return this;
+  }
+
+  @Override
+  public DataCreator oauthClient(OAuthClientDetails client) {
+    oAuthClientDetailsRepository.save(client);
     return this;
   }
 }
