@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.codepasser.common.utils.IdGenerator;
 
 /**
- * Role.
+ * PersistentLogins.
  *
  * @author Joker.Cheng.
  * @version 0.0.1.
