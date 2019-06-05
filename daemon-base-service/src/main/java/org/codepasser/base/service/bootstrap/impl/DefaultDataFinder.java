@@ -148,7 +148,8 @@ public class DefaultDataFinder implements DataFinder {
   public OAuthClientDetails findOAuthClient() {
     OAuthClientDetails clientDetails = new OAuthClientDetails();
     clientDetails.setClientId(settings.getOauthSettings().getClientId());
-    clientDetails.setClientSecret(settings.getOauthSettings().getClientSecret());
+    clientDetails.setClientSecret(
+        passwordEncoder.encode(settings.getOauthSettings().getClientSecret()));
     clientDetails.setScope(settings.getOauthSettings().getScope());
     clientDetails.setAuthorizedGrantTypes(settings.getOauthSettings().getAuthorizedGrantTypes());
     clientDetails.setWebServerRedirectUri(settings.getOauthSettings().getWebServerRedirectUri());

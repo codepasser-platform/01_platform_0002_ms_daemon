@@ -58,16 +58,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
    */
   @Override
   public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-    oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+    oauthServer
+        .tokenKeyAccess("permitAll()")
+        .checkTokenAccess("isAuthenticated()")
+        .allowFormAuthenticationForClients();
   }
 
   @Override
   public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
     endpoints
+        .authenticationManager(authenticationManager)
         .approvalStore(approvalStore()) // oauth_approvals
         .authorizationCodeServices(authorizationCodeServices()) // oauth_code
         .tokenStore(tokenStore()) // oauth_access_token & oauth_refresh_token
-        .authenticationManager(authenticationManager);
+    ;
     //    defaultPath 默认的端点URL customPath 自定义的URL
     /*
      * .pathMapping("/oauth/authorize", "/oauth2/authorize")
