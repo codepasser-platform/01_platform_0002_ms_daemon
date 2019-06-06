@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -26,6 +27,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
   @Autowired private AuthenticationManager authenticationManager;
 
   @Autowired private DataSource dataSource;
+
+  @Autowired private UserDetailsService userIdentityService;
 
   @Bean
   public ApprovalStore approvalStore() {
@@ -71,15 +74,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         .approvalStore(approvalStore()) // oauth_approvals
         .authorizationCodeServices(authorizationCodeServices()) // oauth_code
         .tokenStore(tokenStore()) // oauth_access_token & oauth_refresh_token
-    ;
-    //    defaultPath 默认的端点URL customPath 自定义的URL
-    /*
-     * .pathMapping("/oauth/authorize", "/oauth2/authorize")
-     * .pathMapping("/oauth/token", "/oauth2/token");
-     */
-    // - 授权
-    // http://www.codepasser.com/web-oauth/oauth/authorize?response_type=code&client_id=oauth_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
-    // - 令牌
-    // http://www.codepasser.com/web-oauth/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=CALLBACK_URL
+        .userDetailsService(userIdentityService); // refresh token required user detail service
+    // pathMapping 方法提供修改默认路径。
+    // defaultPath：默认的端点URL
+    // customPath：自定义的URL
+    // .pathMapping("/oauth/authorize", "/oauth2/authorize")
+    // .pathMapping("/oauth/token","/oauth2/token");
   }
 }
