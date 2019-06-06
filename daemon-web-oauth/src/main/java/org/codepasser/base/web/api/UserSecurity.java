@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/oauth")
+@RequestMapping("/api")
 public class UserSecurity {
 
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

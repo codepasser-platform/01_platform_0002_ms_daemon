@@ -48,20 +48,20 @@ http://www.codepasser.com/web-oauth/login?target-url=http://www.codepasser.com/w
 
 ```
 # 获取 TOKEN
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'code=24cs7C&grant_type=authorization_code&redirect_uri=http://www.codepasser.com/web-client/login' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'code=g5Q2kc&grant_type=authorization_code&redirect_uri=http://www.codepasser.com/web-client/login' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
 
 > response :
 
-{"access_token":"0db0833d-0578-4a5c-b723-e3aa3374bcfb","token_type":"bearer","refresh_token":"563e385b-2049-4646-bbcf-c06fcaaf48a8","expires_in":1799,"scope":"read"}
+{"access_token":"36af4b60-67d4-445a-9f0a-e1c036acae1a","token_type":"bearer","refresh_token":"15c02260-bb9d-4f74-9d59-f3b3f6278a3d","expires_in":1799,"scope":"read"}
 
 ```
 
 > STEP 3 获取用户信息 
 
-- ${context}/oauth/me
+- ${context}/api/me
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=0db0833d-0578-4a5c-b723-e3aa3374bcfb' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=36af4b60-67d4-445a-9f0a-e1c036acae1a' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
 
 
 > response 
@@ -75,7 +75,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_tok
 - /oauth/check_token
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=5a6118cb-2f46-4175-ba34-787b8c02b15b' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
 
 > response
 
@@ -88,11 +88,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=5a61
 - /oauth/token
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=refresh_token&refresh_token=563e385b-2049-4646-bbcf-c06fcaaf48a8' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=refresh_token&refresh_token=15c02260-bb9d-4f74-9d59-f3b3f6278a3d' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
 
 > response
 
-{"access_token":"5a6118cb-2f46-4175-ba34-787b8c02b15b","token_type":"bearer","refresh_token":"563e385b-2049-4646-bbcf-c06fcaaf48a8","expires_in":1799,"scope":"read"}
+{"access_token":"84089940-8247-4869-96d6-4d132acbb61e","token_type":"bearer","refresh_token":"15c02260-bb9d-4f74-9d59-f3b3f6278a3d","expires_in":1799,"scope":"read"}
 
 ```
 
@@ -100,6 +100,8 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 ### 密码模式
 
 > STEP 1 密码认证 
+
+- /oauth/token
 
 ```
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=password&username=admin&password=123qwe' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
