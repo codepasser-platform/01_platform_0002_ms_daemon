@@ -13,7 +13,7 @@
 - security-oauth2-service.sql
 
 
-## CODE 模式
+## 认证模式
  
 - 步骤 TODO
 
@@ -28,7 +28,6 @@ implicit：          隐式授权类型。
 client_credentials：客户端凭据（客户端ID以及Key）类型。
 refresh_token：     通过以上授权获得的刷新令牌来获取新的令牌。
 ```
-
 
 ###  令牌模式
 
@@ -98,7 +97,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 ```
 
 
-# 密码模式
+### 密码模式
 
 > STEP 1 密码认证 
 
@@ -115,7 +114,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 - ${context}/oauth/me
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=6029a8d0-4a7d-4a9c-a07d-65c4210bf665' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
 
 > response 
 
@@ -147,4 +146,17 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 {"access_token":"fa08fd53-378a-42ca-b883-66b9c31b2021","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
 
+```
+
+
+### 权限测试
+
+> STEP 1 权限测试 
+
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user1"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user2"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/admin"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user"
 ```

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/oauth")
 public class UserEndpoint {
 
-  @RequestMapping("/oauth/me")
+  @RequestMapping("/me")
   public UserSelf me(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
