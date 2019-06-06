@@ -104,23 +104,23 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 - /oauth/token
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=password&username=admin&password=123qwe' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=password&username=38494070&password=123456' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/token"
 
 > response
 
-{"access_token":"6029a8d0-4a7d-4a9c-a07d-65c4210bf665","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
+{"access_token":"1d22b7bd-1ccf-4321-ad21-4ee22131c847","token_type":"bearer","refresh_token":"d76fcb4c-8635-4644-99ae-989a34daadd2","expires_in":1799,"scope":"read write"}
 ```
 
 > STEP 2 获取用户信息 
 
-- ${context}/oauth/me
+- ${context}/api/me
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
 
 > response 
 
-{"id":"1","username":"admin","phone":"18516171342","email":"admin@codepasser.com","type":"GENERATED","user_statuses":["MANAGED"],"locked":false,"authorities":["USER","ADMIN","MGR"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
+{"id":"45059919","username":"38494070","type":"EXTERNAL","user_statuses":["MANAGED"],"locked":false,"authorities":["USER"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
 
 ```
 
@@ -129,11 +129,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_tok
 - /oauth/check_token
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
 
 > response
 
-{"aud":["daemon-service"],"exp":1559796103,"user_name":"admin","authorities":["ROLE_USER","ROLE_ADMIN","ROLE_MGR"],"client_id":"daemon_client","scope":["read","write"]}
+{"aud":["daemon-service"],"exp":1559799720,"user_name":"38494070","authorities":["ROLE_USER"],"client_id":"daemon_client","scope":["read","write"]}
 
 ```
 
@@ -146,7 +146,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 > response
 
-{"access_token":"fa08fd53-378a-42ca-b883-66b9c31b2021","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
+{"access_token":"1d22b7bd-1ccf-4321-ad21-4ee22131c847","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
 
 ```
 
@@ -156,9 +156,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 > STEP 1 权限测试 
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user1"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user2"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/admin"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user1"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user2"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/admin"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user"
 ```
