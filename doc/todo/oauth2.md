@@ -156,9 +156,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 > STEP 1 权限测试 
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/me"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user1"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user2"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/admin"
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=fa08fd53-378a-42ca-b883-66b9c31b2021' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/user"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user1"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user2"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/admin"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=84089940-8247-4869-96d6-4d132acbb61e' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/user"
 ```
