@@ -160,6 +160,7 @@ public class InitializerConfiguration {
 
     private String clientId;
     private String clientSecret;
+    private String resourceIds;
     private String scope;
     private String authorizedGrantTypes;
     private String webServerRedirectUri;
@@ -182,6 +183,14 @@ public class InitializerConfiguration {
 
     public void setClientSecret(String clientSecret) {
       this.clientSecret = clientSecret;
+    }
+
+    public String getResourceIds() {
+      return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+      this.resourceIds = resourceIds;
     }
 
     public String getScope() {
