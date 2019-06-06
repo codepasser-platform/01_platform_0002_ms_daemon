@@ -91,5 +91,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 ```
 # 密码模式
+
+```
 http://www.codepasser.com/web-oauth/oauth/token?client_id=daemon_client&client_secret=MDAwMA==&grant_type=password&username=admin&password=123qwe
 ```
