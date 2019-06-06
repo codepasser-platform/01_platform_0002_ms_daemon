@@ -23,10 +23,10 @@
 
 ```
 authorization_code：授权码类型。
-implicit：隐式授权类型。
-password：资源所有者（即用户）密码类型。
+password：          资源所有者（即用户）密码类型。
+implicit：          隐式授权类型。
 client_credentials：客户端凭据（客户端ID以及Key）类型。
-refresh_token：通过以上授权获得的刷新令牌来获取新的令牌。
+refresh_token：     通过以上授权获得的刷新令牌来获取新的令牌。
 ```
 
 
