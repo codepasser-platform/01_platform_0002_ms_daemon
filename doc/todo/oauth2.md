@@ -145,7 +145,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 ###  认证模式三 ：凭证式 client_credentials
 
-- 凭证式（client credentials），服务对服务的模式（非用户，无权限），适用于没有前端的命令行应用,服务端接口对接口调用，即在命令行下请求令牌。
+- 凭证式（client credentials），服务对服务的模式（非用户，无权限），适用于没有前端的命令行应用,服务端接口对接口调用，即在命令行下请求令牌,令牌在一段时间内不会重新生成，失效后需要重新获取令牌，服务客户端节点更新调用。
 
 > STEP 1
 
