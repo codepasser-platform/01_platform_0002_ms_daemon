@@ -23,7 +23,7 @@ daemon:
         client-secret: '1234'
         resource-ids: 'daemon-service'
         scope: 'read,write'
-        authorized-grant-types: 'authorization_code,refresh_token,password'
+        authorized-grant-types: 'authorization_code,password,client_credentials,refresh_token'
         web-server-redirect-uri: 'http://www.codepasser.com/web-client/login'
         authorities: 'ROLE_USER'
         access-token-validity: 1800
