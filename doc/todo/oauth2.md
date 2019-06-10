@@ -53,7 +53,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'code=g5Q2k
 > response :
 
 {"access_token":"36af4b60-67d4-445a-9f0a-e1c036acae1a","token_type":"bearer","refresh_token":"15c02260-bb9d-4f74-9d59-f3b3f6278a3d","expires_in":1799,"scope":"read"}
-
 ```
 
 > STEP 3 获取用户信息 
@@ -78,7 +77,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=8408
 > response
 
 {"exp":1559731956,"user_name":"admin","authorities":["ROLE_USER","ROLE_ADMIN","ROLE_MGR"],"client_id":"daemon_client","scope":["read"]}
-
 ```
 
 > STEP 5 刷新token TODO
@@ -91,7 +89,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 > response
 
 {"access_token":"84089940-8247-4869-96d6-4d132acbb61e","token_type":"bearer","refresh_token":"15c02260-bb9d-4f74-9d59-f3b3f6278a3d","expires_in":1799,"scope":"read"}
-
 ```
 
 ###  认证模式二 ：密码模式 password
@@ -120,7 +117,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_tok
 > response 
 
 {"id":"45059919","username":"38494070","type":"EXTERNAL","user_statuses":["MANAGED"],"locked":false,"authorities":["USER"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
-
 ```
 
 > STEP 3 检查token是否有效
@@ -133,7 +129,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=1d22
 > response
 
 {"aud":["daemon-service"],"exp":1559799720,"user_name":"38494070","authorities":["ROLE_USER"],"client_id":"daemon_client","scope":["read","write"]}
-
 ```
 
 > STEP 4 刷新token TODO
@@ -146,12 +141,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 > response
 
 {"access_token":"1d22b7bd-1ccf-4321-ad21-4ee22131c847","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
-
 ```
 
 ###  认证模式三 ：凭证式 client_credentials
 
-- 凭证式（client credentials），适用于没有前端的命令行应用，即在命令行下请求令牌。
+- 凭证式（client credentials），服务对服务的模式（非用户，无权限），适用于没有前端的命令行应用,服务端接口对接口调用，即在命令行下请求令牌。
 
 > STEP 1
 
@@ -162,6 +156,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 > response
 
+{"access_token":"882a7b70-e7b9-4b65-b275-9955866e0829","token_type":"bearer","expires_in":1799,"scope":"read write"}
 ```
 
 > STEP 2
@@ -169,13 +164,25 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 - ${context}/api/me
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=1d22b7bd-1ccf-4321-ad21-4ee22131c847' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=882a7b70-e7b9-4b65-b275-9955866e0829' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+
+> response
+{}
+```
+
+> STEP 3 检查token是否有效
+
+- /oauth/check_token
+
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=882a7b70-e7b9-4b65-b275-9955866e0829' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
 
 > response
 
+{"aud":["daemon-service"],"scope":["read","write"],"exp":1560163362,"authorities":["ROLE_USER"],"client_id":"daemon_client"}
 ```
 
-###  认证模式四 ：凭证式 implicit
+###  认证模式四 ：隐式授权 implicit
 
 - 
 
