@@ -184,16 +184,39 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=882a
 
 ###  认证模式四 ：隐式授权 implicit
 
-- 
+- 有些 Web 应用是纯前端应用，没有后端。这时就不能用上面的方式了，必须将令牌储存在前端。RFC 6749 就规定了第二种方式，允许直接向前端颁发令牌。这种方式没有授权码这个中间步骤，所以称为（授权码）"隐藏式"（implicit）。
 
-> STEP 1
+> STEP 1 : A 网站提供一个链接，要求用户跳转到 B 网站，授权用户数据给 A 网站使用。
 
 ```
+http://www.codepasser.com/web-oauth/oauth/authorize?response_type=token&client_id=daemon_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
+
+-> rediect
+
+http://www.codepasser.com/web-client/login#access_token=dbb9bac1-4690-4321-949e-615d3f326801&token_type=bearer&expires_in=1741
 ```
 
 > STEP 2
 
+- ${context}/api/me
+
 ```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+
+> response
+{"id":"45426910","username":"38494070","type":"EXTERNAL","user_statuses":["MANAGED"],"locked":false,"authorities":["USER"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
+```
+
+> STEP 3 检查token是否有效
+
+- /oauth/check_token
+
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
+
+> response
+
+{"aud":["daemon-service"],"exp":1560165468,"user_name":"38494070","authorities":["ROLE_USER"],"client_id":"daemon_client","scope":["read"]}
 ```
 
 ## 权限测试
