@@ -17,13 +17,13 @@
 
 > authorization_code：授权码类型。
 
-> password：          资源所有者（即用户）密码类型。
-
 > implicit：          隐式授权类型。
+
+> password：          资源所有者（即用户）密码类型。
 
 > client_credentials：客户端凭据（客户端ID以及Key）类型。
 
-> refresh_token：     通过以上授权获得的刷新令牌来获取新的令牌。
+> refresh_token：     通过以上授权获得的刷新令牌来获取新的令牌（支持authorization_code，password两种模式下支持）。
 
 ###  认证模式- ：令牌模式 authorization_code
 
@@ -91,7 +91,44 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 {"access_token":"84089940-8247-4869-96d6-4d132acbb61e","token_type":"bearer","refresh_token":"15c02260-bb9d-4f74-9d59-f3b3f6278a3d","expires_in":1799,"scope":"read"}
 ```
 
-###  认证模式二 ：密码模式 password
+###  认证模式二 ：隐式授权 implicit
+
+- 有些 Web 应用是纯前端应用，没有后端。这时就不能用上面的方式了，必须将令牌储存在前端。RFC 6749 就规定了第二种方式，允许直接向前端颁发令牌。这种方式没有授权码这个中间步骤，所以称为（授权码）"隐藏式"（implicit）。
+
+> STEP 1 : A 网站提供一个链接，要求用户跳转到 B 网站，授权用户数据给 A 网站使用。
+
+```
+http://www.codepasser.com/web-oauth/oauth/authorize?response_type=token&client_id=daemon_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
+
+-> rediect
+
+http://www.codepasser.com/web-client/login#access_token=dbb9bac1-4690-4321-949e-615d3f326801&token_type=bearer&expires_in=1741
+```
+
+> STEP 2
+
+- ${context}/api/me
+
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
+
+> response
+{"id":"45426910","username":"38494070","type":"EXTERNAL","user_statuses":["MANAGED"],"locked":false,"authorities":["USER"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
+```
+
+> STEP 3 检查token是否有效
+
+- /oauth/check_token
+
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
+
+> response
+
+{"aud":["daemon-service"],"exp":1560165468,"user_name":"38494070","authorities":["ROLE_USER"],"client_id":"daemon_client","scope":["read"]}
+```
+
+###  认证模式三 ：密码模式 password
 
 - 如果你高度信任某个应用，RFC 6749 也允许用户把用户名和密码，直接告诉该应用。该应用就使用你的密码，申请令牌，这种方式称为"密码式"（password）。
 
@@ -143,7 +180,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 {"access_token":"1d22b7bd-1ccf-4321-ad21-4ee22131c847","token_type":"bearer","refresh_token":"27ff1868-f89d-4506-abf3-35b0844218a4","expires_in":1799,"scope":"read write"}
 ```
 
-###  认证模式三 ：凭证式 client_credentials
+###  认证模式四 ：凭证式 client_credentials
 
 - 凭证式（client credentials），服务对服务的模式（非用户，无权限），适用于没有前端的命令行应用,服务端接口对接口调用，即在命令行下请求令牌,令牌在一段时间内不会重新生成，失效后需要重新获取令牌，服务客户端节点更新调用。
 
@@ -182,42 +219,6 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=882a
 {"aud":["daemon-service"],"scope":["read","write"],"exp":1560163362,"authorities":["ROLE_USER"],"client_id":"daemon_client"}
 ```
 
-###  认证模式四 ：隐式授权 implicit
-
-- 有些 Web 应用是纯前端应用，没有后端。这时就不能用上面的方式了，必须将令牌储存在前端。RFC 6749 就规定了第二种方式，允许直接向前端颁发令牌。这种方式没有授权码这个中间步骤，所以称为（授权码）"隐藏式"（implicit）。
-
-> STEP 1 : A 网站提供一个链接，要求用户跳转到 B 网站，授权用户数据给 A 网站使用。
-
-```
-http://www.codepasser.com/web-oauth/oauth/authorize?response_type=token&client_id=daemon_client&redirect_uri=http://www.codepasser.com/web-client/login&scope=read
-
--> rediect
-
-http://www.codepasser.com/web-client/login#access_token=dbb9bac1-4690-4321-949e-615d3f326801&token_type=bearer&expires_in=1741
-```
-
-> STEP 2
-
-- ${context}/api/me
-
-```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'access_token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/api/me"
-
-> response
-{"id":"45426910","username":"38494070","type":"EXTERNAL","user_statuses":["MANAGED"],"locked":false,"authorities":["USER"],"org_id":"0","org":{"id":"0","name":"codepasser.com","type":"ROOT"}}
-```
-
-> STEP 3 检查token是否有效
-
-- /oauth/check_token
-
-```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'token=dbb9bac1-4690-4321-949e-615d3f326801' "http://daemon_client:1234@www.codepasser.com/web-oauth/oauth/check_token"
-
-> response
-
-{"aud":["daemon-service"],"exp":1560165468,"user_name":"38494070","authorities":["ROLE_USER"],"client_id":"daemon_client","scope":["read"]}
-```
 
 ## 权限测试
 
