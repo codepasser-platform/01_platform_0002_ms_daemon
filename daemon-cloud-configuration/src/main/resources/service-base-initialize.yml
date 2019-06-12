@@ -24,8 +24,8 @@ daemon:
         resource-ids: 'daemon-service'
         scope: 'read,write'
         authorized-grant-types: 'authorization_code,implicit,password,client_credentials,refresh_token'
-        web-server-redirect-uri: 'http://www.codepasser.com/web-client/login'
-        authorities: 'ROLE_USER'
+        web-server-redirect-uri: http://www.codepasser.com/web-client/login
+        authorities: ROLE_USER
         access-token-validity: 1800
         refresh-token-validity: 86400
-        autoapprove: 'false'
+        autoapprove: false
