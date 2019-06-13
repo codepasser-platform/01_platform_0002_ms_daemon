@@ -171,6 +171,7 @@ drop role LOGIN;
 ```
 create user daemon identified by daemon_pw;
 grant connect, resource to daemon;
+grant unlimited tablespace to daemon;
 ```
 
 > 测试用户
