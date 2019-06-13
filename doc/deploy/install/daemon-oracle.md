@@ -184,5 +184,7 @@ password: daemon_pw
 ```
 # 确认数据库时间
 select to_char(sysdate,'yyyy-MM-dd HH24:mi:ss') from dual;
+# 查看表
+select table_name from user_tables;
 ```
 
