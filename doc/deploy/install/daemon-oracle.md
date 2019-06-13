@@ -165,7 +165,7 @@ create role LOGIN;
 drop role LOGIN;
 ```
 
-# 为应用配置用户、角色
+# 应用配置用户、角色
 
 > 创建用户
 ```
@@ -188,3 +188,16 @@ select to_char(sysdate,'yyyy-MM-dd HH24:mi:ss') from dual;
 select table_name from user_tables;
 ```
 
+# 应用中Maven管理Oracle driver
+
+```
+# 本地导入安装驱动
+mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=12.1.0.2 -Dpackaging=jar -Dfile=ojdbc6-12.1.0.2.jar
+
+# Mavne 依赖引用
+<dependency>
+  <groupId>com.oracle</groupId>
+  <artifactId>ojdbc6</artifactId>
+  <version>${oracle-connector-java.version}</version>
+</dependency>
+```
