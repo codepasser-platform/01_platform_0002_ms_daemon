@@ -76,6 +76,12 @@
       <artifactId>spring-security-oauth2-autoconfigure</artifactId>
     </dependency>
 
+    <!-- # Spring security cas # -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-cas</artifactId>
+    </dependency>
+
     <!-- TODO spring websocket-->
     <!--<dependency>-->
     <!--<groupId>org.springframework.boot</groupId>-->

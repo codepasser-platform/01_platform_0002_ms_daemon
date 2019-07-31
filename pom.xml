@@ -55,6 +55,7 @@
     <!-- # Codepasser Module - Web # -->
     <module>daemon-web-api</module>
     <module>daemon-web-oauth</module>
+    <module>daemon-web-cas</module>
 
   </modules>
 
