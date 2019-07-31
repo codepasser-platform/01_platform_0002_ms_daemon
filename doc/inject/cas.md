@@ -22,3 +22,9 @@ warn.cookie.secure=false
 ```
 "serviceId" : "^(https|imaps|http)://.*",
 ```
+
+- CAS 部署路径 /cas
+
+- CAS 登录路径 /cas/login
+
+- CAS 登出路径 /cas/logout
