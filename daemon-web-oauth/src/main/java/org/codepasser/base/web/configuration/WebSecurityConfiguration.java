@@ -52,7 +52,7 @@ import org.springframework.web.filter.CompositeFilter;
 @Order(6)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  @Autowired private AuthenticationManager authenticationManager;
+  //  @Autowired private AuthenticationManager authenticationManager;
 
   @Autowired private UserDetailsService userIdentityService;
 
@@ -74,9 +74,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.parentAuthenticationManager(authenticationManager)
-        .userDetailsService(userIdentityService)
-        .passwordEncoder(passwordEncoder);
+    //    auth.parentAuthenticationManager(authenticationManager)
+    auth.userDetailsService(userIdentityService).passwordEncoder(passwordEncoder);
   }
 
   @Override
