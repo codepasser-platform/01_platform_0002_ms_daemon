@@ -201,6 +201,9 @@ public class SampleDownloadApi {
       headers.add("Content-Length", downloadSize + "");
       headers.add("Content-Range", nt.format((double) toPos / (double) fullSize) + "");
       headers.add("Content-Range-Type", (toPos == fullSize ? "END" : "RANGE"));
+      if (toPos == fullSize) {
+        httpStatus = HttpStatus.OK;
+      }
 
       randomFile = new RandomAccessFile(downloadFile, "rw");
       // 设置下载起始位置
