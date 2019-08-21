@@ -3,6 +3,7 @@ package org.codepasser.base.web.sample.file;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -137,32 +138,10 @@ public class SampleDownloadApi {
     headers.add("Content-Type", MediaType.APPLICATION_OCTET_STREAM_VALUE);
     // 解析断点续传相关信息
     headers.add("Accept-Ranges", "bytes");
-    // set headers for the response
-    String userAgent = request.getHeader("USER-AGENT").toLowerCase();
-
     RandomAccessFile randomFile = null;
     ByteArrayOutputStream swapStream = null;
     try {
-      if (userAgent != null) {
-        // IE & Edge浏览器下载
-        if ((userAgent.contains("msie") || userAgent.contains("like gecko"))
-            && !userAgent.contains("chrome")) {
-          headers.add(
-              "Content-Disposition",
-              String.format(
-                  "attachment;filename=\"%s\"",
-                  URLEncoder.encode(fileName, StandardCharsets.UTF_8.toString())));
-        } else {
-          // 非IE浏览器下载
-          headers.add(
-              "Content-Disposition",
-              String.format(
-                  "attachment;filename=\"%s\"",
-                  new String(
-                      fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
-        }
-      }
-
+      headers.add("Content-Disposition", URLEncoder.encode(fileName, "UTF-8"));
       long downloadSize = downloadFile.length();
       long fullSize = downloadFile.length();
       headers.add("Content-Full-Length", fullSize + "");
@@ -248,6 +227,10 @@ public class SampleDownloadApi {
         }
       }
     }
-    return new ResponseEntity<>(contentParts, headers, httpStatus);
+    ByteArrayInputStream is = new ByteArrayInputStream(contentParts);
+    return ResponseEntity.status(httpStatus)
+        .headers(headers)
+        .contentType(MediaType.APPLICATION_OCTET_STREAM)
+        .body(new InputStreamResource(is));
   }
 }
