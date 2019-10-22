@@ -1,9 +1,7 @@
 package org.codepasser.base.web.provider;
 
 import com.google.common.base.Throwables;
-import java.io.IOException;
-import java.util.UUID;
-import javax.annotation.Nonnull;
+
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.model.entity.inner.AttachmentStatus;
 import org.codepasser.base.service.basement.AttachmentService;
@@ -16,6 +14,13 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
+
+import javax.annotation.Nonnull;
 
 /**
  * FileProvider.
@@ -75,21 +80,31 @@ public class FileProvider {
             uri + attachmentName,
             size);
 
+    InputStream tmpFileIS = null;
+    try {
+      tmpFileIS = new ByteArrayInputStream(file.getBytes());
+    } catch (IOException e) {
+      logger.error(
+          "An error occurred in the save temp file, caused by :{}",
+          Throwables.getStackTraceAsString(e));
+    }
+
+    InputStream finalTmpFileIS = tmpFileIS;
     asyncCaller.asyncCall(
         () -> {
           try {
-            StorageHelper.getInstance().saveFile(file.getInputStream(), directory, attachmentName);
+            StorageHelper.getInstance().saveFile(finalTmpFileIS, directory, attachmentName);
             //  Update attachment status
             attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
-          } catch (IOException | ServiceException e) {
+          } catch (ServiceException e) {
             logger.error(
-                "An error occurred in the export file, caused by :{}",
+                "An error occurred in the save temp file, caused by :{}",
                 Throwables.getStackTraceAsString(e));
             try {
               attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.ERROR);
             } catch (ServiceException e1) {
               logger.error(
-                  "An error occurred in the export file, caused by :{}",
+                  "An error occurred in the save temp file, caused by :{}",
                   Throwables.getStackTraceAsString(e1));
             }
           }
