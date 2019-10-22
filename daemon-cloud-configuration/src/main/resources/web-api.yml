@@ -137,3 +137,4 @@ daemon:
     volume: /data/storage/
     max-file-size: 2048 # MEGABYTES
     max-request-size: 5120 # MEGABYTES
+    temp-location: /data/storage/upload_temp

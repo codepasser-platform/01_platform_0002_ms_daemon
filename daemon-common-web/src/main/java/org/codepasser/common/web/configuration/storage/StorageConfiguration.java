@@ -1,6 +1,5 @@
 package org.codepasser.common.web.configuration.storage;
 
-import javax.servlet.MultipartConfigElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.unit.DataSize;
 import org.springframework.util.unit.DataUnit;
+
+import javax.servlet.MultipartConfigElement;
 
 /**
  * StorageConfiguration.
@@ -40,11 +41,12 @@ public class StorageConfiguration {
     // @Deprecated Set overall request size limit
     // factory.setMaxRequestSize(storageSettings.getMaxRequestSize());
     factory.setMaxRequestSize(DataSize.of(storageSettings.getMaxRequestSize(), DataUnit.MEGABYTES));
+    // factory.setLocation(storageSettings.getTempLocation());
     return factory.createMultipartConfig();
   }
 
   @Configuration
-  @ConfigurationProperties("daemon.storage")
+  @ConfigurationProperties("fiberhome.storage")
   public static class StorageSettings {
 
     private String relative;
@@ -52,6 +54,7 @@ public class StorageConfiguration {
     private String volume;
     private long maxFileSize;
     private long maxRequestSize;
+    private String tempLocation;
 
     public String getRelative() {
       return relative;
@@ -91,6 +94,14 @@ public class StorageConfiguration {
 
     public void setMaxRequestSize(long maxRequestSize) {
       this.maxRequestSize = maxRequestSize;
+    }
+
+    public String getTempLocation() {
+      return tempLocation;
+    }
+
+    public void setTempLocation(String tempLocation) {
+      this.tempLocation = tempLocation;
     }
   }
 }
