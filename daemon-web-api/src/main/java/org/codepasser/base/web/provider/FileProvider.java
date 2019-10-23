@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
@@ -80,23 +80,26 @@ public class FileProvider {
             uri + attachmentName,
             size);
 
-    InputStream tmpFileIS = null;
-    try {
-      tmpFileIS = new ByteArrayInputStream(file.getBytes());
-    } catch (IOException e) {
-      logger.error(
-          "An error occurred in the save temp file, caused by :{}",
-          Throwables.getStackTraceAsString(e));
-    }
+    logger.info(
+        "File provider main thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+        userId,
+        metaId,
+        attachmentId);
 
-    InputStream finalTmpFileIS = tmpFileIS;
     asyncCaller.asyncCall(
         () -> {
           try {
-            StorageHelper.getInstance().saveFile(finalTmpFileIS, directory, attachmentName);
+            logger.info(
+                "File provider sub thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                userId,
+                metaId,
+                attachmentId);
+            StorageHelper.getInstance().saveFile(file.getInputStream(), directory, attachmentName);
             //  Update attachment status
             attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
-          } catch (ServiceException e) {
+          } catch (ServiceException | IOException e) {
             logger.error(
                 "An error occurred in the save temp file, caused by :{}",
                 Throwables.getStackTraceAsString(e));
@@ -107,8 +110,28 @@ public class FileProvider {
                   "An error occurred in the save temp file, caused by :{}",
                   Throwables.getStackTraceAsString(e1));
             }
+          } finally {
+            logger.info(
+                "File provider sub thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                userId,
+                metaId,
+                attachmentId);
           }
         });
+
+    try {
+      // FIXED the small file processing time is too fast to be deleted by the container
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      // ignore
+    }
+    logger.info(
+        "File provider main thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+        userId,
+        metaId,
+        attachmentId);
 
     return attachmentId;
   }
