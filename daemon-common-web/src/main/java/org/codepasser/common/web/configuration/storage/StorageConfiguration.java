@@ -46,7 +46,7 @@ public class StorageConfiguration {
   }
 
   @Configuration
-  @ConfigurationProperties("fiberhome.storage")
+  @ConfigurationProperties("daemon.storage")
   public static class StorageSettings {
 
     private String relative;
