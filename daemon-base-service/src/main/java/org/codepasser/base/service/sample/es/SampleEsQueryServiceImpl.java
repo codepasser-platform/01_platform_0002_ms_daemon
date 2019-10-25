@@ -1,10 +1,5 @@
 package org.codepasser.base.service.sample.es;
 
-import static org.codepasser.common.service.helper.PagedDataUtils.rePage;
-import static sun.tools.jconsole.Messages.BLANK;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import org.codepasser.base.dao.repository.es.sample.SampleManualsRepository;
 import org.codepasser.base.model.es.sample.SampleManual;
 import org.codepasser.base.model.es.sample.dto.SampleManualDto;
@@ -18,6 +13,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import static org.codepasser.common.model.ConstantInterface.CONDITION_BLANK;
+import static org.codepasser.common.service.helper.PagedDataUtils.rePage;
 
 /**
  * SampleEsQueryServiceImpl.
@@ -40,7 +41,7 @@ public class SampleEsQueryServiceImpl implements SampleEsQueryService {
       throws ServiceException {
     String condition = name;
     if (StringUtils.isEmpty(name)) {
-      condition = BLANK;
+      condition = CONDITION_BLANK;
     }
     Page<SampleManual> manualPage = sampleManualsRepository.findAllByNameLike(condition, pageable);
     return rePage(manualPage, pageable, item -> new SampleManualDto().from(item));
@@ -54,7 +55,7 @@ public class SampleEsQueryServiceImpl implements SampleEsQueryService {
       throws ServiceException {
     String condition = key;
     if (StringUtils.isEmpty(key)) {
-      condition = BLANK;
+      condition = CONDITION_BLANK;
     }
     Page<SampleManual> manualPage =
         sampleManualsRepository.findAllByContentLike(condition, pageable);
