@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
@@ -55,60 +55,83 @@ public class FileProvider {
    */
   @Nonnull
   public Long saveAttachment(
-      Long userId, Long metaId, AttachmentCategory category, MultipartFile file)
-      throws ServiceException {
+          Long userId, Long metaId, AttachmentCategory category, MultipartFile file)
+          throws ServiceException {
 
     String metaName = file.getOriginalFilename();
     Long size = file.getSize();
     String attachmentName = StorageHelper.generateName(metaName);
     UUID uuid = UUID.randomUUID();
     String directory =
-        StorageHelper.generateHashPath(storageSettings.getVolume(), category.key(), uuid);
+            StorageHelper.generateHashPath(storageSettings.getVolume(), category.key(), uuid);
     String link = StorageHelper.generateHashLink(storageSettings.getLink(), category.key(), uuid);
     String uri =
-        StorageHelper.generateHashLink(storageSettings.getRelative(), category.key(), uuid);
+            StorageHelper.generateHashLink(storageSettings.getRelative(), category.key(), uuid);
 
     Long attachmentId =
-        attachmentService.saveAttachmentData(
+            attachmentService.saveAttachmentData(
+                    userId,
+                    metaId,
+                    metaName,
+                    category,
+                    directory,
+                    directory + attachmentName,
+                    link + attachmentName,
+                    uri + attachmentName,
+                    size);
+
+    logger.info(
+            "File provider main thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
             userId,
             metaId,
-            metaName,
-            category,
-            directory,
-            directory + attachmentName,
-            link + attachmentName,
-            uri + attachmentName,
-            size);
+            attachmentId);
 
-    InputStream tmpFileIS = null;
-    try {
-      tmpFileIS = new ByteArrayInputStream(file.getBytes());
-    } catch (IOException e) {
-      logger.error(
-          "An error occurred in the save temp file, caused by :{}",
-          Throwables.getStackTraceAsString(e));
-    }
-
-    InputStream finalTmpFileIS = tmpFileIS;
     asyncCaller.asyncCall(
-        () -> {
-          try {
-            StorageHelper.getInstance().saveFile(finalTmpFileIS, directory, attachmentName);
-            //  Update attachment status
-            attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
-          } catch (ServiceException e) {
-            logger.error(
-                "An error occurred in the save temp file, caused by :{}",
-                Throwables.getStackTraceAsString(e));
-            try {
-              attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.ERROR);
-            } catch (ServiceException e1) {
-              logger.error(
-                  "An error occurred in the save temp file, caused by :{}",
-                  Throwables.getStackTraceAsString(e1));
-            }
-          }
-        });
+            () -> {
+              try {
+                logger.info(
+                        "File provider sub thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                        userId,
+                        metaId,
+                        attachmentId);
+                StorageHelper.getInstance().saveFile(file.getInputStream(), directory, attachmentName);
+                //  Update attachment status
+                attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
+              } catch (ServiceException | IOException e) {
+                logger.error(
+                        "An error occurred in the save temp file, caused by :{}",
+                        Throwables.getStackTraceAsString(e));
+                try {
+                  attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.ERROR);
+                } catch (ServiceException e1) {
+                  logger.error(
+                          "An error occurred in the save temp file, caused by :{}",
+                          Throwables.getStackTraceAsString(e1));
+                }
+              } finally {
+                logger.info(
+                        "File provider sub thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                        userId,
+                        metaId,
+                        attachmentId);
+              }
+            });
+
+    try {
+      // FIXED the small file processing time is too fast to be deleted by the container
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      // ignore
+    }
+    logger.info(
+            "File provider main thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+            userId,
+            metaId,
+            attachmentId);
 
     return attachmentId;
   }
