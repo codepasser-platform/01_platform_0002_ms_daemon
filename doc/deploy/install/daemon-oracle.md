@@ -169,6 +169,10 @@ drop role LOGIN;
 
 > 创建用户
 ```
+# 登录
+docker exec -it oracle-master bash -c "source /home/oracle/.bashrc; sqlplus / as sysdba"
+system:oracle
+
 create user daemon identified by daemon_pw;
 grant connect, resource to daemon;
 grant unlimited tablespace to daemon;
@@ -192,13 +196,51 @@ select table_name from user_tables;
 # 应用中Maven管理Oracle driver
 
 ```
-# 本地导入安装驱动
+# 本地导入安装驱动 doc/deploy/install/driver/ojdbc6-12.1.0.2.jar
 mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=12.1.0.2 -Dpackaging=jar -Dfile=ojdbc6-12.1.0.2.jar
 
 # Mavne 依赖引用
 <dependency>
   <groupId>com.oracle</groupId>
   <artifactId>ojdbc6</artifactId>
-  <version>${oracle-connector-java.version}</version>
+  <version>${oracle-ojdbc.version}</version>
 </dependency>
+```
+
+# 注册OAUTH2表所需的主键自动插入触发器
+
+```
+-- drop trigger OAUTH2_APPROVALS_TRIG;
+-- drop trigger OAUTH2_CODE_TRIG;
+-- drop trigger OAUTH2_REFRESH_TOKEN_TRIG;
+create trigger OAUTH2_APPROVALS_TRIG
+  before
+    insert
+  on OAUTH_APPROVALS
+  for each row
+  when (new.ID is null)
+begin
+  select OAUTH2_SEQ.nextval into :new.ID from dual;
+end;
+
+create trigger OAUTH2_CODE_TRIG
+  before
+    insert
+  on OAUTH_CODE
+  for each row
+  when (new.ID is null)
+begin
+  select OAUTH2_SEQ.nextval into :new.ID from dual;
+end;
+
+
+create trigger OAUTH2_REFRESH_TOKEN_TRIG
+  before
+    insert
+  on OAUTH_REFRESH_TOKEN
+  for each row
+  when (new.ID is null)
+begin
+  select OAUTH2_SEQ.nextval into :new.ID from dual;
+end;
 ```
