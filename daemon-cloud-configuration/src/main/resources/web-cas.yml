@@ -66,24 +66,26 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://172.16.20.121:3306/daemon?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: daemon
-    password: daemon_pw
+    password: cde3VFR$
   # Redis
   redis:
-    host: 172.16.20.121
-    port: 6379
-    database: 0
-    password: daemon_pw
+    # > redis single
+    # host: 172.16.20.121
+    # port: 6379
+    # database: 0
+    password: cde3VFR$
     timeout: 10000
-    # TODO
-    #    cluster:
-    #      max-redirects: 3
-    #      nodes:
-    #      - 172.16.20.121:6379
-    #      - 172.16.20.121:6379
-    #      - 172.16.20.121:6379
-    #      - 172.16.20.121:6379
-    #      - 172.16.20.121:6379
-    #      - 172.16.20.121:6379
+    # > redis cluster
+    cluster:
+      # 获取失败 最大重定向次数
+      max-redirects: 3
+      nodes:
+        - 172.16.20.121:6379
+        - 172.16.20.121:6380
+        - 172.16.20.121:6381
+        - 172.16.20.121:6389
+        - 172.16.20.121:6390
+        - 172.16.20.121:6391
     lettuce:
       pool:
         # 连接池中的最大空闲连接 默认 8
@@ -102,7 +104,7 @@ spring:
       port: 27017
       database: daemon
       username: daemon
-      password: daemon_pw
+      password: cde3VFR$
 # Spring Data ElasticSearch 关闭ES健康检查
 management:
   health:
