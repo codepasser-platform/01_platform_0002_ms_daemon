@@ -20,8 +20,7 @@ SHOW VARIABLES LIKE 'character_set_%';
 SHOW CHARACTER SET;
 
 -- # 查看mysql 中用户信息
-SELECT DISTINCT CONCAT('User: ''', user, '''@''', host, ''';') AS query
-FROM mysql.user;
+SELECT DISTINCT CONCAT('User: ''', user, '''@''', host, ''';') AS query FROM mysql.user;
 
 -- # 查看用户授权
 SHOW GRANTS FOR 'daemon'@'%';
