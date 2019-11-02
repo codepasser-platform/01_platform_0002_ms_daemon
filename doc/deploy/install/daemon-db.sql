@@ -43,12 +43,12 @@ SHOW VARIABLES LIKE '%time_zone%';
 CREATE DATABASE daemon;
 
 -- # 创建用户
-CREATE USER 'daemon'@'%' IDENTIFIED BY 'daemon_pw' PASSWORD EXPIRE NEVER;
-ALTER USER 'daemon'@'%' IDENTIFIED WITH mysql_native_password BY 'daemon_pw';
+CREATE USER 'daemon'@'%' IDENTIFIED BY 'cde3VFR$' PASSWORD EXPIRE NEVER;
+ALTER USER 'daemon'@'%' IDENTIFIED WITH mysql_native_password BY 'cde3VFR$';
 
 -- # 已创建用户更改认证加密方式
-ALTER USER 'daemon'@'%' IDENTIFIED BY 'daemon_pw' PASSWORD EXPIRE NEVER;
-ALTER USER 'daemon'@'%' IDENTIFIED WITH mysql_native_password BY 'daemon_pw';
+ALTER USER 'daemon'@'%' IDENTIFIED BY 'cde3VFR$' PASSWORD EXPIRE NEVER;
+ALTER USER 'daemon'@'%' IDENTIFIED WITH mysql_native_password BY 'cde3VFR$';
 FLUSH PRIVILEGES;
 
 -- # 授权

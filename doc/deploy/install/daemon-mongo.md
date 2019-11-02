@@ -41,8 +41,8 @@ db.system.users.find();
 use daemon
 
 # 创建用户并授权
-db.createUser({ user: 'daemon', pwd: 'daemon_pw', roles: [ { role: "readWrite", db: "daemon" } ] });
+db.createUser({ user: 'daemon', pwd: 'cde3VFR$', roles: [ { role: "readWrite", db: "daemon" } ] });
 
 
 # 链接数据库
-mongo daemon -u daemon -p daemon_pw
+mongo daemon -u daemon -p cde3VFR$
