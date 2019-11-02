@@ -1,9 +1,5 @@
 package org.codepasser.base.service.bootstrap;
 
-import static org.codepasser.common.processor.RunningProfile.INITIALIZE;
-
-import java.util.List;
-import javax.annotation.PostConstruct;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
@@ -15,6 +11,12 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import static org.codepasser.common.processor.RunningProfile.INITIALIZE;
 
 /**
  * DatabaseInitializer.
@@ -36,7 +38,7 @@ public class DatabaseInitializer {
   private void initialize() throws ServiceException {
 
     // Initialize area
-    //    initializeArea();
+    initializeArea();
     // Initialize organization
     initializeOrg();
     // Initialize role
