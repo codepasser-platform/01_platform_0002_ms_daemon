@@ -173,7 +173,7 @@ drop role LOGIN;
 docker exec -it oracle-master bash -c "source /home/oracle/.bashrc; sqlplus / as sysdba"
 system:oracle
 
-create user daemon identified by daemon_pw;
+create user daemon identified by cde3VFR$;
 grant connect, resource to daemon;
 grant unlimited tablespace to daemon;
 ```
@@ -183,7 +183,7 @@ grant unlimited tablespace to daemon;
 ```
 docker exec -it oracle-master bash -c "source /home/oracle/.bashrc; sqlplus /nolog"
 $ conn daemon
-password: daemon_pw
+password: cde3VFR$
 ```
 
 ```

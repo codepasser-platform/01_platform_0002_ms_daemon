@@ -4,4 +4,4 @@ docker exec -it mongo-master mongo admin
 ##db.createUser({ user: 'root', pwd: 'Sa*963.-+', roles: [ { role: "root", db: "admin" } ] });
 ## execute create daemon
 ##use daemon
-##db.createUser({ user: 'daemon', pwd: 'daemon_pw', roles: [ { role: "readWrite", db: "daemon" } ] });
+##db.createUser({ user: 'daemon', pwd: 'cde3VFR$', roles: [ { role: "readWrite", db: "daemon" } ] });
