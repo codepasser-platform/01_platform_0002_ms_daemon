@@ -6,78 +6,76 @@
     
 ### 安装步骤 ###
 
-### Install Docker Engine on CentOS ###
-
 > Docker requires a 64-bit OS and version 3.10 or higher of the Linux kernel.
-
-    [root@localhost ~]# uname -r
-    3.10.0-327.el7.x86_64
-
-### Install Docker CE on CentOS ###
-
-> Prerequisites
-
 > Docker CE is supported on CentOS 7.3 64-bit.
 
-> 1. Set up the repository
+> 1. Set up the Docker CE repository on CentOS
 
-> Set up the Docker CE repository on CentOS:
-
-    sudo yum install -y yum-utils
-
-    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-    # aliyun 
-    sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-
-    sudo yum makecache fast
-
-> 2. Get Docker CE
-
-> Install the latest version of Docker CE on CentOS:
-
-    sudo yum -y install docker-ce
-
-> Start Docker:
-
-    sudo systemctl start docker
-
-> 3. Test your Docker CE installation
-
-> Test your installation:
-
-    sudo docker run hello-world
-
-### 创建 Docker Group ###
-
-> - Log into your machine as a user with sudo or root privileges.
-
-> - Create the docker group.
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     
-    $ sudo groupadd docker
+# 可指定aliyun镜像
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sudo yum makecache fast
+```
 
-> - Add your user.
+> 2. Install the latest version of Docker CE on CentOS
 
-    $ sudo adduser -g docker docker --home-dir=/home/docker
-    $ sudo passwd docker
+```
+sudo yum -y install docker-ce
+```
 
-> - Add your user to docker group.
+> 3. Start Docker:
 
-    $ sudo usermod -aG docker ellenchia
+```
+sudo systemctl start docker
+```
 
-> - Log out and log back in
+> 4. Test your Docker CE installation
 
-    This ensures your user is running with the correct permissions.
+```
+sudo docker run hello-world
+```
 
-> - Verify that your user is in the docker group by running docker without sudo.
+> 5. Add your user.
 
-    $ docker run hello-world
+```
+sudo adduser -g docker docker --home-dir=/home/docker
+sudo passwd docker
+
+usermod -G docker codepasser
+```
+
+> 6. Configure the Docker fiberhome to start automatically when the host starts:
+
+```
+sudo systemctl enable docker
+```
+
+> 7. 配置镜像加速器
+
+```
+# 您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+# https://cr.console.aliyun.com/cn-qingdao/instances/mirrors
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://xmmpdt8k.mirror.aliyuncs.com"]
+}
+EOF
+# 重载服务
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
 
 #### 设置随系统启动 ####
 
 Configure the Docker daemon to start automatically when the host starts:
 
-    $ sudo systemctl enable docker
+```
+sudo systemctl enable docker
+```
 
 ### 卸载 ###
 
