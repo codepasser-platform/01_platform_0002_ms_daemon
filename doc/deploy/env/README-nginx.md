@@ -15,7 +15,7 @@
     ./configure --prefix=/usr/local/nginx-proxy --conf-path=/usr/local/nginx-proxy/conf/nginx.conf --with-pcre=/usr/local/lib/pcre --with-http_stub_status_module --with-http_gzip_static_module --with-http_ssl_module  --with-openssl=/usr/local/lib/openssl --with-cc-opt="-Wno-deprecated-declarations" --without-http_fastcgi_module
 
     # 本地 with ssl
-    sudo ./configure --prefix=/Users/codepasser/Applications/nginx-1.14.2 --conf-path=/Users/codepasser/Applications/nginx-1.14.2/conf/nginx.conf --with-pcre=/usr/local/lib/pcre-8.42 --with-http_stub_status_module --with-http_gzip_static_module  --with-http_ssl_module --with-openssl=/usr/local/lib/openssl --with-cc-opt="-Wno-deprecated-declarations" --without-http_fastcgi_module
+    sudo ./configure --prefix=/Users/codepasser/Applications/nginx-1.16.1 --conf-path=/Users/codepasser/Applications/nginx-1.16.1/conf/nginx.conf --with-pcre=/usr/local/lib/pcre-8.42 --with-http_stub_status_module --with-http_gzip_static_module  --with-http_ssl_module --with-openssl=/usr/local/lib/openssl --with-cc-opt="-Wno-deprecated-declarations" --without-http_fastcgi_module
     sudo make
     sudo make install
 
