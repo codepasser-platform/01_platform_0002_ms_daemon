@@ -20,7 +20,7 @@ public final class PageableBuilder {
 
   public static Pageable build(int page, int size, Sort.Direction direction, String... properties) {
     int _limit = limit(size);
-    Sort sort = new Sort(direction, properties);
+    Sort sort = Sort.by(direction, properties);
     return PageRequest.of(page, _limit, sort);
   }
 

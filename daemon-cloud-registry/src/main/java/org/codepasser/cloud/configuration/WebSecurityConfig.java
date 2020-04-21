@@ -18,7 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     super.configure(http);
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
     http.csrf().disable();
-    http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+    //    @Deprecated by spring-security 5.2.2
+    //    http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
   }
 
   @Autowired

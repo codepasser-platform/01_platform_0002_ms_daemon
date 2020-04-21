@@ -45,7 +45,7 @@ public class SampleJpaPaginationServiceImpl implements SampleJpaPaginationServic
       @Nonnull @RequestParam("size") int size)
       throws ServiceException {
     // 0 <= page <= pageTotal
-    Sort sort = new Sort(Sort.Direction.ASC, "createTime");
+    Sort sort = Sort.by(Sort.Direction.ASC, "createTime");
     Pageable pageable = PageRequest.of(page, size, sort);
     String conditionName = CONDITION_BLANK;
     if (!StringUtils.isEmpty(name)) {

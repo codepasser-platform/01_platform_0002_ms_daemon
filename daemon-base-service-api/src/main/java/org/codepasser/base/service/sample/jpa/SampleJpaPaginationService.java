@@ -2,6 +2,7 @@ package org.codepasser.base.service.sample.jpa;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -36,7 +37,7 @@ public interface SampleJpaPaginationService {
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/pageable")
+  @RequestMapping(value = "/pageable", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
   PagedData<SampleGroupVo> pageable(
       @Nullable @RequestParam(value = "name", required = false) String name,
       @RequestBody Pageable pageable)
