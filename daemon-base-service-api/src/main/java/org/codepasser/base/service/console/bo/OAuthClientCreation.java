@@ -35,7 +35,6 @@ public class OAuthClientCreation implements In<OAuthClientDetails> {
           Authority.Grant.CLIENT_CREDENTIALS,
           Authority.Grant.REFRESH_TOKEN);
 
-  // TODO
   private EnumSet<Authority.Role> authorities =
       EnumSet.of(Authority.Role.USER, Authority.Role.CLIENT);
 
