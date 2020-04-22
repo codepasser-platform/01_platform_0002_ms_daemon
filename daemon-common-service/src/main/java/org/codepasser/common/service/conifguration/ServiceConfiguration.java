@@ -48,4 +48,36 @@ public class ServiceConfiguration {
       this.areaScope = areaScope;
     }
   }
+
+  @Configuration
+  @ConfigurationProperties("daemon.oauth")
+  public static class OauthSettings {
+    private int accessTokenValidity;
+    private int refreshTokenValidity;
+    private boolean autoapprove;
+
+    public int getAccessTokenValidity() {
+      return accessTokenValidity;
+    }
+
+    public void setAccessTokenValidity(int accessTokenValidity) {
+      this.accessTokenValidity = accessTokenValidity;
+    }
+
+    public int getRefreshTokenValidity() {
+      return refreshTokenValidity;
+    }
+
+    public void setRefreshTokenValidity(int refreshTokenValidity) {
+      this.refreshTokenValidity = refreshTokenValidity;
+    }
+
+    public boolean isAutoapprove() {
+      return autoapprove;
+    }
+
+    public void setAutoapprove(boolean autoapprove) {
+      this.autoapprove = autoapprove;
+    }
+  }
 }

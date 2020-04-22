@@ -1,5 +1,6 @@
 package org.codepasser.base.web.configuration;
 
+import org.codepasser.common.model.security.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,7 +17,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
   @Override
   public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-    resources.tokenStore(tokenStore).resourceId("daemon-service");
+    resources.tokenStore(tokenStore).resourceId(Authority.Service.DAEMON_API.comment());
   }
 
   @Override

@@ -163,6 +163,10 @@ daemon:
   service:
     identifying-code-timeout: 10 #  TimeUnit.MINUTES
     area-scope: '000000' # 全国
+  oauth:
+    access-token-validity: 86400
+    refresh-token-validity: 604800
+    autoapprove: false
   mail:
     nick-name: codepasser.com
     username: todo@codepasser.com

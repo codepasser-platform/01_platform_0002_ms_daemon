@@ -1,11 +1,13 @@
 package org.codepasser.base.model.entity.security;
 
+import org.codepasser.common.utils.IdGenerator;
+
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.codepasser.common.utils.IdGenerator;
 
 /**
  * OAuthClientDetails.
@@ -30,11 +32,14 @@ public class OAuthClientDetails implements Serializable {
       length = 256)
   private String clientId = IdGenerator.nextVarchar();
 
-  @Column(name = "resource_ids", length = 256)
-  private String resourceIds;
-
   @Column(name = "client_secret", length = 256)
   private String clientSecret;
+
+  @Column(name = "secret", length = 256)
+  private String secret;
+
+  @Column(name = "resource_ids", length = 256)
+  private String resourceIds;
 
   @Column(name = "scope", length = 256)
   private String scope;
@@ -42,11 +47,11 @@ public class OAuthClientDetails implements Serializable {
   @Column(name = "authorized_grant_types", length = 256)
   private String authorizedGrantTypes;
 
-  @Column(name = "web_server_redirect_uri", length = 256)
-  private String webServerRedirectUri;
-
   @Column(name = "authorities", length = 256)
   private String authorities;
+
+  @Column(name = "web_server_redirect_uri", length = 256)
+  private String webServerRedirectUri;
 
   @Column(name = "access_token_validity")
   private Integer accessTokenValidity;
@@ -54,11 +59,11 @@ public class OAuthClientDetails implements Serializable {
   @Column(name = "refresh_token_validity")
   private Integer refreshTokenValidity;
 
-  @Column(name = "additional_information", length = 4096)
-  private String additionalInformation;
-
   @Column(name = "autoapprove", length = 256)
   private String autoApprove;
+
+  @Column(name = "additional_information", length = 4096)
+  private String additionalInformation;
 
   public String getClientId() {
     return clientId;
@@ -68,20 +73,28 @@ public class OAuthClientDetails implements Serializable {
     this.clientId = clientId;
   }
 
-  public String getResourceIds() {
-    return resourceIds;
-  }
-
-  public void setResourceIds(String resourceIds) {
-    this.resourceIds = resourceIds;
-  }
-
   public String getClientSecret() {
     return clientSecret;
   }
 
   public void setClientSecret(String clientSecret) {
     this.clientSecret = clientSecret;
+  }
+
+  public String getSecret() {
+    return secret;
+  }
+
+  public void setSecret(String secret) {
+    this.secret = secret;
+  }
+
+  public String getResourceIds() {
+    return resourceIds;
+  }
+
+  public void setResourceIds(String resourceIds) {
+    this.resourceIds = resourceIds;
   }
 
   public String getScope() {
@@ -100,20 +113,20 @@ public class OAuthClientDetails implements Serializable {
     this.authorizedGrantTypes = authorizedGrantTypes;
   }
 
-  public String getWebServerRedirectUri() {
-    return webServerRedirectUri;
-  }
-
-  public void setWebServerRedirectUri(String webServerRedirectUri) {
-    this.webServerRedirectUri = webServerRedirectUri;
-  }
-
   public String getAuthorities() {
     return authorities;
   }
 
   public void setAuthorities(String authorities) {
     this.authorities = authorities;
+  }
+
+  public String getWebServerRedirectUri() {
+    return webServerRedirectUri;
+  }
+
+  public void setWebServerRedirectUri(String webServerRedirectUri) {
+    this.webServerRedirectUri = webServerRedirectUri;
   }
 
   public Integer getAccessTokenValidity() {
@@ -132,19 +145,19 @@ public class OAuthClientDetails implements Serializable {
     this.refreshTokenValidity = refreshTokenValidity;
   }
 
-  public String getAdditionalInformation() {
-    return additionalInformation;
-  }
-
-  public void setAdditionalInformation(String additionalInformation) {
-    this.additionalInformation = additionalInformation;
-  }
-
   public String getAutoApprove() {
     return autoApprove;
   }
 
   public void setAutoApprove(String autoApprove) {
     this.autoApprove = autoApprove;
+  }
+
+  public String getAdditionalInformation() {
+    return additionalInformation;
+  }
+
+  public void setAdditionalInformation(String additionalInformation) {
+    this.additionalInformation = additionalInformation;
   }
 }
