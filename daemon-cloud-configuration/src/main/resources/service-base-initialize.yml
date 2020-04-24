@@ -22,7 +22,7 @@ daemon:
         client-id: daemon_client
         client-secret: 1234
         resource-ids: DAEMON_API
-        scope: 'read,write'
+        scope: 'read,write,sign'
         authorized-grant-types: 'authorization_code,implicit,password,client_credentials,refresh_token'
         web-server-redirect-uri: http://www.codepasser.com/web-client/login
         authorities: ROLE_CLIENT
