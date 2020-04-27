@@ -136,7 +136,7 @@ daemon:
   storage:
     relative: /storage/
     link: ${daemon.base-url}/storage/
-    volume: /data/storage/
+    volume: /Users/codepasser/Applications/data/storage/
     max-file-size: 2048 # MEGABYTES
     max-request-size: 5120 # MEGABYTES
-    temp-location: /data/storage/upload_temp
+    temp-location: /Users/codepasser/Applications/data/storage/upload_temp
