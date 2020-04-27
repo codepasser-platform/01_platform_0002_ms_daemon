@@ -1,18 +1,20 @@
 package org.codepasser.base.web.provider;
 
 import com.google.common.base.Throwables;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.web.configuration.storage.StorageHelper;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * ZipProvider.
@@ -77,14 +79,4 @@ public class ZipProvider {
   private void saveFile(InputStream is, String path, String filename) {
     StorageHelper.getInstance().saveFile(is, path, filename);
   }
-
-  //  public static void main(String[] args) {
-  //    ZipProvider zipProvider = new ZipProvider();
-  //    try {
-  //
-  // zipProvider.decompress("/data/storage/avatar/03/35/1b/fa/7d/ac/41/57/b9/1f/cc/6a/ab/43/0c/e1/20190330114754522.zip", "/data/storage/avatar/03/35/1b/fa/7d/ac/41/57/b9/1f/cc/6a/ab/43/0c/e1/");
-  //    } catch (ServiceException e) {
-  //      e.printStackTrace();
-  //    }
-  //  }
 }
