@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 APP_NAME=daemon-web-oauth-1.0.0.RELEASE
 SERVICE_NAME=web-oauth
 JAR_NAME=$APP_NAME.jar

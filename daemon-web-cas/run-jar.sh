@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 APP_NAME=daemon-web-cas-1.0.0.RELEASE
 SERVICE_NAME=web-cas
 JAR_NAME=$APP_NAME.jar

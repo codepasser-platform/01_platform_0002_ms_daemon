@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 APP_NAME=daemon-base-service-1.0.0.RELEASE
 SERVICE_NAME=service-base
 JAR_NAME=$APP_NAME.jar

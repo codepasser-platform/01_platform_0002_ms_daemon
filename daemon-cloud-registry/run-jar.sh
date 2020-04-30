@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 APP_NAME=daemon-cloud-registry-1.0.0.RELEASE
 JAR_NAME=$APP_NAME.jar
 
