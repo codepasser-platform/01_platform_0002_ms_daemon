@@ -1,11 +1,5 @@
 package org.codepasser.base.web.configuration;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static org.springframework.http.HttpMethod.GET;
-
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.Filter;
 import org.codepasser.base.web.configuration.oauth2.clients.DefaultClientResources;
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.web.configuration.security.handler.ApiAuthenticationResponseHandler;
@@ -38,6 +32,14 @@ import org.springframework.security.web.authentication.rememberme.RememberMeAuth
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CompositeFilter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.Filter;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static org.springframework.http.HttpMethod.GET;
 
 /**
  * WebSecurityConfiguration.
@@ -86,6 +88,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(
             "/login",
             "/login/**",
+            "/actuator/**",
             "/sample/**", // sample api
             "/master/**", // master data api
             "/callback/**", // callback api

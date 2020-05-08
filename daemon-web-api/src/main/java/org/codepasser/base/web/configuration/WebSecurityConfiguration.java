@@ -1,7 +1,5 @@
 package org.codepasser.base.web.configuration;
 
-import static org.springframework.http.HttpMethod.GET;
-
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.web.configuration.security.handler.ApiAuthenticationResponseHandler;
 import org.codepasser.common.web.configuration.security.handler.AuthenticationResponseEntryPoint;
@@ -21,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import static org.springframework.http.HttpMethod.GET;
 
 /**
  * WebSecurityConfiguration.
@@ -56,6 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(
             "/login",
             "/login/**",
+            "/actuator/**",
             "/sample/**", // sample api
             "/master/**", // master data api
             "/callback/**", // callback api

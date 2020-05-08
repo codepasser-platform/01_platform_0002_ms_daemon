@@ -1,6 +1,5 @@
 package org.codepasser.base.web.configuration;
 
-import java.util.Arrays;
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.web.configuration.security.handler.RedirectAccessDeniedHandler;
 import org.jasig.cas.client.session.SingleSignOutFilter;
@@ -21,6 +20,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+
+import java.util.Arrays;
 
 /**
  * WebSecurityConfiguration.
@@ -75,6 +76,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/login/**",
             "/logout",
             "/logout/**",
+            "/actuator/**",
             "/sample/**", // sample api
             "/master/**", // master data api
             "/callback/**", // callback api
