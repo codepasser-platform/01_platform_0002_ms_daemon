@@ -29,7 +29,7 @@ spring:
   # Jackson
   jackson:
     # 配置mapper忽略空属性
-    serialization-inclusion: non_null
+    default-property-inclusion: non_null
     # 属性命名转化策略:将驼峰转为下划线
     property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
     time-zone: GMT+8
