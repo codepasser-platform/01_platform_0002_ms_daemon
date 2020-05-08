@@ -6,3 +6,9 @@ server:
 logging:
   level:
     org.springframework.cloud: DEBUG
+
+# Actuator health configuration
+management:
+  endpoint:
+    health:
+      show-details: always

@@ -105,11 +105,16 @@ spring:
       database: daemon
       username: daemon
       password: cde3VFR$
-# Spring Data ElasticSearch 关闭ES健康检查
+
+# Actuator health configuration
 management:
   health:
     elasticsearch:
+      # 关闭ES健康检查
       enabled: false
+  endpoint:
+    health:
+      show-details: always
 
 # Application configuration
 daemon:

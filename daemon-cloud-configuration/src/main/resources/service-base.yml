@@ -135,11 +135,19 @@ spring:
       mail.smtp.socketFactory.port: 465
       mail.smtp.socketFactory.fallback: false
       mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
-# Spring Data ElasticSearch 关闭ES健康检查
+
+# Actuator health configuration
 management:
   health:
     elasticsearch:
+      # 关闭ES健康检查
       enabled: false
+    mail:
+      # 关闭Mail健康检查
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
 
 # Mybatis
 mybatis:
