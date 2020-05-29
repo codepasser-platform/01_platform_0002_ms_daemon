@@ -1,5 +1,6 @@
 #!/bin/bash
 APP_NAME=daemon-cloud-configuration-1.0.0.RELEASE
+SERVICE_NAME=cloud-configuration
 JAR_NAME=$APP_NAME.jar
 
 #PID  代表是PID文件
@@ -28,11 +29,15 @@ start(){
   if [ $? -eq "0" ]; then
     echo ">>> ${JAR_NAME} is already running PID=${pid} <<<"
   else
-    nohup java -Xms512m -Xmx512m -Xmn200m -Xss256k -jar -Dspring.profiles.active=native -Dcloud.configuration.port=8888 $JAR_NAME 1> ./logs/$APP_NAME.out 2> ./logs/$APP_NAME.err &
+    nohup java -Xms512m -Xmx512m -Xmn200m -Xss256k -jar \
+    -Dspring.profiles.active=native \
+    -Dcloud.configuration.port=8888 \
+    $JAR_NAME \
+    >/dev/null 2>&1 &
     echo $! > $PID
     echo ">>> start $JAR_NAME successed PID=$! <<<"
     sleep 1
-    tail -fn 100 ./logs/$APP_NAME.out
+    tail -fn 100 ./logs/$SERVICE_NAME/info.log
    fi
   }
 
