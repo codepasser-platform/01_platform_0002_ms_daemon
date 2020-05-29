@@ -1,15 +1,5 @@
 package org.codepasser.common.web.advice;
 
-import static org.codepasser.common.utils.RequestUtils.getArguments;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.CONFLICT;
-import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
-
-import javax.servlet.http.HttpServletRequest;
 import org.codepasser.common.exception.AbstractException;
 import org.codepasser.common.exception.AbstractRuntimeException;
 import org.codepasser.common.exception.Message;
@@ -37,6 +27,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+
+import static org.codepasser.common.utils.RequestUtils.getArguments;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 /**
  * UncaughtExceptionsControllerAdvice.
  *
@@ -120,7 +121,7 @@ public class UncaughtExceptionsControllerAdvice {
   @ResponseStatus(INTERNAL_SERVER_ERROR)
   public Message runtimeException(HttpServletRequest request, RuntimeException exception) {
     Message message = new Message(new WebException(exception));
-    errorLog(request, message);
+    errorLog(request, message, exception);
     return message;
   }
 
@@ -204,7 +205,7 @@ public class UncaughtExceptionsControllerAdvice {
         message.getDetail());
   }
 
-  private void errorLog(HttpServletRequest request, Message message) {
+  private void errorLog(HttpServletRequest request, Message message, Throwable exception) {
     logger.error(
         "Process request url '{}', arguments=[{}], errorCode=[{}], errorMsg=[{}], errorDetail=[{}]",
         request.getRequestURL(),
@@ -212,5 +213,6 @@ public class UncaughtExceptionsControllerAdvice {
         message.getCode(),
         message.getMessage(),
         message.getDetail());
+    logger.error("An error occurred, Please check stack_trace for details.", exception);
   }
 }

@@ -1,13 +1,17 @@
 package org.codepasser.common.web.configuration.interceptor;
 
-import static org.codepasser.common.utils.RequestUtils.getArguments;
+import org.codepasser.common.processor.annotation.InjectLogger;
+import org.slf4j.Logger;
+import org.slf4j.MDC;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.codepasser.common.processor.annotation.InjectLogger;
-import org.slf4j.Logger;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
+
+import static org.codepasser.common.utils.RequestUtils.getArguments;
 
 /**
  * UserBehaviorInterceptor.
@@ -20,11 +24,21 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
 
   @InjectLogger private Logger logger;
 
+  private static final String REQUEST_ID = "request_id";
+  private static final String REMOTE_IP = "remote_ip";
+  private static final String X_FORWARDED_HEADER = "X-Forwarded-For";
+
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
+    String xForwardedForHeader = request.getHeader(X_FORWARDED_HEADER);
+    String remoteIp = request.getRemoteAddr();
+    String requestId = UUID.randomUUID().toString().replaceAll("-", "");
+    MDC.put(REQUEST_ID, requestId);
     logger.info(
-        "User behavior interceptor>pre handler url '{}', arguments=[{}]",
+        "{\"remote_ip\":\"{}\", \"x_forwarded_for\":\"{}\", \"request_url\":\"{}\", \"request_args\": {}}",
+        remoteIp,
+        xForwardedForHeader,
         request.getRequestURL(),
         getArguments(request));
     return true;
@@ -38,9 +52,10 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
       ModelAndView modelAndView)
       throws Exception {
     logger.debug(
-        "User behavior interceptor>post handler url '{}', arguments=[{}]",
+        "\"request_url\":\"{}\", \"request_args\": {}}",
         request.getRequestURL(),
         getArguments(request));
+    MDC.remove(REQUEST_ID);
   }
 
   @Override
@@ -48,7 +63,7 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
       HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
       throws Exception {
     logger.debug(
-        "User behavior interceptor>after completion url '{}', arguments=[{}]",
+        "\"request_url\":\"{}\", \"request_args\": {}}",
         request.getRequestURL(),
         getArguments(request));
   }

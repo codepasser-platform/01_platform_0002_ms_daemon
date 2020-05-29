@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
+    <springProperty scope="context" name="service_name" source="spring.application.name"/>
+    <springProperty scope="context" name="service_host" source="spring.cloud.client.hostname"/>
+
     <property resource="logback.properties"/>
 
     <!-- 控制台日志配置 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- 格式化 -->
-            <!--
-              %d | date     : 日志时间
-              %p | -5level  : 日志级别
-              %t | thread   : 线程
-              %c | logger   : Logger
-              %C | class    : 类
-              %F | file     : 文件
-              %L | line     : 行号
-              %m | %msg     : 日志消息
-              %n |          : 是换行符
-            -->
-            <pattern>%yellow(%d{yyyy-MM-dd HH:mm:ss.SSS}) | %highlight(%p) | %blue(%t) | %green(%c{64}) | %blue(%F:%L) | : %cyan(%m%n)</pattern>
+            <pattern>${logback.console_pattern}</pattern>
         </encoder>
     </appender>
 
@@ -39,8 +30,15 @@
             <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
         </rollingPolicy>
         <!-- 格式化 -->
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %p | %t | %c{64} | %F:%L | : %m%n</pattern>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>${logback.timezone}</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>${logback.json_pattern}</pattern>
+                </pattern>
+            </providers>
         </encoder>
         <!-- 级别过滤 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -68,8 +66,15 @@
             <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
         </rollingPolicy>
         <!-- 格式化 -->
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %p | %t | %c{64} | %F:%L | : %m%n</pattern>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>${logback.timezone}</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>${logback.json_pattern}</pattern>
+                </pattern>
+            </providers>
         </encoder>
         <!-- 级别过滤 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -97,8 +102,15 @@
             <totalSizeCap>${logback.totalSizeCap}</totalSizeCap>
         </rollingPolicy>
         <!-- 格式化 -->
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %p | %t | %c{64} | %F:%L | : %m%n</pattern>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>${logback.timezone}</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>${logback.json_pattern}</pattern>
+                </pattern>
+            </providers>
         </encoder>
         <!-- 级别过滤 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
