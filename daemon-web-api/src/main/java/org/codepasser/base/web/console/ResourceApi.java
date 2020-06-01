@@ -1,6 +1,6 @@
 package org.codepasser.base.web.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.io.File;
@@ -41,7 +41,7 @@ public class ResourceApi {
 
   @Nonnull
   @PreAuthorize("permitAll")
-  @RequestMapping(value = "/{resourceId}", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{resourceId}", method = GET, produces = APPLICATION_JSON_VALUE)
   public AttachmentItem download(@PathVariable(value = "resourceId") Long resourceId)
       throws ServiceException {
     return attachmentService.findAttachmentById(resourceId);
@@ -52,7 +52,7 @@ public class ResourceApi {
   @RequestMapping(
       value = "/stream/{resourceId}",
       method = GET,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   public ResponseEntity<?> downloadAsStream(
       @PathVariable(value = "resourceId") Long resourceId, HttpServletRequest request)
       throws ServiceException, UnsupportedEncodingException {

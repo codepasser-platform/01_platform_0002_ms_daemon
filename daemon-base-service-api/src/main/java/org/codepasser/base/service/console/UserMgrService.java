@@ -1,6 +1,6 @@
 package org.codepasser.base.service.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UserMgrService {
 
   @Nonnull
-  @RequestMapping(method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
   PageInfo<UserItem> pagination(
       @Nullable @RequestParam(value = "username", required = false) String username,
       @Nullable @RequestParam(value = "authorities", required = false)
@@ -50,43 +50,43 @@ public interface UserMgrService {
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
   UserDetail detail(@Nonnull @PathVariable("id") Long id) throws ServiceException;
 
   @Nonnull
-  @RequestMapping(method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = POST, produces = APPLICATION_JSON_VALUE)
   AssertResponse creation(
       @Nonnull @Validated(Group.Create.class) @RequestBody ConsoleUserCreation userCreation,
       @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse edition(
       @Nonnull @Validated(Group.Create.class) @RequestBody ConsoleUserEdition userEdition,
       @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/{id}", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{id}", method = DELETE, produces = APPLICATION_JSON_VALUE)
   AssertResponse deletion(
       @Nonnull @PathVariable("id") Long id, @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/lock/{id}", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/lock/{id}", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse lock(
       @Nonnull @PathVariable("id") Long id, @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/unlock/{id}", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/unlock/{id}", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse unlock(
       @Nonnull @PathVariable("id") Long id, @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/recover", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/recover", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse recover(
       @Nonnull @RequestBody ConsoleUserRecover recover,
       @Nonnull @RequestParam("userId") Long userId);

@@ -1,6 +1,6 @@
 package org.codepasser.base.service.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -24,6 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface RoleMgrService {
 
   @Nonnull
-  @RequestMapping(method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
   List<RoleItem> list() throws ServiceException;
 }

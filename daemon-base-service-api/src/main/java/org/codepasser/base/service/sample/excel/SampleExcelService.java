@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.excel;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -24,6 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface SampleExcelService {
 
   @Nonnull
-  @RequestMapping(value = "/export", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/export", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleExcelVo> export() throws ServiceException;
 }

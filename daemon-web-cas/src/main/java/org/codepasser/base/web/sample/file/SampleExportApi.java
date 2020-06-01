@@ -1,7 +1,7 @@
 package org.codepasser.base.web.sample.file;
 
 import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import org.codepasser.base.service.basement.vo.ExcelTitle;
@@ -31,7 +31,7 @@ public class SampleExportApi {
   @Autowired private SampleExcelService sampleExcelService;
 
   //  @PreAuthorize("isAuthenticated()")
-  @RequestMapping(value = "/export", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/export", method = GET, produces = APPLICATION_JSON_VALUE)
   public ResourceId export() throws ServiceException {
     // DEMO @AuthenticationPrincipal UserDetails user
     Long userId = ROOT_ADMIN_ID;

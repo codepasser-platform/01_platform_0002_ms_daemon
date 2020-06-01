@@ -1,6 +1,6 @@
 package org.codepasser.common.service;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
@@ -28,15 +28,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/service-base/oauth2")
 public interface OAuth2Service {
 
-  @RequestMapping(value = "/", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/", method = POST, produces = APPLICATION_JSON_VALUE)
   @Nonnull
   UserExternalBasic save(@Valid @RequestBody UserExternalBasic externalUser)
       throws ServiceException;
 
-  @RequestMapping(value = "/", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/", method = PUT, produces = APPLICATION_JSON_VALUE)
   void update(@Valid @RequestBody UserExternalBasic externalUser) throws ServiceException;
 
-  @RequestMapping(value = "/{externalUserId}", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{externalUserId}", method = GET, produces = APPLICATION_JSON_VALUE)
   @Nonnull
   Optional<UserExternalBasic> findByExternalUserIdAndProvider(
       @Nonnull @PathVariable("externalUserId") String externalUserId,
@@ -45,7 +45,7 @@ public interface OAuth2Service {
 
   @RequestMapping(
       value = "/provider/{provider}/bind_user/{userId}",
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   @Nonnull
   Optional<UserExternalBasic> findByUserIdAndProvider(
       @Nonnull @PathVariable("userId") Long userId,

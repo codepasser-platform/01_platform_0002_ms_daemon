@@ -1,7 +1,7 @@
 package org.codepasser.common.web.configuration.security.handler;
 
 import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +24,7 @@ public class ApiAuthenticationResponseHandler implements AuthenticationResponseH
       throws IOException {
     ResponseEntity<RepresentationMessage> entity =
         ResponseEntity.status(FORBIDDEN)
-            .contentType(APPLICATION_JSON_UTF8)
+            .contentType(APPLICATION_JSON)
             .body(RepresentationMessage.from(authException));
     httpEntityProcessor.writeEntity(entity, response);
   }

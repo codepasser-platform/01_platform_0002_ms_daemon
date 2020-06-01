@@ -2,7 +2,7 @@ package org.codepasser.common.web.configuration.security.handler;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -58,7 +58,7 @@ public class WebAuthenticationFailureHandler
     // write user info into response
     ResponseEntity<RepresentationMessage> entity =
         ResponseEntity.status(SC_UNAUTHORIZED)
-            .contentType(APPLICATION_JSON_UTF8)
+            .contentType(APPLICATION_JSON)
             .body(RepresentationMessage.from(exception));
     httpEntityProcessor.writeEntity(entity, response);
   }

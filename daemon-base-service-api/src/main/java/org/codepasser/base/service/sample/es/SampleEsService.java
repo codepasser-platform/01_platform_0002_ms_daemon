@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.es;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -30,38 +30,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface SampleEsService {
 
   @Nonnull
-  @RequestMapping(value = "/indexes", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/indexes", method = POST, produces = APPLICATION_JSON_VALUE)
   AssertResponse creationDocument(@Nonnull @RequestParam("name") String category)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/indexes", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/indexes", method = DELETE, produces = APPLICATION_JSON_VALUE)
   AssertResponse deletionDocument(@Nonnull @RequestParam("name") String category)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/indexes/all", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/indexes/all", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleManualDto> all() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/indexes/all/sort", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/indexes/all/sort", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleManualDto> allSort() throws ServiceException;
 
   @Nonnull
   @RequestMapping(
       value = "/indexes/all/pageable",
       method = GET,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   PagedData<SampleManualDto> allPageable() throws ServiceException;
 
   @Nonnull
   @RequestMapping(
       value = "/indexes/find/{id}",
       method = GET,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   SampleManualDto find(@Nonnull @PathVariable("id") String id) throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/indexes/find/ids", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/indexes/find/ids", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleManualDto> find(@Nonnull String[] ids) throws ServiceException;
 }

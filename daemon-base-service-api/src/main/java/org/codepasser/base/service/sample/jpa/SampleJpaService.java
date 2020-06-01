@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.jpa;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -33,29 +33,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface SampleJpaService {
 
   @Nonnull
-  @RequestMapping(value = "/select/all", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/select/all", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleGroupVo> selectAll() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/select", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/select", method = GET, produces = APPLICATION_JSON_VALUE)
   SampleGroupVo select(@Nonnull @RequestParam("id") Long id) throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/create", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/create", method = POST, produces = APPLICATION_JSON_VALUE)
   AssertResponse create(
       @Nonnull @Valid @RequestBody SampleGroupCreation sampleGroupCreation,
       @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/update", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/update", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse update(
       @Nonnull @Valid @RequestBody SampleGroupUpdation sampleGroupUpdation,
       @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/delete", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/delete", method = DELETE, produces = APPLICATION_JSON_VALUE)
   AssertResponse delete(
       @Nonnull @RequestParam("id") Long id, @Nonnull @RequestParam("userId") Long userId)
       throws ServiceException;

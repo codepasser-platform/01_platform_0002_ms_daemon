@@ -1,6 +1,6 @@
 package org.codepasser.common.web.basement;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import javax.annotation.Nonnull;
@@ -26,7 +26,7 @@ public class SessionPermitAllApi {
 
   @PreAuthorize("permitAll")
   @Nonnull
-  @RequestMapping(value = "/status", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/status", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSession status(@AuthenticationPrincipal UserIdentity user) throws ServiceException {
     if (user != null && user.getUser() != null) {
       return new UserSession(Authority.Session.AUTHORIZED);

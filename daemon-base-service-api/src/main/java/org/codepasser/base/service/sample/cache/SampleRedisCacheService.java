@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.cache;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -26,21 +26,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface SampleRedisCacheService {
 
   @Nonnull
-  @RequestMapping(value = "/caching", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching", method = GET, produces = APPLICATION_JSON_VALUE)
   List<Area> caching(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/caching/evict", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching/evict", method = GET, produces = APPLICATION_JSON_VALUE)
   AssertResponse cachingEvict(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/caching/auto", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching/auto", method = GET, produces = APPLICATION_JSON_VALUE)
   List<Area> cachingAuto(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
@@ -50,7 +50,7 @@ public interface SampleRedisCacheService {
   @RequestMapping(
       value = "/caching/auto/evict",
       method = GET,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   AssertResponse cachingAutoEvict(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)

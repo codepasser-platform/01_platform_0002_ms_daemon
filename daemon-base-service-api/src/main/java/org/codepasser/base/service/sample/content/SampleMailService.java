@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.content;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import javax.annotation.Nonnull;
@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface SampleMailService {
 
   @Nonnull
-  @RequestMapping(value = "/mail", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/mail", method = GET, produces = APPLICATION_JSON_VALUE)
   AssertResponse mail() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/mail/recover", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/mail/recover", method = GET, produces = APPLICATION_JSON_VALUE)
   AssertResponse mailRecover() throws ServiceException;
 }

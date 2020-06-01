@@ -1,6 +1,6 @@
 package org.codepasser.base.web.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class RoleMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
   public List<RoleItem> list(@AuthenticationPrincipal UserIdentity user) throws ServiceException {
     return roleMgrService.list();
   }

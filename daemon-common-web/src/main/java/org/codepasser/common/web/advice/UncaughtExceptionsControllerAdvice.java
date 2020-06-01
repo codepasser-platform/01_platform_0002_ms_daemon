@@ -37,7 +37,7 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 /**
  * UncaughtExceptionsControllerAdvice.
  *
@@ -77,7 +77,7 @@ public class UncaughtExceptionsControllerAdvice {
     }
     Message message = new Message(exception);
     warnLog(request, message);
-    return ResponseEntity.status(status).contentType(APPLICATION_JSON_UTF8).body(message);
+    return ResponseEntity.status(status).contentType(APPLICATION_JSON).body(message);
   }
 
   /**

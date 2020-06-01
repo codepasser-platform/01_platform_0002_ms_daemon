@@ -1,6 +1,6 @@
 package org.codepasser.base.web.sample.json;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.annotation.Nonnull;
@@ -31,14 +31,14 @@ public class SampleJsonValidApi {
   @Autowired private SampleJsonValidService sampleJsonValidService;
 
   @Nonnull
-  @RequestMapping(value = "/pattern", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/pattern", method = POST, produces = APPLICATION_JSON_VALUE)
   public AssertResponse pattern(@Nonnull @Valid @RequestBody SampleItemCreation sampleItemCreation)
       throws ServiceException {
     return sampleJsonValidService.pattern(sampleItemCreation);
   }
 
   @Nonnull
-  @RequestMapping(value = "/group", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/group", method = POST, produces = APPLICATION_JSON_VALUE)
   public AssertResponse group(
       @Nonnull @Validated(Group.Create.class) @RequestBody SampleUserCreation sampleUserCreation)
       throws ServiceException {

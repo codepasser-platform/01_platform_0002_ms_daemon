@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Nonnull;
 import javax.validation.Valid;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
@@ -28,7 +28,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public interface ClientMgrService {
 
   @Nonnull
-  @RequestMapping(method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = POST, produces = APPLICATION_JSON_VALUE)
   AssertResponse creation(
       @Nonnull @Valid @RequestBody OAuthClientCreation clientCreation,
       @Nonnull @RequestParam("userId") Long userId)

@@ -1,6 +1,6 @@
 package org.codepasser.base.web.sample.cache;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class SampleRedisCacheApi {
   @Autowired private SampleRedisCacheService sampleRedisCacheService;
 
   @Nonnull
-  @RequestMapping(value = "/caching", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching", method = GET, produces = APPLICATION_JSON_VALUE)
   public List<Area> caching(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
@@ -37,7 +37,7 @@ public class SampleRedisCacheApi {
   }
 
   @Nonnull
-  @RequestMapping(value = "/caching/evict", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching/evict", method = GET, produces = APPLICATION_JSON_VALUE)
   public AssertResponse cachingEvict(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
@@ -46,7 +46,7 @@ public class SampleRedisCacheApi {
   }
 
   @Nonnull
-  @RequestMapping(value = "/caching/auto", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/caching/auto", method = GET, produces = APPLICATION_JSON_VALUE)
   public List<Area> cachingAuto(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)
@@ -58,7 +58,7 @@ public class SampleRedisCacheApi {
   @RequestMapping(
       value = "/caching/auto/evict",
       method = GET,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   public AssertResponse cachingAutoEvict(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)

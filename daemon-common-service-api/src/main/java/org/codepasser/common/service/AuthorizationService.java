@@ -1,6 +1,6 @@
 package org.codepasser.common.service;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.Optional;
@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface AuthorizationService {
 
   @Nonnull
-  @RequestMapping(value = "/load/username", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/load/username", method = GET, produces = APPLICATION_JSON_VALUE)
   Optional<UserBasic> loadUserByUsername(@Nonnull @RequestParam("username") String username);
 
   @Nonnull
-  @RequestMapping(value = "/load/phone", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/load/phone", method = GET, produces = APPLICATION_JSON_VALUE)
   Optional<UserBasic> loadUserByPhone(@Nonnull @RequestParam("username") String username);
 
   @Nonnull
-  @RequestMapping(value = "/load/email", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/load/email", method = GET, produces = APPLICATION_JSON_VALUE)
   Optional<UserBasic> loadUserByEmail(@Nonnull @RequestParam("username") String username);
 }

@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.jpa;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface SampleJpaPaginationService {
 
   @Nonnull
-  @RequestMapping(value = "/pagination", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/pagination", method = GET, produces = APPLICATION_JSON_VALUE)
   PagedData<SampleGroupVo> pagination(
       @Nullable @RequestParam(value = "name", required = false) String name,
       @Nonnull @RequestParam("page") int page,
@@ -37,7 +37,7 @@ public interface SampleJpaPaginationService {
       throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/pageable", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/pageable", method = POST, produces = APPLICATION_JSON_VALUE)
   PagedData<SampleGroupVo> pageable(
       @Nullable @RequestParam(value = "name", required = false) String name,
       @RequestBody Pageable pageable)

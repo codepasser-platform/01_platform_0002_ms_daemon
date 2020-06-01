@@ -1,7 +1,7 @@
 package org.codepasser.common.web.configuration.security.handler;
 
 import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class RedirectAccessDeniedHandler implements AccessDeniedHandler {
 
       ResponseEntity<RepresentationMessage> entity =
           ResponseEntity.status(FORBIDDEN)
-              .contentType(APPLICATION_JSON_UTF8)
+              .contentType(APPLICATION_JSON)
               .body(new RepresentationMessage(new AccessException(accessDeniedException)));
 
       httpEntityProcessor.writeEntity(entity, response);

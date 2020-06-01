@@ -2,7 +2,7 @@ package org.codepasser.common.web.configuration.security.handler;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -43,13 +43,13 @@ public class WebAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
       // Else. write user info into response.
       ResponseEntity<UserTokenSession> entity =
           ResponseEntity.status(OK)
-              .contentType(APPLICATION_JSON_UTF8)
+              .contentType(APPLICATION_JSON)
               .body(new UserTokenSession(Authority.Session.AUTHORIZED, sessionId));
       httpEntityProcessor.writeEntity(entity, response);
     } catch (AbstractRuntimeException e) {
       ResponseEntity<RepresentationMessage> entity =
           ResponseEntity.status(INTERNAL_SERVER_ERROR)
-              .contentType(APPLICATION_JSON_UTF8)
+              .contentType(APPLICATION_JSON)
               .body(new RepresentationMessage(e));
       httpEntityProcessor.writeEntity(entity, response);
     }

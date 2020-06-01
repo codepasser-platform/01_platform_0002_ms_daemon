@@ -1,6 +1,6 @@
 package org.codepasser.base.web.sample.security;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import com.google.common.collect.Maps;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest/sample")
 public class SampleSecurityRestApi {
 
-  @RequestMapping(value = "/no/authenticated", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/no/authenticated", method = GET, produces = APPLICATION_JSON_VALUE)
   public Map<String, Object> get(HttpSession session) throws ServiceException {
     Map<String, Object> results = Maps.newHashMap();
     results.put("sessionId : ", session.getId());
@@ -40,7 +40,7 @@ public class SampleSecurityRestApi {
   }
 
   @PreAuthorize("isAuthenticated()")
-  @RequestMapping(value = "/is/authenticated", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/is/authenticated", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf authenticated(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
@@ -50,7 +50,7 @@ public class SampleSecurityRestApi {
   }
 
   @PreAuthorize("isAnonymous()")
-  @RequestMapping(value = "/anonymous", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/anonymous", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf anonymous(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
@@ -60,7 +60,7 @@ public class SampleSecurityRestApi {
   }
 
   @PreAuthorize("permitAll")
-  @RequestMapping(value = "/permit", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/permit", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf permit(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
@@ -70,7 +70,7 @@ public class SampleSecurityRestApi {
   }
 
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/admin", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/admin", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf roleAdmin(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
@@ -80,7 +80,7 @@ public class SampleSecurityRestApi {
   }
 
   @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-  @RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf roleUser(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {

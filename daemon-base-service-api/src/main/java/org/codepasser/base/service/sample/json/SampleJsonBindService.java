@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.json;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -27,11 +27,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface SampleJsonBindService {
 
   @Nonnull
-  @RequestMapping(value = "/empty", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/empty", method = GET, produces = APPLICATION_JSON_VALUE)
   SampleVo emptyProperties() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/date", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/date", method = POST, produces = APPLICATION_JSON_VALUE)
   SampleDateBo dateProperties(@Nonnull @Valid @RequestBody SampleDateBo sampleDateBo)
       throws ServiceException;
 }

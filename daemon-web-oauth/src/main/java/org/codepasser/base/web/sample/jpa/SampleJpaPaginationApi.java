@@ -1,7 +1,7 @@
 package org.codepasser.base.web.sample.jpa;
 
 import static org.springframework.data.domain.Sort.Direction.DESC;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import javax.annotation.Nonnull;
@@ -33,7 +33,7 @@ public class SampleJpaPaginationApi {
   @Autowired private SampleJpaPaginationService sampleJpaPaginationService;
 
   @Nonnull
-  @RequestMapping(value = "/pagination", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/pagination", method = GET, produces = APPLICATION_JSON_VALUE)
   public PagedData<SampleGroupVo> pagination(
       @Nullable @RequestParam(value = "name", required = false) String name,
       @Nonnull @RequestParam("page") int page,

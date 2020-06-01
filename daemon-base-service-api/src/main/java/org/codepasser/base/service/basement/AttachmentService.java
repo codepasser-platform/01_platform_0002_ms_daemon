@@ -1,6 +1,6 @@
 package org.codepasser.base.service.basement;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -46,7 +46,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/save", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/save", method = POST, produces = APPLICATION_JSON_VALUE)
   Long saveAttachmentData(
       @RequestParam(value = "userId") Long userId,
       @RequestParam(value = "metaId") Long metaId,
@@ -68,7 +68,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/update", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/update", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse updateAttachmentStatus(
       @RequestParam(value = "id") Long id, @RequestParam(value = "status") AttachmentStatus status)
       throws ServiceException;
@@ -81,7 +81,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/persisted", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/persisted", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse updateAttachmentPersisted(
       @RequestParam(value = "id") Long id, @RequestParam(value = "size") Long size)
       throws ServiceException;
@@ -94,7 +94,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/expired", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/expired", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse attachmentExpired(@RequestParam(value = "metaId") Long metaId)
       throws ServiceException;
 
@@ -106,7 +106,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/deleted", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/deleted", method = DELETE, produces = APPLICATION_JSON_VALUE)
   AssertResponse attachmentDeleted(@RequestParam(value = "metaId") Long metaId)
       throws ServiceException;
 
@@ -118,7 +118,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常
    */
   @Nonnull
-  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
   AttachmentItem findAttachmentById(@PathVariable(value = "id") Long id) throws ServiceException;
 
   /**
@@ -129,7 +129,7 @@ public interface AttachmentService {
    * @throws ServiceException 异常.
    */
   @Nonnull
-  @RequestMapping(value = "/delete", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/delete", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse attachmentDeleteById(@RequestParam(value = "attachmentId") Long attachmentId)
       throws ServiceException;
 }

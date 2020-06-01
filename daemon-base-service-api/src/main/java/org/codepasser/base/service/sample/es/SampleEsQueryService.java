@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.es;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.annotation.Nonnull;
@@ -31,7 +31,7 @@ public interface SampleEsQueryService {
   @RequestMapping(
       value = "/indexes/query/pageable",
       method = POST,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   PagedData<SampleManualDto> queryPageable(
       @Nullable @RequestParam(value = "name", required = false) String name,
       @RequestBody Pageable pageable)
@@ -41,7 +41,7 @@ public interface SampleEsQueryService {
   @RequestMapping(
       value = "/indexes/query/pageable/key",
       method = POST,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   PagedData<SampleManualDto> keyPageable(
       @Nullable @RequestParam(value = "key", required = false) String key,
       @RequestBody Pageable pageable)

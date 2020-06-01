@@ -1,6 +1,6 @@
 package org.codepasser.base.web.sample.json;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -29,7 +29,7 @@ public class SampleJsonBindApi {
 
   @Autowired private SampleJsonBindService sampleJsonBindService;
 
-  @RequestMapping(value = "/empty", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/empty", method = GET, produces = APPLICATION_JSON_VALUE)
   public SampleVo emptyProperties() throws ServiceException {
     SampleVo sampleVo = new SampleVo();
     sampleVo.setId(111L);
@@ -40,19 +40,19 @@ public class SampleJsonBindApi {
   }
 
   @Nonnull
-  @RequestMapping(value = "/date", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/date", method = POST, produces = APPLICATION_JSON_VALUE)
   public SampleDateBo dateProperties(@Nonnull @Valid @RequestBody SampleDateBo sampleDateBo)
       throws ServiceException {
     return sampleDateBo;
   }
 
-  @RequestMapping(value = "/empty/fegin", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/empty/fegin", method = GET, produces = APPLICATION_JSON_VALUE)
   public SampleVo emptyPropertiesFegin() throws ServiceException {
     return sampleJsonBindService.emptyProperties();
   }
 
   @Nonnull
-  @RequestMapping(value = "/date/fegin", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/date/fegin", method = POST, produces = APPLICATION_JSON_VALUE)
   public SampleDateBo datePropertiesFegin(@Nonnull @Valid @RequestBody SampleDateBo sampleDateBo)
       throws ServiceException {
     return sampleJsonBindService.dateProperties(sampleDateBo);

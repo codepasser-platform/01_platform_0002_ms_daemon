@@ -2,7 +2,7 @@ package org.codepasser.common.web.configuration.security.handler;
 
 import static org.codepasser.common.web.configuration.security.handler.AjaxAuthenticationHandler.DEFAULT_AJAX_PARAM;
 import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class WebLogoutSuccessHandler extends AbstractAuthenticationTargetUrlRequ
 
     ResponseEntity<UserSession> entity =
         ResponseEntity.status(OK)
-            .contentType(APPLICATION_JSON_UTF8)
+            .contentType(APPLICATION_JSON)
             .body(new UserSession(Authority.Session.ANONYMOUS));
     httpEntityProcessor.writeEntity(entity, response);
   }

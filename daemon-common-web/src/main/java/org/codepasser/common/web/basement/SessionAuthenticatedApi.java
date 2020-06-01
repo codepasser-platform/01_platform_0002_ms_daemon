@@ -1,6 +1,6 @@
 package org.codepasser.common.web.basement;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import org.codepasser.common.model.security.UserSelf;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SessionAuthenticatedApi {
 
   @PreAuthorize("isAuthenticated()")
-  @RequestMapping(value = "/me", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/me", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf me(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
@@ -33,13 +33,13 @@ public class SessionAuthenticatedApi {
   }
 
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/admin", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/admin", method = GET, produces = APPLICATION_JSON_VALUE)
   public AssertResponse roleAdmin(@AuthenticationPrincipal UserIdentity user) {
     return AssertResponse.success();
   }
 
   @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-  @RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_VALUE)
   public AssertResponse roleUser(@AuthenticationPrincipal UserIdentity user) {
     return AssertResponse.success();
   }

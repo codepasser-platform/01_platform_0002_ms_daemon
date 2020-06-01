@@ -1,6 +1,6 @@
 package org.codepasser.base.web.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -46,7 +46,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
   PageInfo<UserItem> pagination(
       @Nullable @RequestParam(value = "username", required = false) String username,
       @Nullable @RequestParam(value = "authorities", required = false)
@@ -59,14 +59,14 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
   UserDetail detail(@Nonnull @PathVariable("id") Long id) throws ServiceException {
     return userMgrService.detail(id);
   }
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = POST, produces = APPLICATION_JSON_VALUE)
   AssertResponse creation(
       @Nonnull @Validated(Group.Create.class) @RequestBody ConsoleUserCreation userCreation,
       @AuthenticationPrincipal UserIdentity user)
@@ -76,7 +76,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse edition(
       @Nonnull @Validated(Group.Create.class) @RequestBody ConsoleUserEdition userEdition,
       @AuthenticationPrincipal UserIdentity user)
@@ -86,7 +86,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/{id}", method = DELETE, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/{id}", method = DELETE, produces = APPLICATION_JSON_VALUE)
   AssertResponse deletion(
       @Nonnull @PathVariable("id") Long id, @AuthenticationPrincipal UserIdentity user)
       throws ServiceException {
@@ -95,7 +95,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/lock/{id}", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/lock/{id}", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse lock(
       @Nonnull @PathVariable("id") Long id, @AuthenticationPrincipal UserIdentity user)
       throws ServiceException {
@@ -104,7 +104,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/unlock/{id}", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/unlock/{id}", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse unlock(
       @Nonnull @PathVariable("id") Long id, @AuthenticationPrincipal UserIdentity user)
       throws ServiceException {
@@ -113,7 +113,7 @@ public class UserMgrApi {
 
   @Nonnull
   @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-  @RequestMapping(value = "/recover", method = PUT, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/recover", method = PUT, produces = APPLICATION_JSON_VALUE)
   AssertResponse recover(
       @Nonnull @RequestBody ConsoleUserRecover recover, @AuthenticationPrincipal UserIdentity user)
       throws ServiceException {

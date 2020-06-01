@@ -2,7 +2,7 @@ package org.codepasser.base.web.sample.file;
 
 import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
 import static org.codepasser.common.model.ConstantInterface.ROOT_ORG_ID;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.annotation.Nonnull;
@@ -32,7 +32,7 @@ public class SampleUploadApi {
   @Autowired private FileProvider fileProvider;
 
   // @PreAuthorize("isAuthenticated()")
-  @RequestMapping(value = "/upload", method = POST, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/upload", method = POST, produces = APPLICATION_JSON_VALUE)
   public AssertResponse upload(
       @Nonnull @Valid SampleDateBo sampleDateBo,
       @RequestParam(value = "file", required = false) MultipartFile file)
@@ -56,7 +56,7 @@ public class SampleUploadApi {
   @RequestMapping(
       value = "/upload/multipart",
       method = POST,
-      produces = APPLICATION_JSON_UTF8_VALUE)
+      produces = APPLICATION_JSON_VALUE)
   public AssertResponse multipart(
       @Nonnull @Valid SampleDateBo sampleDateBo, @RequestParam("files") MultipartFile[] files)
       throws ServiceException {

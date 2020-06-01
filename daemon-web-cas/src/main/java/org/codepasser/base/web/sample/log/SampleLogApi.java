@@ -1,6 +1,6 @@
 package org.codepasser.base.web.sample.log;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import javax.annotation.Nonnull;
@@ -25,7 +25,7 @@ public class SampleLogApi {
   @InjectLogger private Logger logger;
 
   @Nonnull
-  @RequestMapping(value = "/info", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/info", method = GET, produces = APPLICATION_JSON_VALUE)
   public AssertResponse info() throws ServiceException {
     logger.info("inject logger : '{}'", "testing info message");
     return AssertResponse.success();

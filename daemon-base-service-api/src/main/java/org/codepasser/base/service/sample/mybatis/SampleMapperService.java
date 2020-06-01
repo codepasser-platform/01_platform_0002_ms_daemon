@@ -1,6 +1,6 @@
 package org.codepasser.base.service.sample.mybatis;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.List;
@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface SampleMapperService {
 
   @Nonnull
-  @RequestMapping(value = "/mapper", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/mapper", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleGroupItems> mapper() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(value = "/mapper/xml", method = GET, produces = APPLICATION_JSON_UTF8_VALUE)
+  @RequestMapping(value = "/mapper/xml", method = GET, produces = APPLICATION_JSON_VALUE)
   List<SampleGroupItems> mapperXml() throws ServiceException;
 }
