@@ -1,16 +1,5 @@
 package org.codepasser.common.web.configuration;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_AUTH_COOKIE_NAME;
-import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_AUTH_TOKEN_NAME;
-import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_KEY_PREFIX;
-import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_MAX_INACTIVE_INTERVAL;
-import static org.springframework.session.data.redis.RedisFlushMode.ON_SAVE;
-
-import java.util.Collections;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
@@ -18,6 +7,19 @@ import org.springframework.session.web.http.CookieHttpSessionIdResolver;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 import org.springframework.session.web.http.HttpSessionIdResolver;
+
+import java.util.Collections;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_AUTH_COOKIE_NAME;
+import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_AUTH_TOKEN_NAME;
+import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_KEY_PREFIX;
+import static org.codepasser.common.web.configuration.security.session.SessionInterface.SESSION_MAX_INACTIVE_INTERVAL;
+import static org.springframework.session.FlushMode.ON_SAVE;
 
 /**
  * HttpSessionConfiguration.
@@ -30,7 +32,7 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 @EnableRedisHttpSession(
     maxInactiveIntervalInSeconds = SESSION_MAX_INACTIVE_INTERVAL,
     redisNamespace = SESSION_KEY_PREFIX,
-    redisFlushMode = ON_SAVE)
+    flushMode = ON_SAVE)
 public class HttpSessionConfiguration {
 
   @Bean
