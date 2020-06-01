@@ -1,18 +1,22 @@
 package org.codepasser.common.service.configuration;
 
 import com.google.common.io.CharStreams;
-import feign.RetryableException;
-import feign.Retryer;
-import feign.codec.ErrorDecoder;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+
 import org.codepasser.common.exception.AdException;
 import org.codepasser.common.exception.Message;
 import org.codepasser.common.exception.WrappedRuntimeException;
 import org.codepasser.common.utils.Json;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+
+import feign.RetryableException;
+import feign.Retryer;
+import feign.codec.ErrorDecoder;
 
 /**
  * FeignConfiguration.
@@ -29,7 +33,7 @@ public class FeignConfiguration {
 
     return (methodKey, response) -> {
       try {
-        String content = CharStreams.toString(response.body().asReader());
+        String content = CharStreams.toString(response.body().asReader(StandardCharsets.UTF_8));
         Message message = Json.readValue(content, Message.class);
         if (message != null && message.getType() != null) {
           String type = message.getType();
