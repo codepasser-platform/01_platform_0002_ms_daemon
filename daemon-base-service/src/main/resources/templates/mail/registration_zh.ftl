@@ -17,7 +17,7 @@
                 以防不是您本人在codepasser.com进行操作，请忽略此消息。
             </p>
             <p>
-                如果您有任何问题，请联系我们:&nbsp;admin@codepasser.com
+                如果您有任何问题，请联系我们: admin@codepasser.com
             </p>
         </blockquote>
         <p>
