@@ -40,7 +40,7 @@ public class SampleSmsServiceImpl implements SampleSmsService {
     IdentifyingCode identifyingCode = new IdentifyingCode();
     identifyingCode.setCode("000000");
     identifyingCode.setIdentifyingCodeType(IdentifyingCodeType.RECOVER_PHONE);
-    smsCell.sendRecoverTokenSms("yangyang.cheng@valueonline.cn", identifyingCode);
+    smsCell.sendRecoverTokenSms("15668681342", identifyingCode);
     return AssertResponse.success();
   }
 }
