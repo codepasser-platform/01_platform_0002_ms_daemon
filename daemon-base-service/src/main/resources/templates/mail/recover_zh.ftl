@@ -1,72 +1,27 @@
 <div class="card zh">
-  <blockquote>
-    <p>
-      您好：
-    </p>
-  </blockquote>
-
-  <blockquote>
     <blockquote>
-      <p>
-        本封邮件codepasser.com发送给您的密码重置验证码邮件。
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        请复制下面的验证码(10分钟内有效)，完成密码重置流程：
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        <br/>
-      </p>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <blockquote>
         <p>
-          验证码：${token}
+            尊敬的用户，您好：
         </p>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <p>
-        <br/>
-      </p>
-      <p>
-        如果不是本人操作，请安全的忽略它。
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        如果您有问题可回复邮件至:&nbsp;admin@codepasser.com
-      </p>
-      <p>
-        <br/>
-      </p>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <blockquote>
         <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>
-                codepasser.com
-              </p>
-            </blockquote>
-          </blockquote>
+            <p>
+                本邮件内容为codepasser.com发送给您的密码重置验证码。
+            </p>
+            <p>
+                请复制下面的验证码(10分钟内有效)，完成密码重置流程：
+            </p>
+            <p>
+                验证码：${token}
+            </p>
+            <p>
+                以防不是您本人在codepasser.com进行操作，请忽略此消息。
+            </p>
+            <p>
+                如果您有任何问题，请联系我们:&nbsp;admin@codepasser.com
+            </p>
         </blockquote>
-      </blockquote>
+        <p>
+            codepasser.com
+        </p>
     </blockquote>
-  </blockquote>
-  <p>
-  </p>
 </div>

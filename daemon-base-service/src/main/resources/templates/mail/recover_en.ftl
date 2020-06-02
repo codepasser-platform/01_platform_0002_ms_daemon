@@ -1,74 +1,27 @@
-<div class="card en">
-  <blockquote>
-    <p>
-      Hi：
-    </p>
-  </blockquote>
-
-  <blockquote>
+<div class="card zh">
     <blockquote>
-      <p>
-        This email codepasser platform sent to you by password reset code
-        verification mail.
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        Please copy the following verification code (valid in 10 minutes) to complete the password
-        reset process：
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        <br/>
-      </p>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <blockquote>
         <p>
-          Verification Code: ${token}
+            Dear user：
         </p>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <p>
-        <br/>
-      </p>
-      <p>
-        If it is not for me, please ignore it safely.
-      </p>
-    </blockquote>
-    <blockquote>
-      <p>
-        If you have any questions, please reply to the email:&nbsp;admin@codepasser.com
-      </p>
-      <p>
-        <br/>
-      </p>
-    </blockquote>
-  </blockquote>
-
-  <blockquote>
-    <blockquote>
-      <blockquote>
         <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>
-                Codepasser
-              </p>
-            </blockquote>
-          </blockquote>
+            <p>
+                The content of this email is codepasser.com Password reset verification code sent to you。
+            </p>
+            <p>
+                Please copy the following verification code (valid within 10 minutes) to complete the password reset process:
+            </p>
+            <p>
+                Verification Code ：${token}
+            </p>
+            <p>
+                In case it's not you codepasser.com Please ignore this message.
+            </p>
+            <p>
+                Please reach out with any questions you have: admin@codepasser.com
+            </p>
         </blockquote>
-      </blockquote>
+        <p>
+            codepasser.com
+        </p>
     </blockquote>
-  </blockquote>
-  <p>
-  </p>
 </div>
