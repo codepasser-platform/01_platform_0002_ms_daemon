@@ -189,15 +189,9 @@ daemon:
   sms:
     enable: false
     sign: 【codepasser.com】
-    channel: DYXX # DYXX | JTL
+    channel: JTL # DYXX | JTL
     retry-count: 3
     properties:
-      # DYXX: 第一信息
-      dyxx.api: http://sms.1xinxi.cn/asmx/smsservice.aspx
-      dyxx.username: todo@codepasser.com
-      dyxx.pwd: todo
-      dyxx.type: pt
-      dyxx.sign: 【codepasser.com】
       # JTL : 京天利
       jtl.api: http://58.68.247.137:9053/communication/sendSms.ashx
       jtl.cid: 7970
@@ -205,3 +199,9 @@ daemon:
       jtl.productid: todo
       jtl.format: 32
       jtl.sign: 【codepasser.com】
+      # DYXX: 第一信息
+      dyxx.api: http://sms.1xinxi.cn/asmx/smsservice.aspx
+      dyxx.username: todo@codepasser.com
+      dyxx.pwd: todo
+      dyxx.type: pt
+      dyxx.sign: 【codepasser.com】
