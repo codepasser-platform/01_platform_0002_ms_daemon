@@ -1,7 +1,5 @@
 package org.codepasser.base.service.impl.content.sms.provider;
 
-import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.JTL;
-
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.codepasser.common.service.conifguration.sms.SmsChannelProvider;
 import org.codepasser.common.service.conifguration.sms.SmsConfiguration;
@@ -12,6 +10,8 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
+
+import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.JTL;
 
 /**
  * JtlSmsChannelProvider.
@@ -85,8 +85,9 @@ public class JtlSmsChannelProvider implements SmsChannelProvider {
             .append("custom=");
       } catch (Exception e) {
         logger.error(
-            "Send sms provider send sms fail, current channel: [{}], phone NO. is [{}], please confirm that there is a mistake in the configuration.",
+            "Send sms provider send sms fail, current channel: [{}], The ssid is [{}], phone NO. is [{}], please confirm that there is a mistake in the configuration.",
             JTL,
+            ssid,
             mobile);
         return null;
       }
@@ -99,15 +100,17 @@ public class JtlSmsChannelProvider implements SmsChannelProvider {
       }
       if (RESULT_SUCCESS.equals(Json.readNode(result, "status"))) {
         logger.info(
-            "Send sms provider is enable，current channel: [{}], The phone NO. is [{}] will be receive the SMS. status:{}",
+            "Send sms provider is enable，current channel: [{}], The ssid is [{}], The phone NO. is [{}] will be receive the SMS. status:{}",
             JTL,
+            ssid,
             mobile,
             Json.readNode(result, "status"));
         return ssid;
       }
       logger.error(
-          "Send sms provider send sms fail, current channel: [{}], phone NO. is [{}], cause by: {}, status: {}",
+          "Send sms provider send sms fail, current channel: [{}], The ssid is [{}], phone NO. is [{}], cause by: {}, status: {}",
           JTL,
+          ssid,
           mobile,
           result,
           Json.readNode(result, "status"));
