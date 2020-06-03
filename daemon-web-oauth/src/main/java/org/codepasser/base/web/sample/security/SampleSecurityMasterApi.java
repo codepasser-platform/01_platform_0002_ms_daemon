@@ -1,12 +1,6 @@
 package org.codepasser.base.web.sample.security;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
-import javax.servlet.http.HttpSession;
 import org.codepasser.common.model.security.UserSelf;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.web.configuration.security.auth.UserIdentity;
@@ -14,6 +8,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
+import java.util.UUID;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleSessionApi.
@@ -80,6 +81,17 @@ public class SampleSecurityMasterApi {
   @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
   @RequestMapping(value = "/user", method = GET, produces = APPLICATION_JSON_VALUE)
   public UserSelf roleUser(@AuthenticationPrincipal UserIdentity user) {
+    UserSelf userSelf = new UserSelf();
+    if (user != null && user.getUser() != null) {
+      userSelf.from(user.getUser());
+    }
+    return userSelf;
+  }
+
+  //  @PreAuthorize("hasPermission(#user,'list')")
+  @PreAuthorize("hasPermission('user','list')")
+  @RequestMapping(value = "/permission", method = GET, produces = APPLICATION_JSON_VALUE)
+  public UserSelf permissionUser(@AuthenticationPrincipal UserIdentity user) {
     UserSelf userSelf = new UserSelf();
     if (user != null && user.getUser() != null) {
       userSelf.from(user.getUser());

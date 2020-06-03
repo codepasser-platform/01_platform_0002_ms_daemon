@@ -1,9 +1,25 @@
 package org.codepasser.common.web.configuration;
 
+import org.codepasser.common.web.configuration.security.handler.MethodPermissionEvaluator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
+import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {}
+public class MethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
+
+  @Autowired private MethodPermissionEvaluator methodPermissionEvaluator;
+
+  @Override
+  protected MethodSecurityExpressionHandler createExpressionHandler() {
+    DefaultMethodSecurityExpressionHandler expressionHandler =
+        new DefaultMethodSecurityExpressionHandler();
+    expressionHandler.setPermissionEvaluator(methodPermissionEvaluator);
+    return expressionHandler;
+    //    return super.createExpressionHandler();
+  }
+}
