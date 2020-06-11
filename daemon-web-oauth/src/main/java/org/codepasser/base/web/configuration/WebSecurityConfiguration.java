@@ -96,7 +96,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/error/**", // error path
             "/**/*.html", // static path
             "/**/*.js",
-            "/**/*.css")
+            "/**/*.css",
+            "/**/*.map")
         .permitAll()
         /* Security permit user matcher. */
         .anyRequest()
