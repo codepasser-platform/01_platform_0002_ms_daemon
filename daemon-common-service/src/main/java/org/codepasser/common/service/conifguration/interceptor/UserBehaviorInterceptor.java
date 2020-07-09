@@ -25,7 +25,6 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
   @InjectLogger private Logger logger;
 
   private static final String REQUEST_ID = "request_id";
-  private static final String REMOTE_IP = "remote_ip";
   private static final String X_FORWARDED_HEADER = "X-Forwarded-For";
 
   @Override
@@ -51,20 +50,11 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
       Object handler,
       ModelAndView modelAndView)
       throws Exception {
-    logger.debug(
-        "\"request_url\":\"{}\", \"request_args\": {}}",
-        request.getRequestURL(),
-        getArguments(request));
     MDC.remove(REQUEST_ID);
   }
 
   @Override
   public void afterCompletion(
       HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-      throws Exception {
-    logger.debug(
-        "\"request_url\":\"{}\", \"request_args\": {}}",
-        request.getRequestURL(),
-        getArguments(request));
-  }
+      throws Exception {}
 }

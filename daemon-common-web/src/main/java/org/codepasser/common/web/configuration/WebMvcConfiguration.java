@@ -1,24 +1,6 @@
 package org.codepasser.common.web.configuration;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static java.util.Collections.enumeration;
-import static java.util.Collections.list;
-import static java.util.Collections.singletonList;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Stream.of;
-import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.HEAD;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
-
-import java.io.IOException;
-import java.util.Enumeration;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
+import org.codepasser.common.web.configuration.filter.RequestPreflightFilter;
 import org.codepasser.common.web.configuration.interceptor.UserBehaviorInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -34,6 +16,28 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static java.util.Collections.enumeration;
+import static java.util.Collections.list;
+import static java.util.Collections.singletonList;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.of;
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.HEAD;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 /**
  * WebMvcConfiguration.
  *
@@ -115,11 +119,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     return filterBean;
   }
 
-  @Bean
-  public HandlerInterceptor userBehaviorInterceptor() {
-    return new UserBehaviorInterceptor();
-  }
-
   /**
    * Cors.
    *
@@ -162,6 +161,42 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     filterBean.setUrlPatterns(singletonList("/*"));
     filterBean.setOrder(1);
     return filterBean;
+  }
+
+  /**
+   * Request preflight.
+   *
+   * @return filter
+   */
+  @Bean
+  public FilterRegistrationBean requestPreflightFilterRegistrationBean() {
+    FilterRegistrationBean filterBean = new FilterRegistrationBean();
+    filterBean.setFilter(requestPreflightFilter());
+    filterBean.setUrlPatterns(singletonList("/*"));
+    filterBean.setOrder(0);
+    return filterBean;
+  }
+
+  /**
+   * Request preflight.
+   *
+   * @return Filter.
+   */
+  @Bean
+  public Filter requestPreflightFilter() {
+    return new RequestPreflightFilter()
+        .excludePathPatterns("/static/**")
+        .excludePathPatterns("/library/**");
+  }
+
+  /**
+   * User BehaviorInterceptor.
+   *
+   * @return HandlerInterceptor.
+   */
+  @Bean
+  public HandlerInterceptor userBehaviorInterceptor() {
+    return new UserBehaviorInterceptor();
   }
 
   @Configuration

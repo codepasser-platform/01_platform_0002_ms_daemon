@@ -1,12 +1,10 @@
 package org.codepasser.common.web.configuration.interceptor;
 
 import org.codepasser.common.processor.annotation.InjectLogger;
+import org.codepasser.common.web.configuration.http.DaemonRequestWrapper;
 import org.slf4j.Logger;
-import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,23 +22,23 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
 
   @InjectLogger private Logger logger;
 
-  private static final String REQUEST_ID = "request_id";
-  private static final String REMOTE_IP = "remote_ip";
-  private static final String X_FORWARDED_HEADER = "X-Forwarded-For";
-
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
-    String xForwardedForHeader = request.getHeader(X_FORWARDED_HEADER);
-    String remoteIp = request.getRemoteAddr();
-    String requestId = UUID.randomUUID().toString().replaceAll("-", "");
-    MDC.put(REQUEST_ID, requestId);
-    logger.info(
-        "{\"remote_ip\":\"{}\", \"x_forwarded_for\":\"{}\", \"request_url\":\"{}\", \"request_args\": {}}",
-        remoteIp,
-        xForwardedForHeader,
-        request.getRequestURL(),
-        getArguments(request));
+    if (request instanceof DaemonRequestWrapper) {
+      logger.info(
+          "{\"uri\":\"{}\", \"method\":\"{}\", \"query\":\"{}\", \"body\":\"{}\"}",
+          request.getRequestURI(),
+          request.getMethod(),
+          getArguments(request),
+          ((DaemonRequestWrapper) request).getBody());
+    } else {
+      logger.info(
+          "{\"uri\":\"{}\", \"method\":\"{}\", \"query\":\"{}\"}",
+          request.getRequestURI(),
+          request.getMethod(),
+          getArguments(request));
+    }
     return true;
   }
 
@@ -50,21 +48,10 @@ public class UserBehaviorInterceptor implements HandlerInterceptor {
       HttpServletResponse response,
       Object handler,
       ModelAndView modelAndView)
-      throws Exception {
-    logger.debug(
-        "\"request_url\":\"{}\", \"request_args\": {}}",
-        request.getRequestURL(),
-        getArguments(request));
-    MDC.remove(REQUEST_ID);
-  }
+      throws Exception {}
 
   @Override
   public void afterCompletion(
       HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-      throws Exception {
-    logger.debug(
-        "\"request_url\":\"{}\", \"request_args\": {}}",
-        request.getRequestURL(),
-        getArguments(request));
-  }
+      throws Exception {}
 }
