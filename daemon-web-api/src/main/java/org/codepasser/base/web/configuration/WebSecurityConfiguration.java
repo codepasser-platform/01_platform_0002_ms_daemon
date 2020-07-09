@@ -65,6 +65,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/**/*.html", // static path
             "/**/*.js",
             "/**/*.css",
+            "/**/*.ico",
             "/**/*.map")
         .permitAll()
         /* Security permit user matcher. */
