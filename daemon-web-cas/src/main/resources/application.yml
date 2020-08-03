@@ -1,9 +1,9 @@
-# Server configuration
-server:
-  port: ${cloud.configuration.port:8888}
-
 # Actuator health configuration
 management:
+  health:
+    elasticsearch:
+      # 关闭ES健康检查
+      enabled: false
   endpoint:
     health:
       show-details: always
@@ -22,8 +22,3 @@ info:
     encoding: @project.build.sourceEncoding@
     java:
       version: @java.version@
-
-# Log configuration
-logging:
-  level:
-    org.springframework.cloud: DEBUG

@@ -106,16 +106,6 @@ spring:
       username: daemon
       password: cde3VFR$
 
-# Actuator health configuration
-management:
-  health:
-    elasticsearch:
-      # 关闭ES健康检查
-      enabled: false
-  endpoint:
-    health:
-      show-details: always
-
 # Application configuration
 daemon:
   base-url: //www.codepasser.com
