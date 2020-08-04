@@ -1,6 +1,7 @@
 package org.codepasser.base.web.sample.security;
 
 import com.google.common.collect.Maps;
+
 import org.codepasser.common.model.security.UserSelf;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.web.configuration.security.auth.UserIdentity;
@@ -9,9 +10,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;

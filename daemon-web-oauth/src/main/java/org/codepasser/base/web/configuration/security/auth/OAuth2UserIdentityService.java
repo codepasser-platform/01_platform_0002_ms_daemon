@@ -1,7 +1,5 @@
 package org.codepasser.base.web.configuration.security.auth;
 
-import static org.codepasser.common.model.entity.inner.UserProvider.GITHUB;
-
 import org.codepasser.common.model.security.UserExternalBasic;
 import org.codepasser.common.service.OAuth2Service;
 import org.codepasser.common.service.exception.NotFoundException;
@@ -12,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import static org.codepasser.common.model.entity.inner.UserProvider.GITHUB;
 
 @Component("oauth2")
 public class OAuth2UserIdentityService implements UserDetailsService {

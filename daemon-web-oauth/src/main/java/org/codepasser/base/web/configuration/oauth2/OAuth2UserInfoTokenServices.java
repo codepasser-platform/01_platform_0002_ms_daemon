@@ -1,11 +1,7 @@
 package org.codepasser.base.web.configuration.oauth2;
 
-import static org.springframework.security.core.authority.AuthorityUtils.commaSeparatedStringToAuthorityList;
-import static org.springframework.security.oauth2.common.OAuth2AccessToken.BEARER_TYPE;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,13 +17,19 @@ import org.springframework.security.oauth2.provider.OAuth2Request;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
+import java.util.Map;
+
+import static org.springframework.security.core.authority.AuthorityUtils.commaSeparatedStringToAuthorityList;
+import static org.springframework.security.oauth2.common.OAuth2AccessToken.BEARER_TYPE;
+
 public class OAuth2UserInfoTokenServices implements ResourceServerTokenServices {
 
   private static final Logger logger = LoggerFactory.getLogger(OAuth2UserInfoTokenServices.class);
   protected OAuth2RestOperations restTemplate;
-  private OAuth2ProtectedResourceDetails client;
-  private OAuth2ResourceServerProperties resource;
-  private OAuth2AttributeDefinitions definition;
+  private final OAuth2ProtectedResourceDetails client;
+  private final OAuth2ResourceServerProperties resource;
+  private final OAuth2AttributeDefinitions definition;
 
   public OAuth2UserInfoTokenServices(
       OAuth2ResourceServerProperties resource,

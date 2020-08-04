@@ -1,7 +1,8 @@
 package org.codepasser.base.web.configuration.oauth2;
 
-import java.util.Map;
 import org.springframework.util.StringUtils;
+
+import java.util.Map;
 
 public class OAuth2AttributeDefinitions {
 

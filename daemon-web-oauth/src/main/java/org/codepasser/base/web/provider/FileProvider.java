@@ -55,70 +55,70 @@ public class FileProvider {
    */
   @Nonnull
   public Long saveAttachment(
-          Long userId, Long metaId, AttachmentCategory category, MultipartFile file)
-          throws ServiceException {
+      Long userId, Long metaId, AttachmentCategory category, MultipartFile file)
+      throws ServiceException {
 
     String metaName = file.getOriginalFilename();
     Long size = file.getSize();
     String attachmentName = StorageHelper.generateName(metaName);
     UUID uuid = UUID.randomUUID();
     String directory =
-            StorageHelper.generateHashPath(storageSettings.getVolume(), category.key(), uuid);
+        StorageHelper.generateHashPath(storageSettings.getVolume(), category.key(), uuid);
     String link = StorageHelper.generateHashLink(storageSettings.getLink(), category.key(), uuid);
     String uri =
-            StorageHelper.generateHashLink(storageSettings.getRelative(), category.key(), uuid);
+        StorageHelper.generateHashLink(storageSettings.getRelative(), category.key(), uuid);
 
     Long attachmentId =
-            attachmentService.saveAttachmentData(
-                    userId,
-                    metaId,
-                    metaName,
-                    category,
-                    directory,
-                    directory + attachmentName,
-                    link + attachmentName,
-                    uri + attachmentName,
-                    size);
-
-    logger.info(
-            "File provider main thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
-            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+        attachmentService.saveAttachmentData(
             userId,
             metaId,
-            attachmentId);
+            metaName,
+            category,
+            directory,
+            directory + attachmentName,
+            link + attachmentName,
+            uri + attachmentName,
+            size);
+
+    logger.info(
+        "File provider main thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+        userId,
+        metaId,
+        attachmentId);
 
     asyncCaller.asyncCall(
-            () -> {
-              try {
-                logger.info(
-                        "File provider sub thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
-                        userId,
-                        metaId,
-                        attachmentId);
-                StorageHelper.getInstance().saveFile(file.getInputStream(), directory, attachmentName);
-                //  Update attachment status
-                attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
-              } catch (ServiceException | IOException e) {
-                logger.error(
-                        "An error occurred in the save temp file, caused by :{}",
-                        Throwables.getStackTraceAsString(e));
-                try {
-                  attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.ERROR);
-                } catch (ServiceException e1) {
-                  logger.error(
-                          "An error occurred in the save temp file, caused by :{}",
-                          Throwables.getStackTraceAsString(e1));
-                }
-              } finally {
-                logger.info(
-                        "File provider sub thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
-                        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
-                        userId,
-                        metaId,
-                        attachmentId);
-              }
-            });
+        () -> {
+          try {
+            logger.info(
+                "File provider sub thread process start at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                userId,
+                metaId,
+                attachmentId);
+            StorageHelper.getInstance().saveFile(file.getInputStream(), directory, attachmentName);
+            //  Update attachment status
+            attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.PERSISTED);
+          } catch (ServiceException | IOException e) {
+            logger.error(
+                "An error occurred in the save temp file, caused by :{}",
+                Throwables.getStackTraceAsString(e));
+            try {
+              attachmentService.updateAttachmentStatus(attachmentId, AttachmentStatus.ERROR);
+            } catch (ServiceException e1) {
+              logger.error(
+                  "An error occurred in the save temp file, caused by :{}",
+                  Throwables.getStackTraceAsString(e1));
+            }
+          } finally {
+            logger.info(
+                "File provider sub thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+                userId,
+                metaId,
+                attachmentId);
+          }
+        });
 
     try {
       // FIXED the small file processing time is too fast to be deleted by the container
@@ -127,11 +127,11 @@ public class FileProvider {
       // ignore
     }
     logger.info(
-            "File provider main thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
-            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
-            userId,
-            metaId,
-            attachmentId);
+        "File provider main thread process exit at : {}, user id : {}, meta id : {}, attachment id : {}.",
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()),
+        userId,
+        metaId,
+        attachmentId);
 
     return attachmentId;
   }

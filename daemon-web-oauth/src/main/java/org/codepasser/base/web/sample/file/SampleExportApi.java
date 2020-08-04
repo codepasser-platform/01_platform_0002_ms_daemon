@@ -1,9 +1,5 @@
 package org.codepasser.base.web.sample.file;
 
-import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import org.codepasser.base.service.basement.vo.ExcelTitle;
 import org.codepasser.base.service.basement.vo.ResourceId;
 import org.codepasser.base.service.sample.excel.SampleExcelService;
@@ -14,6 +10,10 @@ import org.codepasser.common.service.response.ExcelResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleSessionApi.

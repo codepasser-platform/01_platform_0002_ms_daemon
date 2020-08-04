@@ -1,14 +1,5 @@
 package org.codepasser.base.web.configuration.oauth2.clients;
 
-import static org.springframework.security.core.authority.AuthorityUtils.commaSeparatedStringToAuthorityList;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.codepasser.base.web.configuration.oauth2.ClientResources;
 import org.codepasser.base.web.configuration.oauth2.OAuth2RestTemplate;
 import org.codepasser.base.web.configuration.oauth2.OAuth2UserInfoTokenServices;
@@ -29,6 +20,17 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import static org.springframework.security.core.authority.AuthorityUtils.commaSeparatedStringToAuthorityList;
 
 public class DefaultClientResources extends ClientResources {
 

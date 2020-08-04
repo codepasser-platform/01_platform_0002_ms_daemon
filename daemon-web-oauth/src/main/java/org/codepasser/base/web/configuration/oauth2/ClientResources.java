@@ -1,14 +1,15 @@
 package org.codepasser.base.web.configuration.oauth2;
 
-import javax.servlet.Filter;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 
+import javax.servlet.Filter;
+
 public abstract class ClientResources {
 
-  private OAuth2ProtectedResourceDetails client = new AuthorizationCodeResourceDetails();
-  private OAuth2ResourceServerProperties resource = new OAuth2ResourceServerProperties();
-  private OAuth2AttributeDefinitions definition = new OAuth2AttributeDefinitions();
+  private final OAuth2ProtectedResourceDetails client = new AuthorizationCodeResourceDetails();
+  private final OAuth2ResourceServerProperties resource = new OAuth2ResourceServerProperties();
+  private final OAuth2AttributeDefinitions definition = new OAuth2AttributeDefinitions();
 
   public OAuth2ProtectedResourceDetails getClient() {
     return client;

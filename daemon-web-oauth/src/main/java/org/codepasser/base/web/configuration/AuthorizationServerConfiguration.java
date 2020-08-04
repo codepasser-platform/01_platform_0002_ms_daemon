@@ -1,6 +1,5 @@
 package org.codepasser.base.web.configuration;
 
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +17,8 @@ import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeSe
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer

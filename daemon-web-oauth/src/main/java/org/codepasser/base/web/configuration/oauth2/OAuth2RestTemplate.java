@@ -1,13 +1,14 @@
 package org.codepasser.base.web.configuration.oauth2;
 
-import java.util.Collections;
-import java.util.List;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.AccessTokenProviderChain;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeAccessTokenProvider;
+
+import java.util.Collections;
+import java.util.List;
 
 public class OAuth2RestTemplate
     extends org.springframework.security.oauth2.client.OAuth2RestTemplate {

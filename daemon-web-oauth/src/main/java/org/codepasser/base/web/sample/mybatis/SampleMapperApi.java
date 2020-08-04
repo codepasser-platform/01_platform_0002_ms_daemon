@@ -1,16 +1,18 @@
 package org.codepasser.base.web.sample.mybatis;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
-import java.util.List;
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.entity.dto.sample.SampleGroupItems;
 import org.codepasser.base.service.sample.mybatis.SampleMapperService;
 import org.codepasser.common.service.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleMapperApi.
