@@ -1,8 +1,7 @@
 package org.codepasser.base.service.basement.vo;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import org.codepasser.base.model.entity.Attachment;
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.model.entity.inner.AttachmentStatus;
@@ -10,14 +9,16 @@ import org.codepasser.base.model.entity.inner.DocumentType;
 import org.codepasser.common.model.Out;
 import org.springframework.beans.BeanUtils;
 
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
+
 /**
- * AttachmentItem.
+ * AttachmentDetail.
  *
  * @author codepasser.
  * @version 0.0.1.
  * @serial 2018/9/26 : base version.
  */
-public class AttachmentItem implements Out<AttachmentItem, Attachment> {
+public class AttachmentDetail implements Out<AttachmentDetail, Attachment> {
 
   private static final long serialVersionUID = 5095825423051100067L;
 
@@ -133,7 +134,7 @@ public class AttachmentItem implements Out<AttachmentItem, Attachment> {
   }
 
   @Override
-  public AttachmentItem from(Attachment entity) {
+  public AttachmentDetail from(Attachment entity) {
     BeanUtils.copyProperties(entity, this);
     return this;
   }

@@ -1,15 +1,8 @@
 package org.codepasser.base.service.basement;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.model.entity.inner.AttachmentStatus;
-import org.codepasser.base.service.basement.vo.AttachmentItem;
+import org.codepasser.base.service.basement.vo.AttachmentDetail;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.service.response.AssertResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -17,6 +10,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.annotation.Nonnull;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 /**
  * AttachmentService.
@@ -119,7 +120,7 @@ public interface AttachmentService {
    */
   @Nonnull
   @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
-  AttachmentItem findAttachmentById(@PathVariable(value = "id") Long id) throws ServiceException;
+  AttachmentDetail findAttachmentById(@PathVariable(value = "id") Long id) throws ServiceException;
 
   /**
    * 删除存储文件.

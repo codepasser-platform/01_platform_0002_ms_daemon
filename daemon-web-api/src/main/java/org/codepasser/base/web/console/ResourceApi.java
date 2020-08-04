@@ -1,20 +1,7 @@
 package org.codepasser.base.web.console;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nonnull;
-import javax.servlet.http.HttpServletRequest;
 import org.codepasser.base.service.basement.AttachmentService;
-import org.codepasser.base.service.basement.vo.AttachmentItem;
+import org.codepasser.base.service.basement.vo.AttachmentDetail;
 import org.codepasser.common.service.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -25,6 +12,21 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import javax.annotation.Nonnull;
+import javax.servlet.http.HttpServletRequest;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * ResourceApi.
@@ -42,22 +44,19 @@ public class ResourceApi {
   @Nonnull
   @PreAuthorize("permitAll")
   @RequestMapping(value = "/{resourceId}", method = GET, produces = APPLICATION_JSON_VALUE)
-  public AttachmentItem download(@PathVariable(value = "resourceId") Long resourceId)
+  public AttachmentDetail download(@PathVariable(value = "resourceId") Long resourceId)
       throws ServiceException {
     return attachmentService.findAttachmentById(resourceId);
   }
 
   @Nonnull
   @PreAuthorize("permitAll")
-  @RequestMapping(
-      value = "/stream/{resourceId}",
-      method = GET,
-      produces = APPLICATION_JSON_VALUE)
+  @RequestMapping(value = "/stream/{resourceId}", method = GET, produces = APPLICATION_JSON_VALUE)
   public ResponseEntity<?> downloadAsStream(
       @PathVariable(value = "resourceId") Long resourceId, HttpServletRequest request)
       throws ServiceException, UnsupportedEncodingException {
-    AttachmentItem attachmentItem = attachmentService.findAttachmentById(resourceId);
-    String fileName = attachmentItem.getName();
+    AttachmentDetail attachmentDetail = attachmentService.findAttachmentById(resourceId);
+    String fileName = attachmentDetail.getName();
     String userAgent = request.getHeader("USER-AGENT").toLowerCase();
 
     HttpHeaders headers = new HttpHeaders();
@@ -80,10 +79,11 @@ public class ResourceApi {
               "Content-Disposition",
               String.format(
                   "attachment;filename=\"%s\"",
-                  new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
+                  new String(
+                      fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
         }
       }
-      is = new FileInputStream(new File(attachmentItem.getPath()));
+      is = new FileInputStream(new File(attachmentDetail.getPath()));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {

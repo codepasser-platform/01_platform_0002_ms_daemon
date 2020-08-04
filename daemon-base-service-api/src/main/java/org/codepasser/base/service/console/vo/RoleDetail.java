@@ -1,13 +1,15 @@
 package org.codepasser.base.service.console.vo;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
+
 import org.codepasser.base.model.entity.Role;
 import org.codepasser.common.model.Out;
 import org.codepasser.common.model.security.Authority;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 /**
  * RoleItemVo.
@@ -16,7 +18,7 @@ import org.springframework.beans.BeanUtils;
  * @version 0.0.1.
  * @serial 2019/3/13 : base version.
  */
-public class RoleItem implements Out<RoleItem, Role> {
+public class RoleDetail implements Out<RoleDetail, Role> {
 
   private static final long serialVersionUID = 4626267482709357827L;
 
@@ -48,7 +50,7 @@ public class RoleItem implements Out<RoleItem, Role> {
   private String orgName;
 
   @Override
-  public RoleItem from(Role entity) {
+  public RoleDetail from(Role entity) {
     BeanUtils.copyProperties(entity, this);
     return this;
   }

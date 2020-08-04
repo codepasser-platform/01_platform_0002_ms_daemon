@@ -1,14 +1,5 @@
 package org.codepasser.base.service.basement;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.codepasser.common.model.entity.inner.State.DELETED;
-import static org.codepasser.common.model.entity.inner.State.EXPIRED;
-import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
-
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
 import org.codepasser.base.dao.repository.AttachmentMapRepository;
 import org.codepasser.base.dao.repository.AttachmentRepository;
 import org.codepasser.base.model.entity.Attachment;
@@ -16,7 +7,7 @@ import org.codepasser.base.model.entity.AttachmentMap;
 import org.codepasser.base.model.entity.builder.AttachmentBuilder;
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.model.entity.inner.AttachmentStatus;
-import org.codepasser.base.service.basement.vo.AttachmentItem;
+import org.codepasser.base.service.basement.vo.AttachmentDetail;
 import org.codepasser.base.service.impl.cell.AttachmentCell;
 import org.codepasser.common.service.exception.NotFoundException;
 import org.codepasser.common.service.exception.ServiceException;
@@ -27,6 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.codepasser.common.model.entity.inner.State.DELETED;
+import static org.codepasser.common.model.entity.inner.State.EXPIRED;
+import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
 
 /**
  * AttachmentServiceImpl.
@@ -178,7 +180,7 @@ public class AttachmentServiceImpl implements AttachmentService {
 
   @Nonnull
   @Override
-  public AttachmentItem findAttachmentById(@PathVariable(value = "id") Long id)
+  public AttachmentDetail findAttachmentById(@PathVariable(value = "id") Long id)
       throws ServiceException {
     return attachmentCell.validById(id);
   }

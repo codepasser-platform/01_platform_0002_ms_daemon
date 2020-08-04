@@ -1,7 +1,19 @@
 package org.codepasser.base.web.sample.file;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import org.codepasser.base.service.basement.AttachmentService;
+import org.codepasser.base.service.basement.vo.AttachmentDetail;
+import org.codepasser.common.processor.annotation.InjectLogger;
+import org.codepasser.common.service.exception.ServiceException;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,22 +27,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
+
 import javax.annotation.Nonnull;
 import javax.servlet.http.HttpServletRequest;
-import org.codepasser.base.service.basement.AttachmentService;
-import org.codepasser.base.service.basement.vo.AttachmentItem;
-import org.codepasser.common.processor.annotation.InjectLogger;
-import org.codepasser.common.service.exception.ServiceException;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleDownloadApi.
@@ -49,11 +51,8 @@ public class SampleDownloadApi {
 
   //  @PreAuthorize("isAuthenticated()")
   @Nonnull
-  @RequestMapping(
-      value = "/download/{resourceId}",
-      method = GET,
-      produces = APPLICATION_JSON_VALUE)
-  public AttachmentItem download(@PathVariable(value = "resourceId") Long resourceId)
+  @RequestMapping(value = "/download/{resourceId}", method = GET, produces = APPLICATION_JSON_VALUE)
+  public AttachmentDetail download(@PathVariable(value = "resourceId") Long resourceId)
       throws ServiceException {
     return attachmentService.findAttachmentById(resourceId);
   }
@@ -67,8 +66,8 @@ public class SampleDownloadApi {
   public ResponseEntity<?> downloadAsStream(
       @PathVariable(value = "resourceId") Long resourceId, HttpServletRequest request)
       throws ServiceException, UnsupportedEncodingException {
-    AttachmentItem attachmentItem = attachmentService.findAttachmentById(resourceId);
-    String fileName = attachmentItem.getName();
+    AttachmentDetail attachmentDetail = attachmentService.findAttachmentById(resourceId);
+    String fileName = attachmentDetail.getName();
     String userAgent = request.getHeader("USER-AGENT").toLowerCase();
 
     HttpHeaders headers = new HttpHeaders();
@@ -97,7 +96,7 @@ public class SampleDownloadApi {
                       fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1)));
         }
       }
-      is = new FileInputStream(new File(attachmentItem.getPath()));
+      is = new FileInputStream(new File(attachmentDetail.getPath()));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -114,8 +113,8 @@ public class SampleDownloadApi {
   public Long downloadAsOctetStreamSize(@PathVariable(value = "resourceId") Long resourceId)
       throws ServiceException {
     // Get your file stream from wherever.
-    AttachmentItem attachmentItem = attachmentService.findAttachmentById(resourceId);
-    File downloadFile = new File(attachmentItem.getPath());
+    AttachmentDetail attachmentDetail = attachmentService.findAttachmentById(resourceId);
+    File downloadFile = new File(attachmentDetail.getPath());
     return downloadFile.length();
   }
 
@@ -125,9 +124,9 @@ public class SampleDownloadApi {
       throws ServiceException {
 
     // Get your file stream from wherever.
-    AttachmentItem attachmentItem = attachmentService.findAttachmentById(resourceId);
-    String fileName = attachmentItem.getName();
-    File downloadFile = new File(attachmentItem.getPath());
+    AttachmentDetail attachmentDetail = attachmentService.findAttachmentById(resourceId);
+    String fileName = attachmentDetail.getName();
+    File downloadFile = new File(attachmentDetail.getPath());
     byte[] contentParts = null;
     HttpStatus httpStatus = HttpStatus.OK;
     // Settings response headers
