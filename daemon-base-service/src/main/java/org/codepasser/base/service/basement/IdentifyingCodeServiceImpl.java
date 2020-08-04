@@ -1,20 +1,5 @@
 package org.codepasser.base.service.basement;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.collect.ImmutableBiMap.of;
-import static org.codepasser.base.model.business.category.IdentifyingCodeType.REGISTRATION_EMAIL;
-import static org.codepasser.base.model.business.category.IdentifyingCodeType.REGISTRATION_PHONE;
-import static org.codepasser.common.model.RegexPattern.REGEX_IDENTIFYING_CODE;
-import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
-import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
-import static org.codepasser.common.service.exception.IllegalTermsException.Error.IDENTIFYING_CODE;
-import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
-import static org.codepasser.common.utils.Conditions.checkState;
-
-import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nonnull;
 import org.codepasser.base.dao.repository.redis.IdentifyingCodeRepository;
 import org.codepasser.base.model.business.category.IdentifyingCodeType;
 import org.codepasser.base.service.basement.vo.IdentifyingCode;
@@ -32,6 +17,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Nonnull;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.collect.ImmutableBiMap.of;
+import static org.codepasser.base.model.business.category.IdentifyingCodeType.REGISTRATION_EMAIL;
+import static org.codepasser.base.model.business.category.IdentifyingCodeType.REGISTRATION_PHONE;
+import static org.codepasser.common.model.RegexPattern.REGEX_IDENTIFYING_CODE;
+import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
+import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
+import static org.codepasser.common.service.exception.IllegalTermsException.Error.IDENTIFYING_CODE;
+import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
+import static org.codepasser.common.utils.Conditions.checkState;
 
 /**
  * IdentifyingCodeServiceImpl.

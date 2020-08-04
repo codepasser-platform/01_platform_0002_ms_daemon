@@ -1,8 +1,9 @@
 package org.codepasser.base.service.bootstrap.data;
 
-import java.io.Serializable;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.common.model.In;
+
+import java.io.Serializable;
 
 /**
  * AreaProvince.

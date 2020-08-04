@@ -1,10 +1,7 @@
 package org.codepasser.base.service.impl.content.sms.provider;
 
-import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.DYXX;
-
 import com.google.common.base.Splitter;
-import java.util.List;
-import javax.annotation.Nullable;
+
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.codepasser.common.service.conifguration.sms.SmsChannelProvider;
 import org.codepasser.common.service.conifguration.sms.SmsConfiguration;
@@ -15,6 +12,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.DYXX;
 
 /**
  * DyxxSmsChannelProvider.

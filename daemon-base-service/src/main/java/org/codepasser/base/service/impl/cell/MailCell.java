@@ -1,10 +1,5 @@
 package org.codepasser.base.service.impl.cell;
 
-import static com.google.common.collect.Maps.newHashMap;
-
-import java.io.Serializable;
-import java.util.Map;
-import javax.annotation.Nonnull;
 import org.codepasser.base.service.basement.vo.IdentifyingCode;
 import org.codepasser.base.service.impl.content.mail.RecoverMail;
 import org.codepasser.base.service.impl.content.mail.RegistrationMail;
@@ -12,6 +7,13 @@ import org.codepasser.common.model.security.UserBasic;
 import org.codepasser.common.service.conifguration.mail.AbstractMail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+
+import static com.google.common.collect.Maps.newHashMap;
 
 /**
  * MailCell.

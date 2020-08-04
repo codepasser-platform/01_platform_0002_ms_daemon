@@ -1,16 +1,9 @@
 package org.codepasser.base.service.bootstrap.impl;
 
-import static java.lang.Boolean.FALSE;
-import static org.codepasser.common.model.entity.inner.OrgType.ROOT;
-import static org.codepasser.common.model.entity.inner.UserStatus.MANAGED;
-import static org.codepasser.common.model.entity.inner.UserType.GENERATED;
+import com.google.common.collect.Lists;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.common.collect.Lists;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Date;
-import java.util.List;
+
 import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
@@ -30,6 +23,16 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Date;
+import java.util.List;
+
+import static java.lang.Boolean.FALSE;
+import static org.codepasser.common.model.entity.inner.OrgType.ROOT;
+import static org.codepasser.common.model.entity.inner.UserStatus.MANAGED;
+import static org.codepasser.common.model.entity.inner.UserType.GENERATED;
 
 /**
  * DefaultDataCreator.

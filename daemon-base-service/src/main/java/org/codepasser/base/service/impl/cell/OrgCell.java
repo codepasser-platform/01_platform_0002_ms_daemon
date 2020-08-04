@@ -1,12 +1,12 @@
 package org.codepasser.base.service.impl.cell;
 
-import static org.codepasser.common.service.exception.NotFoundException.Error.ORG;
-
 import org.codepasser.base.dao.repository.OrgRepository;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.common.service.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import static org.codepasser.common.service.exception.NotFoundException.Error.ORG;
 
 /**
  * OrgCell.

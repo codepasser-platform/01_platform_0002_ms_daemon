@@ -1,15 +1,5 @@
 package org.codepasser.base.service.impl;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
-import static org.codepasser.common.model.ConstantInterface.ROOT_ORG_ID;
-import static org.springframework.util.StringUtils.isEmpty;
-
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.validation.Valid;
 import org.codepasser.base.dao.repository.UserExternalRepository;
 import org.codepasser.base.dao.repository.UserRepository;
 import org.codepasser.base.model.entity.User;
@@ -30,6 +20,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.Optional;
+
+import javax.annotation.Nonnull;
+import javax.validation.Valid;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.codepasser.common.model.ConstantInterface.ROOT_ADMIN_ID;
+import static org.codepasser.common.model.ConstantInterface.ROOT_ORG_ID;
+import static org.springframework.util.StringUtils.isEmpty;
 
 @Service
 @RestController

@@ -2,10 +2,7 @@ package org.codepasser.base.service.sample.mybatis;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+
 import org.codepasser.base.dao.repository.mapper.sample.SampleGroupXmlMapper;
 import org.codepasser.base.model.entity.dto.sample.SampleGroupItems;
 import org.codepasser.common.model.entity.inner.State;
@@ -14,6 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.EnumSet;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * SampleMapperPaginationServiceImpl.

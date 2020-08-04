@@ -1,13 +1,14 @@
 package org.codepasser.base.service.bootstrap.impl;
 
-import java.io.File;
-import java.net.URL;
 import org.codepasser.base.service.bootstrap.DataLoader;
 import org.codepasser.base.service.bootstrap.InitializerConfiguration;
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
+import java.net.URL;
 
 /**
  * DefaultDataCreator.

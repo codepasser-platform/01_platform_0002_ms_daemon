@@ -1,6 +1,5 @@
 package org.codepasser.base.service.sample.content;
 
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.business.category.IdentifyingCodeType;
 import org.codepasser.base.service.basement.vo.IdentifyingCode;
 import org.codepasser.base.service.impl.cell.MailCell;
@@ -9,6 +8,8 @@ import org.codepasser.common.service.response.AssertResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Nonnull;
 
 /**
  * SampleMailServiceImpl.

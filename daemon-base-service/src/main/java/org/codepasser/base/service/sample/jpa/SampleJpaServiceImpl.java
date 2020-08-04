@@ -1,15 +1,5 @@
 package org.codepasser.base.service.sample.jpa;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.codepasser.common.model.entity.inner.State.DELETED;
-import static org.codepasser.common.model.entity.inner.State.EXPIRED;
-import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
-
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
-import javax.validation.Valid;
 import org.codepasser.base.dao.repository.sample.SampleGroupRepository;
 import org.codepasser.base.model.entity.sample.SampleGroupEntity;
 import org.codepasser.base.service.sample.bo.SampleGroupCreation;
@@ -25,6 +15,18 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+import javax.validation.Valid;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.codepasser.common.model.entity.inner.State.DELETED;
+import static org.codepasser.common.model.entity.inner.State.EXPIRED;
+import static org.codepasser.common.service.exception.NotFoundException.Error.DATA;
 
 /**
  * SampleJpaServiceImpl.

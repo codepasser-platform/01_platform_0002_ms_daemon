@@ -1,11 +1,5 @@
 package org.codepasser.base.service.impl;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.codepasser.common.model.entity.inner.State.DELETED;
-import static org.codepasser.common.model.entity.inner.State.EXPIRED;
-
-import java.util.Optional;
-import javax.annotation.Nonnull;
 import org.codepasser.base.dao.repository.OrgRepository;
 import org.codepasser.base.dao.repository.UserRepository;
 import org.codepasser.base.model.entity.Org;
@@ -18,6 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
+
+import javax.annotation.Nonnull;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.codepasser.common.model.entity.inner.State.DELETED;
+import static org.codepasser.common.model.entity.inner.State.EXPIRED;
 
 /**
  * UserAuthorizationServiceImpl.

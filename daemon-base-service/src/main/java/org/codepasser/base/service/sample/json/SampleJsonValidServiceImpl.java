@@ -1,8 +1,5 @@
 package org.codepasser.base.service.sample.json;
 
-import java.util.Date;
-import javax.annotation.Nonnull;
-import javax.validation.Valid;
 import org.codepasser.base.dao.repository.UserRepository;
 import org.codepasser.base.dao.repository.sample.SampleItemRepository;
 import org.codepasser.base.model.entity.User;
@@ -19,6 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+
+import javax.annotation.Nonnull;
+import javax.validation.Valid;
 
 /**
  * SampleJsonValidServiceImpl.

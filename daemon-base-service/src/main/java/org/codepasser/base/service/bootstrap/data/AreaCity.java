@@ -1,6 +1,7 @@
 package org.codepasser.base.service.bootstrap.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.codepasser.base.model.data.Area;
 import org.codepasser.common.model.In;
 

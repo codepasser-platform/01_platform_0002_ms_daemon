@@ -1,12 +1,5 @@
 package org.codepasser.base.service.impl.cell;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.codepasser.common.model.entity.inner.State.DELETED;
-import static org.codepasser.common.model.entity.inner.State.EXPIRED;
-import static org.codepasser.common.service.exception.NotFoundException.Error.USER;
-
-import java.util.Optional;
-import javax.annotation.Nonnull;
 import org.codepasser.base.dao.repository.OrgRepository;
 import org.codepasser.base.dao.repository.UserRepository;
 import org.codepasser.base.model.entity.Org;
@@ -17,6 +10,15 @@ import org.codepasser.common.service.exception.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+
+import javax.annotation.Nonnull;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.codepasser.common.model.entity.inner.State.DELETED;
+import static org.codepasser.common.model.entity.inner.State.EXPIRED;
+import static org.codepasser.common.service.exception.NotFoundException.Error.USER;
 
 /**
  * UserCell.

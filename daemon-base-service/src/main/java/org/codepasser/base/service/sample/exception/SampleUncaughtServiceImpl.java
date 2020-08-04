@@ -1,18 +1,5 @@
 package org.codepasser.base.service.sample.exception;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static org.codepasser.common.exception.CommonException.Error.QR_CODE_GENERATE_FAILED;
-import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
-import static org.codepasser.common.service.exception.ConflictException.Error.USER_PHONE;
-import static org.codepasser.common.service.exception.ForbiddenException.Error.PERMISSIONS;
-import static org.codepasser.common.service.exception.IllegalArgumentException.Error.INVALID_IDENTIFYING_CODE;
-import static org.codepasser.common.service.exception.IllegalTermsException.Error.IDENTIFYING_CODE;
-import static org.codepasser.common.service.exception.NotFoundException.Error.USER;
-import static org.codepasser.common.service.exception.ReferenceException.Error.FAILED;
-
-import javax.annotation.Nonnull;
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 import org.codepasser.base.service.sample.bo.SampleGroupCreation;
 import org.codepasser.base.service.sample.bo.SampleUserCreation;
 import org.codepasser.common.exception.AbstractException;
@@ -33,6 +20,20 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Nonnull;
+import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.codepasser.common.exception.CommonException.Error.QR_CODE_GENERATE_FAILED;
+import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
+import static org.codepasser.common.service.exception.ConflictException.Error.USER_PHONE;
+import static org.codepasser.common.service.exception.ForbiddenException.Error.PERMISSIONS;
+import static org.codepasser.common.service.exception.IllegalArgumentException.Error.INVALID_IDENTIFYING_CODE;
+import static org.codepasser.common.service.exception.IllegalTermsException.Error.IDENTIFYING_CODE;
+import static org.codepasser.common.service.exception.NotFoundException.Error.USER;
+import static org.codepasser.common.service.exception.ReferenceException.Error.FAILED;
 
 /**
  * SampleUncaughtExceptionServiceImpl.

@@ -1,12 +1,13 @@
 package org.codepasser.base.service.bootstrap;
 
-import java.util.List;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.base.model.entity.Org;
 import org.codepasser.base.model.entity.Role;
 import org.codepasser.base.model.entity.User;
 import org.codepasser.base.model.entity.security.OAuthClientDetails;
 import org.codepasser.common.service.exception.ServiceException;
+
+import java.util.List;
 
 /**
  * DataCreator.

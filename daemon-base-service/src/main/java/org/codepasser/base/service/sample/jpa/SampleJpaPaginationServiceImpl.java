@@ -1,13 +1,5 @@
 package org.codepasser.base.service.sample.jpa;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.codepasser.common.model.ConstantInterface.CONDITION_BLANK;
-import static org.codepasser.common.model.entity.inner.State.DELETED;
-import static org.codepasser.common.model.entity.inner.State.EXPIRED;
-import static org.codepasser.common.service.helper.PagedDataUtils.rePage;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import org.codepasser.base.dao.repository.sample.SampleGroupRepository;
 import org.codepasser.base.model.entity.sample.SampleGroupEntity;
 import org.codepasser.base.service.sample.vo.SampleGroupVo;
@@ -23,6 +15,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.codepasser.common.model.ConstantInterface.CONDITION_BLANK;
+import static org.codepasser.common.model.entity.inner.State.DELETED;
+import static org.codepasser.common.model.entity.inner.State.EXPIRED;
+import static org.codepasser.common.service.helper.PagedDataUtils.rePage;
 
 /**
  * SampleJpaPaginationServiceImpl.

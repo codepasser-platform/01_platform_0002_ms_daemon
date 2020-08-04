@@ -1,14 +1,5 @@
 package org.codepasser.base.service.sample.cache;
 
-import static org.codepasser.base.service.impl.cache.CacheableKeysSet.CACHE_AREAS;
-import static org.codepasser.base.service.impl.cache.CacheableKeysSet.CACHE_AREAS_AUTO;
-import static org.codepasser.base.service.impl.cache.CacheableKeysSet.KEY_GENERATOR;
-import static org.codepasser.base.service.impl.cache.CacheableKeysSet.MANAGER_AUTO;
-import static org.codepasser.common.service.conifguration.cache.CacheableSupport.MANAGER_DEFAULT;
-import static org.codepasser.common.service.exception.NotFoundException.Error.AREA;
-
-import java.util.List;
-import javax.annotation.Nonnull;
 import org.codepasser.base.dao.repository.mongo.AreaRepository;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.common.service.exception.NotFoundException;
@@ -21,6 +12,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import static org.codepasser.base.service.impl.cache.CacheableKeysSet.CACHE_AREAS;
+import static org.codepasser.base.service.impl.cache.CacheableKeysSet.CACHE_AREAS_AUTO;
+import static org.codepasser.base.service.impl.cache.CacheableKeysSet.KEY_GENERATOR;
+import static org.codepasser.base.service.impl.cache.CacheableKeysSet.MANAGER_AUTO;
+import static org.codepasser.common.service.conifguration.cache.CacheableSupport.MANAGER_DEFAULT;
+import static org.codepasser.common.service.exception.NotFoundException.Error.AREA;
 
 /**
  * SampleRedisCacheServiceImpl.
