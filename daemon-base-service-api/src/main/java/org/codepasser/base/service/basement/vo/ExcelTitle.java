@@ -13,7 +13,7 @@ public enum ExcelTitle {
   EXPORT_REVIEW("维修信息反馈"),
   EXPORT_CART("购物车清单");
 
-  private String title;
+  private final String title;
 
   ExcelTitle(String title) {
     this.title = title;

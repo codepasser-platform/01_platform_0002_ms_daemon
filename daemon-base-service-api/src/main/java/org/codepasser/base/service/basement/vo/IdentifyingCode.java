@@ -1,7 +1,8 @@
 package org.codepasser.base.service.basement.vo;
 
-import java.io.Serializable;
 import org.codepasser.base.model.business.category.IdentifyingCodeType;
+
+import java.io.Serializable;
 
 /**
  * IdentifyingCode.

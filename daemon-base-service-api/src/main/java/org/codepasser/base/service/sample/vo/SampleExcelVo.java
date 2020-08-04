@@ -1,14 +1,16 @@
 package org.codepasser.base.service.sample.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.codepasser.common.service.response.excel.ExportSource;
+
+import java.io.Serializable;
+import java.util.Date;
+
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 import static org.codepasser.common.service.response.excel.ExportSourceType.DATE;
 import static org.codepasser.common.service.response.excel.ExportSourceType.DATETIME;
 import static org.codepasser.common.service.response.excel.ExportSourceType.NUMBER;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import java.io.Serializable;
-import java.util.Date;
-import org.codepasser.common.service.response.excel.ExportSource;
 
 /**
  * SampleExcelVo.

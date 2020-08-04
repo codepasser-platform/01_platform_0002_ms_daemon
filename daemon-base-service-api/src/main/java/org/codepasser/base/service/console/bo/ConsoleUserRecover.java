@@ -1,6 +1,7 @@
 package org.codepasser.base.service.console.bo;
 
 import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 
 /**

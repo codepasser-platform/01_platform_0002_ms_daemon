@@ -1,9 +1,10 @@
 package org.codepasser.base.service.basement.vo;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 /**
  * ResourceId.

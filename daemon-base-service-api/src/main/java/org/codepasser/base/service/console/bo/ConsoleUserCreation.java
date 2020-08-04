@@ -1,13 +1,5 @@
 package org.codepasser.base.service.console.bo;
 
-import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
-import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
-import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
-
-import java.util.Date;
-import java.util.EnumSet;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import org.codepasser.base.model.entity.User;
 import org.codepasser.base.model.validation.UserIdentifier;
 import org.codepasser.common.model.In;
@@ -16,6 +8,16 @@ import org.codepasser.common.model.entity.inner.UserType;
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.model.validation.Group;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
+import java.util.EnumSet;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
+import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
+import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
 
 /**
  * ConsoleUserCreation.

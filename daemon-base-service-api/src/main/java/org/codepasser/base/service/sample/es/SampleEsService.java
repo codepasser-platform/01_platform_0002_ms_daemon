@@ -1,12 +1,5 @@
 package org.codepasser.base.service.sample.es;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import java.util.List;
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.es.sample.dto.SampleManualDto;
 import org.codepasser.common.service.exception.ServiceException;
 import org.codepasser.common.service.response.AssertResponse;
@@ -16,6 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * SampleEsService.
@@ -48,17 +50,11 @@ public interface SampleEsService {
   List<SampleManualDto> allSort() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(
-      value = "/indexes/all/pageable",
-      method = GET,
-      produces = APPLICATION_JSON_VALUE)
+  @RequestMapping(value = "/indexes/all/pageable", method = GET, produces = APPLICATION_JSON_VALUE)
   PagedData<SampleManualDto> allPageable() throws ServiceException;
 
   @Nonnull
-  @RequestMapping(
-      value = "/indexes/find/{id}",
-      method = GET,
-      produces = APPLICATION_JSON_VALUE)
+  @RequestMapping(value = "/indexes/find/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
   SampleManualDto find(@Nonnull @PathVariable("id") String id) throws ServiceException;
 
   @Nonnull

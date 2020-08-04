@@ -43,7 +43,7 @@ public class OAuthClientCreation implements In<OAuthClientDetails> {
   @Valid private AdditionalInformation additionalInformation = new AdditionalInformation();
 
   public String getResourceIds() {
-    String _values = new String();
+    String _values = "";
     if (!resourceIds.isEmpty()) {
       _values =
           StringUtils.join(
@@ -53,7 +53,7 @@ public class OAuthClientCreation implements In<OAuthClientDetails> {
   }
 
   public String getScope() {
-    String _values = new String();
+    String _values = "";
     if (!scope.isEmpty()) {
       _values =
           StringUtils.join(
@@ -63,7 +63,7 @@ public class OAuthClientCreation implements In<OAuthClientDetails> {
   }
 
   public String getAuthorizedGrantTypes() {
-    String _values = new String();
+    String _values = "";
     if (!authorizedGrantTypes.isEmpty()) {
       _values =
           StringUtils.join(
@@ -75,7 +75,7 @@ public class OAuthClientCreation implements In<OAuthClientDetails> {
   }
 
   public String getAuthorities() {
-    String _values = new String();
+    String _values = "";
     if (!authorities.isEmpty()) {
       _values =
           StringUtils.join(

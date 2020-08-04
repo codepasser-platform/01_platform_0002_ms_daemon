@@ -1,12 +1,13 @@
 package org.codepasser.base.service.sample.bo;
 
-import static org.codepasser.common.model.RegexPattern.REGEX_GENERAL_NAME;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import org.codepasser.base.model.entity.sample.SampleItemEntity;
 import org.codepasser.common.model.In;
 import org.springframework.beans.BeanUtils;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import static org.codepasser.common.model.RegexPattern.REGEX_GENERAL_NAME;
 
 /**
  * SampleItemCreation.

@@ -1,10 +1,5 @@
 package org.codepasser.base.service.sample.json;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import javax.annotation.Nonnull;
-import javax.validation.Valid;
 import org.codepasser.base.service.sample.bo.SampleItemCreation;
 import org.codepasser.base.service.sample.bo.SampleUserCreation;
 import org.codepasser.common.model.validation.Group;
@@ -15,6 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Nonnull;
+import javax.validation.Valid;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * SampleJsonValidService.

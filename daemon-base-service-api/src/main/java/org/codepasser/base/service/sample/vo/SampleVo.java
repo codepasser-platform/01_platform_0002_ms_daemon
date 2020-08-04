@@ -1,10 +1,11 @@
 package org.codepasser.base.service.sample.vo;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 /**
  * SampleVo.

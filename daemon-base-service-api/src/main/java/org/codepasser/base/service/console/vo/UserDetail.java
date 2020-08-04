@@ -1,8 +1,7 @@
 package org.codepasser.base.service.console.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
-import java.util.EnumSet;
+
 import org.codepasser.base.model.entity.User;
 import org.codepasser.common.model.Out;
 import org.codepasser.common.model.entity.inner.LockType;
@@ -10,6 +9,9 @@ import org.codepasser.common.model.entity.inner.UserStatus;
 import org.codepasser.common.model.entity.inner.UserType;
 import org.codepasser.common.model.security.Authority;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
+import java.util.EnumSet;
 
 /**
  * UserDetail.

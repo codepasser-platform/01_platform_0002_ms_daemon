@@ -1,15 +1,18 @@
 package org.codepasser.base.service.sample.bo;
 
-import static org.codepasser.common.model.RegexPattern.REGEX_GENERAL_NAME;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+
 import org.codepasser.base.model.entity.sample.SampleGroupEntity;
 import org.codepasser.common.model.In;
 import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import static org.codepasser.common.model.RegexPattern.REGEX_GENERAL_NAME;
 
 /**
  * SampleGroupBo.
