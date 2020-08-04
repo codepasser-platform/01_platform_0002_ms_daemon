@@ -1,9 +1,9 @@
 package org.codepasser.common.service.exception;
 
-import static java.lang.String.format;
-
 import org.codepasser.common.exception.AbstractRuntimeException;
 import org.codepasser.common.exception.Message;
+
+import static java.lang.String.format;
 
 /**
  * ServiceRuntimeException.

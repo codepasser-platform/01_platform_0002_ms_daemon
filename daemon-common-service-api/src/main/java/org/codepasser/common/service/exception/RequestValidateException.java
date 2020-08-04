@@ -1,14 +1,15 @@
 package org.codepasser.common.service.exception;
 
-import static org.codepasser.common.service.exception.RequestValidateException.Error.FAILED;
-
-import java.util.Iterator;
 import org.codepasser.common.exception.AbstractRuntimeException;
 import org.codepasser.common.exception.Message;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+
+import java.util.Iterator;
+
+import static org.codepasser.common.service.exception.RequestValidateException.Error.FAILED;
 /**
  * RequestValidateException.
  *

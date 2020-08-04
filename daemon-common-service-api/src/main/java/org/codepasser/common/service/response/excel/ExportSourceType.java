@@ -13,7 +13,7 @@ public enum ExportSourceType {
   DATETIME("yyyy-MM-dd HH:mm:ss"),
   DATE("yyyy-MM-dd");
 
-  private String format;
+  private final String format;
 
   ExportSourceType(String format) {
     this.format = format;

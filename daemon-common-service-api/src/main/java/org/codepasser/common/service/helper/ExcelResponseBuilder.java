@@ -1,15 +1,7 @@
 package org.codepasser.common.service.helper;
 
-import static org.codepasser.common.model.ConstantInterface.CONDITION_BLANK;
-import static org.springframework.util.ReflectionUtils.doWithFields;
-import static org.springframework.util.ReflectionUtils.getField;
-import static org.springframework.util.ReflectionUtils.makeAccessible;
-
 import com.google.common.collect.Lists;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+
 import org.codepasser.common.service.response.ExcelResponse;
 import org.codepasser.common.service.response.excel.ExcelCell;
 import org.codepasser.common.service.response.excel.ExcelCellSchema;
@@ -22,6 +14,16 @@ import org.codepasser.common.service.response.excel.ExcelTableSchema;
 import org.codepasser.common.service.response.excel.ExportSource;
 import org.codepasser.common.service.response.excel.ExportSourceType;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static org.codepasser.common.model.ConstantInterface.CONDITION_BLANK;
+import static org.springframework.util.ReflectionUtils.doWithFields;
+import static org.springframework.util.ReflectionUtils.getField;
+import static org.springframework.util.ReflectionUtils.makeAccessible;
+
 /**
  * ExcelRow.
  *
@@ -31,7 +33,7 @@ import org.codepasser.common.service.response.excel.ExportSourceType;
  */
 public final class ExcelResponseBuilder {
 
-  private List<? extends Serializable> data;
+  private final List<? extends Serializable> data;
   private ExcelSheetSchema sheetSchema;
   private ExcelTableSchema tableSchema;
   private ExcelRowSchema rowSchema;

@@ -1,13 +1,14 @@
 package org.codepasser.common.service.helper;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.stream.Collectors.toList;
-
-import java.util.List;
-import java.util.function.Function;
 import org.codepasser.common.service.response.PagedData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.function.Function;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.stream.Collectors.toList;
 /**
  * PagedDataUtils.
  *

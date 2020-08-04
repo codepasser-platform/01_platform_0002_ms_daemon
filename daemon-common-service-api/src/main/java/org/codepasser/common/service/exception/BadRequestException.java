@@ -1,10 +1,10 @@
 package org.codepasser.common.service.exception;
 
-import static org.codepasser.common.service.exception.BadRequestException.Error.FAILED;
-
 import org.codepasser.common.exception.AbstractRuntimeException;
 import org.codepasser.common.exception.Message;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+
+import static org.codepasser.common.service.exception.BadRequestException.Error.FAILED;
 /**
  * BadRequestException.
  *
