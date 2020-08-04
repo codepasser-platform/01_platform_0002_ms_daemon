@@ -1,10 +1,5 @@
 package org.codepasser.common.service.conifguration.mail;
 
-import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
-
-import java.util.Properties;
-import javax.activation.MimeType;
-import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
@@ -13,6 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+
+import java.util.Properties;
+
+import javax.activation.MimeType;
+import javax.mail.internet.MimeMessage;
+
+import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
 
 @Configuration
 @ConditionalOnClass({MimeMessage.class, MimeType.class})

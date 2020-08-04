@@ -1,19 +1,22 @@
 package org.codepasser.common.service.conifguration.sms;
 
-import static com.google.common.collect.ImmutableMap.of;
-
 import com.google.common.util.concurrent.UncheckedExecutionException;
+
 import freemarker.template.TemplateException;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Locale;
-import java.util.Map;
+
 import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.RestClientException;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Locale;
+import java.util.Map;
+
+import static com.google.common.collect.ImmutableMap.of;
 
 public final class SmsSender {
 

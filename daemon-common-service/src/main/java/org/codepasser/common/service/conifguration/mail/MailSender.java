@@ -1,17 +1,9 @@
 package org.codepasser.common.service.conifguration.mail;
 
-import static com.google.common.collect.ImmutableMap.of;
-
 import com.google.common.util.concurrent.UncheckedExecutionException;
+
 import freemarker.template.TemplateException;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
 import org.slf4j.Logger;
@@ -20,6 +12,18 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import static com.google.common.collect.ImmutableMap.of;
 
 public final class MailSender
     implements MailSenderDsl,
@@ -36,8 +40,8 @@ public final class MailSender
   private JavaMailSender sender;
 
   private String from;
-  private List<String> to = new ArrayList<>();
-  private List<String> bcc = new ArrayList<>();
+  private final List<String> to = new ArrayList<>();
+  private final List<String> bcc = new ArrayList<>();
 
   private String subject;
   private FreemarkerTemplate template;

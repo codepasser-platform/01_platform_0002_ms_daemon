@@ -1,8 +1,9 @@
 package org.codepasser.common.service.conifguration.mail;
 
+import org.codepasser.common.model.security.UserBasic;
+
 import java.io.Serializable;
 import java.util.Map;
-import org.codepasser.common.model.security.UserBasic;
 
 public interface Mail {
 

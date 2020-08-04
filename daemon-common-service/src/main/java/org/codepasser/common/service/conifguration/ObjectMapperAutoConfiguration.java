@@ -1,6 +1,6 @@
 package org.codepasser.common.service.conifguration;
 
-import static org.springframework.data.domain.Sort.Direction.valueOf;
+import com.google.common.collect.Lists;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
@@ -14,10 +14,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
@@ -27,6 +24,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import static org.springframework.data.domain.Sort.Direction.valueOf;
 
 /**
  * ObjectMapperAutoConfiguration.

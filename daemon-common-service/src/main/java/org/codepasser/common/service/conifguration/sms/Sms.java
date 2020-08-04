@@ -1,8 +1,9 @@
 package org.codepasser.common.service.conifguration.sms;
 
+import org.codepasser.common.model.security.UserBasic;
+
 import java.io.Serializable;
 import java.util.Map;
-import org.codepasser.common.model.security.UserBasic;
 
 /**
  * Sms.

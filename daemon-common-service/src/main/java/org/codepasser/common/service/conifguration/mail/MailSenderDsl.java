@@ -1,11 +1,12 @@
 package org.codepasser.common.service.conifguration.mail;
 
+import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
+import org.springframework.mail.javamail.JavaMailSender;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
-import org.springframework.mail.javamail.JavaMailSender;
 
 public interface MailSenderDsl {
 

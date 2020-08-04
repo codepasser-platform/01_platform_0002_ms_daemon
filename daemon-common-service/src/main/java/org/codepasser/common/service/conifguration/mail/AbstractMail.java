@@ -1,20 +1,22 @@
 package org.codepasser.common.service.conifguration.mail;
 
-import static com.google.common.collect.Maps.newHashMap;
-import static java.util.Locale.CHINESE;
-import static org.codepasser.common.service.conifguration.mail.MailSender.newMailSender;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.PostConstruct;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import org.codepasser.common.async.AsyncCaller;
 import org.codepasser.common.model.security.UserBasic;
 import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
+import static com.google.common.collect.Maps.newHashMap;
+import static java.util.Locale.CHINESE;
+import static org.codepasser.common.service.conifguration.mail.MailSender.newMailSender;
 
 public abstract class AbstractMail implements Mail {
 

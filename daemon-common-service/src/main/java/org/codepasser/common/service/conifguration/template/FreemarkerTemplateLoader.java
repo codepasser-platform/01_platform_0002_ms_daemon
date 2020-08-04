@@ -1,14 +1,16 @@
 package org.codepasser.common.service.conifguration.template;
 
-import static org.codepasser.common.utils.Locales.fromValue;
-
 import freemarker.cache.TemplateLoader;
+
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Date;
 import java.util.Locale;
-import org.springframework.stereotype.Component;
+
+import static org.codepasser.common.utils.Locales.fromValue;
 
 @Component
 public class FreemarkerTemplateLoader implements TemplateLoader {

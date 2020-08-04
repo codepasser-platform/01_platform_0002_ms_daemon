@@ -1,11 +1,5 @@
 package org.codepasser.common.service.conifguration.template;
 
-import static org.springframework.util.ReflectionUtils.doWithFields;
-import static org.springframework.util.ReflectionUtils.makeAccessible;
-import static org.springframework.util.ReflectionUtils.setField;
-
-import java.io.IOException;
-import java.lang.reflect.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -13,6 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
+
+import static org.springframework.util.ReflectionUtils.doWithFields;
+import static org.springframework.util.ReflectionUtils.makeAccessible;
+import static org.springframework.util.ReflectionUtils.setField;
 
 @Component
 @ConditionalOnBean(TemplateConfiguration.class)

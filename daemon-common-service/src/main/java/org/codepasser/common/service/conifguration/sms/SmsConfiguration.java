@@ -1,10 +1,11 @@
 package org.codepasser.common.service.conifguration.sms;
 
-import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.JTL;
-
-import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
+
+import static org.codepasser.common.service.conifguration.sms.SmsConfiguration.SmsChannel.JTL;
 
 /**
  * SmsConfiguration.

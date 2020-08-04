@@ -1,12 +1,15 @@
 package org.codepasser.common.service.conifguration.template;
 
-import static freemarker.cache.NullCacheStorage.INSTANCE;
-
 import freemarker.template.TemplateExceptionHandler;
-import java.io.IOException;
-import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+
+import static freemarker.cache.NullCacheStorage.INSTANCE;
 
 @Configuration
 public class FreemarkerTemplateConfiguration implements TemplateConfiguration {

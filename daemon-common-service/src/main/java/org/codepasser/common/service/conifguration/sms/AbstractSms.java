@@ -1,12 +1,5 @@
 package org.codepasser.common.service.conifguration.sms;
 
-import static com.google.common.collect.Maps.newHashMap;
-import static java.util.Locale.CHINESE;
-import static org.codepasser.common.service.conifguration.sms.SmsSender.newSmsSender;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import org.codepasser.common.async.AsyncCaller;
 import org.codepasser.common.model.security.UserBasic;
 import org.codepasser.common.processor.annotation.InjectLogger;
@@ -14,6 +7,14 @@ import org.codepasser.common.service.conifguration.template.FreemarkerTemplate;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.google.common.collect.Maps.newHashMap;
+import static java.util.Locale.CHINESE;
+import static org.codepasser.common.service.conifguration.sms.SmsSender.newSmsSender;
 
 public abstract class AbstractSms implements Sms {
 

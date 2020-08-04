@@ -3,15 +3,16 @@ package org.codepasser.common.service.conifguration.template;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Locale;
 
 public class FreemarkerTemplate {
 
-  private Configuration configuration;
-  private String name;
-  private SourceResolver sourceResolver;
+  private final Configuration configuration;
+  private final String name;
+  private final SourceResolver sourceResolver;
   private Template template;
   private Object source;
 
