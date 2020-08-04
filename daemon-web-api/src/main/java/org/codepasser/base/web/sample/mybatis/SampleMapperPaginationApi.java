@@ -1,11 +1,7 @@
 package org.codepasser.base.web.sample.mybatis;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import com.github.pagehelper.PageInfo;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+
 import org.codepasser.base.model.entity.dto.sample.SampleGroupItems;
 import org.codepasser.base.service.sample.mybatis.SampleMapperPaginationService;
 import org.codepasser.common.service.exception.ServiceException;
@@ -13,6 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleMapperPaginationApi.
