@@ -22,8 +22,8 @@ public interface Authority {
     MGR("管理员", "管理"),
     CLIENT("客户端", "OAUTH2 客户端");
 
-    private String comment;
-    private String description;
+    private final String comment;
+    private final String description;
 
     Role(String comment, String description) {
       this.comment = comment;
@@ -51,7 +51,7 @@ public interface Authority {
     AUTHORIZED("认证授权"),
     ANONYMOUS("未认证授权");
 
-    private String description;
+    private final String description;
 
     Session(String description) {
       this.description = description;
@@ -77,7 +77,7 @@ public interface Authority {
   enum Service implements Authority {
     DAEMON_API("服务资源-API");
 
-    private String description;
+    private final String description;
 
     Service(String description) {
       this.description = description;
@@ -105,8 +105,8 @@ public interface Authority {
     WRITE("write", "写入"),
     SIGN("sign", "签名");
 
-    private String comment;
-    private String description;
+    private final String comment;
+    private final String description;
 
     Scope(String comment, String description) {
       this.comment = comment;
@@ -142,8 +142,8 @@ public interface Authority {
     CLIENT_CREDENTIALS("client_credentials", "客户端凭据(客户端ID以及Key)类型"),
     REFRESH_TOKEN("refresh_token", "使用刷新令牌获取新的令牌(authorization_code/password两种模式下支持)");
 
-    private String comment;
-    private String description;
+    private final String comment;
+    private final String description;
 
     Grant(String comment, String description) {
       this.comment = comment;

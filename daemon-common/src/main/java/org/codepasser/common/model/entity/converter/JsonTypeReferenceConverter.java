@@ -1,10 +1,11 @@
 package org.codepasser.common.model.entity.converter;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import javax.persistence.AttributeConverter;
+
 import static org.codepasser.common.utils.Json.readValue;
 import static org.codepasser.common.utils.Json.writeValueAsString;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import javax.persistence.AttributeConverter;
 /**
  * JsonTypeReferenceConverter.
  *

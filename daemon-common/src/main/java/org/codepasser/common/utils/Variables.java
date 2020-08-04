@@ -1,11 +1,11 @@
 package org.codepasser.common.utils;
 
-import static java.lang.String.valueOf;
-import static java.util.regex.Matcher.quoteReplacement;
-
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.lang.String.valueOf;
+import static java.util.regex.Matcher.quoteReplacement;
 
 /**
  * Variables.
@@ -23,7 +23,7 @@ public final class Variables {
   public static final class VariableExpressionReplacer {
 
     private static final Pattern VAR_HOLDER_PATTERN = Pattern.compile("\\$\\{(\\w+)\\}");
-    private Map<String, Object> variables;
+    private final Map<String, Object> variables;
     private Pattern holderPattern = VAR_HOLDER_PATTERN;
 
     VariableExpressionReplacer(Map<String, Object> variables) {

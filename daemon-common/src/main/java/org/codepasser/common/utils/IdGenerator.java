@@ -1,18 +1,19 @@
 package org.codepasser.common.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.Integer.parseInt;
 import static java.lang.Integer.toUnsignedLong;
 import static java.lang.System.getProperty;
 import static java.lang.System.getenv;
 import static java.time.temporal.ChronoField.INSTANT_SECONDS;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
 
 /**
  * ID 生成器. [SERVER * 16 + SEQ * 16 + TIME * 32].

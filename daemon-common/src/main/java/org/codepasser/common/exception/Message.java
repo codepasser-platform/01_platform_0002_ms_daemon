@@ -1,8 +1,10 @@
 package org.codepasser.common.exception;
 
+import com.google.common.base.Strings;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Strings;
+
 import java.io.Serializable;
 
 /**

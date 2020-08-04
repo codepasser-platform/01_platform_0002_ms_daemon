@@ -1,10 +1,11 @@
 package org.codepasser.common.model.data;
 
-import static org.codepasser.common.model.data.inner.State.OK;
-
-import java.io.Serializable;
 import org.codepasser.common.model.data.inner.State;
 import org.springframework.data.annotation.Id;
+
+import java.io.Serializable;
+
+import static org.codepasser.common.model.data.inner.State.OK;
 /**
  * BaseData.
  *

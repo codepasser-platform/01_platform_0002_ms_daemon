@@ -1,10 +1,11 @@
 package org.codepasser.common.utils;
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import org.codepasser.common.processor.annotation.InjectLogger;
 import org.slf4j.Logger;
 import org.springframework.util.Base64Utils;
+
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 /**
  * CodingUtils.

@@ -1,15 +1,17 @@
 package org.codepasser.common.model.security;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
-import java.util.EnumSet;
+
 import org.codepasser.common.model.Out;
 import org.codepasser.common.model.entity.inner.LockType;
 import org.codepasser.common.model.entity.inner.UserStatus;
 import org.codepasser.common.model.entity.inner.UserType;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
+import java.util.EnumSet;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 public class UserSelf implements Out<UserSelf, UserBasic> {
   private static final long serialVersionUID = -4816590577146619184L;

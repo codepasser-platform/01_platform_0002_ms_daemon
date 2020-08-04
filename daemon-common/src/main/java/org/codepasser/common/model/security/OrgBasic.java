@@ -1,8 +1,10 @@
 package org.codepasser.common.model.security;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.io.Serializable;
+
 import org.codepasser.common.model.entity.inner.OrgType;
+
+import java.io.Serializable;
 
 /**
  * EnterpriseBasic.

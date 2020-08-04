@@ -1,7 +1,8 @@
 package org.codepasser.common.model.security;
 
-import java.io.Serializable;
 import org.codepasser.common.model.entity.inner.UserProvider;
+
+import java.io.Serializable;
 
 public class BindAccount implements Serializable {
 

@@ -11,8 +11,8 @@ public enum OrgType {
   ROOT("ROOT", "顶级组织"),
   FUNCTIONAL("FUNCTIONAL", "职能部门");
 
-  private String key;
-  private String comment;
+  private final String key;
+  private final String comment;
 
   OrgType(String key, String comment) {
     this.key = key;

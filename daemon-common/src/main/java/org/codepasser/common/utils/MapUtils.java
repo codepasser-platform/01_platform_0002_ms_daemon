@@ -1,9 +1,11 @@
 package org.codepasser.common.utils;
 
 import com.google.common.collect.Maps;
+
+import org.springframework.util.Assert;
+
 import java.util.Arrays;
 import java.util.Map;
-import org.springframework.util.Assert;
 
 public class MapUtils {
 

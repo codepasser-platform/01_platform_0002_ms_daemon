@@ -1,18 +1,21 @@
 package org.codepasser.common.utils;
 
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+import org.codepasser.common.exception.CommonException;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.imageio.ImageIO;
+
 import static com.google.common.collect.ImmutableMap.of;
 import static com.google.zxing.BarcodeFormat.QR_CODE;
 import static com.google.zxing.EncodeHintType.CHARACTER_SET;
 import static org.codepasser.common.exception.CommonException.Error.QR_CODE_GENERATE_FAILED;
-
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.OutputStream;
-import javax.imageio.ImageIO;
-import org.codepasser.common.exception.CommonException;
 
 /**
  * QRCodeGenerator.
@@ -43,7 +46,7 @@ public final class QRCodeGenerator {
 
   public static final class QRCodeImage {
 
-    private BitMatrix matrix;
+    private final BitMatrix matrix;
 
     private QRCodeImage(BitMatrix matrix) {
       this.matrix = matrix;

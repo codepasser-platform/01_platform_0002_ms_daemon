@@ -1,14 +1,16 @@
 package org.codepasser.common.model.security;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.EnumSet;
+
 import org.codepasser.common.model.entity.inner.LockType;
 import org.codepasser.common.model.entity.inner.UserStatus;
 import org.codepasser.common.model.entity.inner.UserType;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.EnumSet;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 /**
  * UserBasic.

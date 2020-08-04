@@ -1,10 +1,11 @@
 package org.codepasser.common.exception;
 
-import static java.lang.String.format;
-
-import java.util.Locale;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+
+import java.util.Locale;
+
+import static java.lang.String.format;
 
 /**
  * AbstractException.

@@ -1,19 +1,21 @@
 package org.codepasser.common.model.entity;
 
-import static javax.persistence.EnumType.STRING;
-import static org.codepasser.common.model.entity.inner.State.OK;
+import org.codepasser.common.model.entity.inner.State;
+import org.codepasser.common.utils.IdGenerator;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
-import org.codepasser.common.model.entity.inner.State;
-import org.codepasser.common.utils.IdGenerator;
-import org.hibernate.annotations.DynamicUpdate;
+
+import static javax.persistence.EnumType.STRING;
+import static org.codepasser.common.model.entity.inner.State.OK;
 
 /**
  * Base.
