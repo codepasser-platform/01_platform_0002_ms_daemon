@@ -1,11 +1,12 @@
 package org.codepasser.common.web.exception;
 
-import java.io.Serializable;
 import org.codepasser.common.exception.AbstractException;
 import org.codepasser.common.exception.AbstractRuntimeException;
 import org.codepasser.common.exception.AdException;
 import org.codepasser.common.exception.Message;
 import org.springframework.security.core.AuthenticationException;
+
+import java.io.Serializable;
 
 /**
  * RepresentationMessage.
@@ -17,7 +18,7 @@ import org.springframework.security.core.AuthenticationException;
 public class RepresentationMessage implements Serializable {
 
   private static final long serialVersionUID = -6386495208759109800L;
-  private Message message;
+  private final Message message;
 
   public RepresentationMessage(AdException exception) {
     this.message = new Message(exception);

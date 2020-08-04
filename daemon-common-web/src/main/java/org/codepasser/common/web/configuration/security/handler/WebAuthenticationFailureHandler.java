@@ -1,13 +1,5 @@
 package org.codepasser.common.web.configuration.security.handler;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
-import static org.springframework.http.MediaType.APPLICATION_JSON;
-
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.codepasser.common.web.exception.RepresentationMessage;
 import org.codepasser.common.web.processor.HttpEntityProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +8,16 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.util.StringUtils;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 public class WebAuthenticationFailureHandler
     implements AuthenticationFailureHandler,

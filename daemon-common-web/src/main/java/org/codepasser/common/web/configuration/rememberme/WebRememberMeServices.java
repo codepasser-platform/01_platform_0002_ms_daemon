@@ -1,16 +1,18 @@
 package org.codepasser.common.web.configuration.rememberme;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-
-import java.lang.reflect.Method;
-import javax.annotation.Nullable;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.util.ReflectionUtils;
+
+import java.lang.reflect.Method;
+
+import javax.annotation.Nullable;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class WebRememberMeServices extends PersistentTokenBasedRememberMeServices {
 
@@ -19,9 +21,9 @@ public class WebRememberMeServices extends PersistentTokenBasedRememberMeService
   protected static final int TOKEN_VALIDITY_ONE_WEEK_SECONDS = 7 * 24 * 60 * 60;
 
   private final Method setHttpOnlyMethod;
-  private String cookieDomain;
-  private String cookiePath;
-  private int cookieValidity = TOKEN_VALIDITY_ONE_WEEK_SECONDS;
+  private final String cookieDomain;
+  private final String cookiePath;
+  private final int cookieValidity = TOKEN_VALIDITY_ONE_WEEK_SECONDS;
 
   public WebRememberMeServices(
       String key,

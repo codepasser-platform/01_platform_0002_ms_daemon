@@ -44,8 +44,8 @@ public class HttpSessionConfiguration {
   @SuppressWarnings("WeakerAccess")
   public static final class WebSessionIdResolver implements HttpSessionIdResolver {
 
-    private HeaderHttpSessionIdResolver headerHttpSessionIdResolver;
-    private CookieHttpSessionIdResolver cookieHttpSessionIdResolver;
+    private final HeaderHttpSessionIdResolver headerHttpSessionIdResolver;
+    private final CookieHttpSessionIdResolver cookieHttpSessionIdResolver;
 
     public WebSessionIdResolver(String cookieDomainNamePattern, String cookiePath) {
       this.headerHttpSessionIdResolver = new HeaderHttpSessionIdResolver(SESSION_AUTH_TOKEN_NAME);

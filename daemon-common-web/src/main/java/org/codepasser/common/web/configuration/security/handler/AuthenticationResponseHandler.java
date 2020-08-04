@@ -1,9 +1,11 @@
 package org.codepasser.common.web.configuration.security.handler;
 
+import org.springframework.security.core.AuthenticationException;
+
 import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.security.core.AuthenticationException;
 
 /**
  * AuthenticationResponseHandler.

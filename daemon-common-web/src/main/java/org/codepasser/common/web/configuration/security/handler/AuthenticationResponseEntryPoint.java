@@ -1,12 +1,14 @@
 package org.codepasser.common.web.configuration.security.handler;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * AuthenticationResponseEntryPoint.
@@ -52,7 +54,7 @@ public class AuthenticationResponseEntryPoint extends LoginUrlAuthenticationEntr
 
   public class AuthenticationResponseRegister {
 
-    private RequestMatcher matcher;
+    private final RequestMatcher matcher;
     private AuthenticationResponseHandler authenticationResponseHandler;
 
     private AuthenticationResponseRegister(RequestMatcher matcher) {

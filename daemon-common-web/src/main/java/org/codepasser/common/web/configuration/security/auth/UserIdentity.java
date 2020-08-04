@@ -1,18 +1,19 @@
 package org.codepasser.common.web.configuration.security.auth;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import org.codepasser.common.model.security.UserBasic;
 import org.codepasser.common.model.security.UserExternalBasic;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserIdentity implements org.springframework.security.core.userdetails.UserDetails {
 
   private static final long serialVersionUID = 689793518503603124L;
 
-  private UserBasic user;
+  private final UserBasic user;
 
   private UserExternalBasic externalUser;
 

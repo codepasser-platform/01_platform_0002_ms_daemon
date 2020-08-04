@@ -1,8 +1,5 @@
 package org.codepasser.common.web.basement;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import org.codepasser.common.model.security.UserSelf;
 import org.codepasser.common.service.response.AssertResponse;
 import org.codepasser.common.web.configuration.security.auth.UserIdentity;
@@ -10,6 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SessionAuthenticatedApi.

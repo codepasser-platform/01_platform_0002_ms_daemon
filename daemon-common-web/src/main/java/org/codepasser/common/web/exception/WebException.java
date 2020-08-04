@@ -1,8 +1,8 @@
 package org.codepasser.common.web.exception;
 
-import static org.codepasser.common.web.exception.WebException.Error.RUNTIME_ERROR;
-
 import org.codepasser.common.exception.AbstractException;
+
+import static org.codepasser.common.web.exception.WebException.Error.RUNTIME_ERROR;
 
 /**
  * WebException.

@@ -1,17 +1,18 @@
 package org.codepasser.common.web.configuration.security.auth;
 
-import static java.lang.String.format;
-import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
-import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
-import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
-
-import java.util.Optional;
 import org.codepasser.common.model.security.UserBasic;
 import org.codepasser.common.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+
+import static java.lang.String.format;
+import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
+import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
+import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
 
 @Component
 public class UserIdentityService implements UserDetailsService {

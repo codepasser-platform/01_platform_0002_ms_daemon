@@ -1,9 +1,7 @@
 package org.codepasser.common.web.processor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +9,11 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * HttpEntityProcessor.

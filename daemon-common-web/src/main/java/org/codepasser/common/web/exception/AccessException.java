@@ -1,17 +1,5 @@
 package org.codepasser.common.web.exception;
 
-import static org.codepasser.common.web.exception.AccessException.Error.ACCOUNT_EXPIRED;
-import static org.codepasser.common.web.exception.AccessException.Error.ACCOUNT_LOCKED;
-import static org.codepasser.common.web.exception.AccessException.Error.AUTH_FAILED;
-import static org.codepasser.common.web.exception.AccessException.Error.AUTH_REQUIRED;
-import static org.codepasser.common.web.exception.AccessException.Error.BAD_CREDENTIALS;
-import static org.codepasser.common.web.exception.AccessException.Error.CREDENTIALS_EXPIRED;
-import static org.codepasser.common.web.exception.AccessException.Error.DENIED;
-import static org.codepasser.common.web.exception.AccessException.Error.USER_NOT_FOUND;
-
-import java.util.HashMap;
-import java.util.Map;
-import javax.security.auth.login.AccountExpiredException;
 import org.codepasser.common.exception.AbstractException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -20,6 +8,20 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.security.auth.login.AccountExpiredException;
+
+import static org.codepasser.common.web.exception.AccessException.Error.ACCOUNT_EXPIRED;
+import static org.codepasser.common.web.exception.AccessException.Error.ACCOUNT_LOCKED;
+import static org.codepasser.common.web.exception.AccessException.Error.AUTH_FAILED;
+import static org.codepasser.common.web.exception.AccessException.Error.AUTH_REQUIRED;
+import static org.codepasser.common.web.exception.AccessException.Error.BAD_CREDENTIALS;
+import static org.codepasser.common.web.exception.AccessException.Error.CREDENTIALS_EXPIRED;
+import static org.codepasser.common.web.exception.AccessException.Error.DENIED;
+import static org.codepasser.common.web.exception.AccessException.Error.USER_NOT_FOUND;
 
 public class AccessException extends AbstractException {
 
