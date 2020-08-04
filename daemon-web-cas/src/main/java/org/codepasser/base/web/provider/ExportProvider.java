@@ -1,15 +1,7 @@
 package org.codepasser.base.web.provider;
 
-import static org.codepasser.base.model.entity.inner.AttachmentCategory.EXPORT;
-
 import com.google.common.base.Throwables;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
+
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
@@ -38,6 +30,16 @@ import org.codepasser.common.web.configuration.storage.StorageHelper;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static org.codepasser.base.model.entity.inner.AttachmentCategory.EXPORT;
 
 /**
  * FileProvider.

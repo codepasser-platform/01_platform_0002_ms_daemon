@@ -1,10 +1,5 @@
 package org.codepasser.base.web.sample.cache;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
-import java.util.List;
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.data.Area;
 import org.codepasser.base.service.sample.cache.SampleRedisCacheService;
 import org.codepasser.common.service.exception.ServiceException;
@@ -13,6 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * SampleRedisCacheApi.
@@ -55,10 +57,7 @@ public class SampleRedisCacheApi {
   }
 
   @Nonnull
-  @RequestMapping(
-      value = "/caching/auto/evict",
-      method = GET,
-      produces = APPLICATION_JSON_VALUE)
+  @RequestMapping(value = "/caching/auto/evict", method = GET, produces = APPLICATION_JSON_VALUE)
   public AssertResponse cachingAutoEvict(
       @RequestParam(value = "parent", required = false) String parent,
       @Nonnull @RequestParam(value = "level") Integer level)

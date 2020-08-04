@@ -1,9 +1,5 @@
 package org.codepasser.base.web.sample.exception;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
 import org.codepasser.base.service.sample.bo.SampleGroupCreation;
 import org.codepasser.base.service.sample.bo.SampleUserCreation;
 import org.codepasser.base.service.sample.exception.SampleUncaughtService;
@@ -14,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * SampleFeignExceptionApi.
