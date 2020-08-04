@@ -1,14 +1,16 @@
 package org.codepasser.base.dao.repository.mapper;
 
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nonnull;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.codepasser.base.model.entity.dto.UserItem;
 import org.codepasser.common.model.entity.inner.State;
 import org.codepasser.common.model.security.Authority;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
 
 /**
  * UserMapper.

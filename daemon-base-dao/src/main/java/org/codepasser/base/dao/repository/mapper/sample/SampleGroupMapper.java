@@ -1,7 +1,5 @@
 package org.codepasser.base.dao.repository.mapper.sample;
 
-import java.util.List;
-import java.util.Set;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,6 +7,9 @@ import org.apache.ibatis.annotations.Select;
 import org.codepasser.base.model.entity.dto.sample.SampleGroupItems;
 import org.codepasser.common.model.entity.inner.State;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * SampleGroupMapper.

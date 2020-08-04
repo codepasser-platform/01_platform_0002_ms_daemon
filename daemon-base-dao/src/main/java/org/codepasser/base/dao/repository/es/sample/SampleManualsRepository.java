@@ -1,11 +1,12 @@
 package org.codepasser.base.dao.repository.es.sample;
 
-import javax.annotation.Nonnull;
 import org.codepasser.base.model.es.sample.SampleManual;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
+
+import javax.annotation.Nonnull;
 
 /**
  * SampleManualsRepository.

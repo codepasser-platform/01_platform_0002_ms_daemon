@@ -1,10 +1,5 @@
 package org.codepasser.base.dao.repository.redis;
 
-import static org.codepasser.common.exception.CommonException.Error.IDENTIFYING_CODE_CYCLE_ERROR;
-
-import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import org.codepasser.base.model.business.category.IdentifyingCodeType;
 import org.codepasser.common.exception.CommonException;
 import org.codepasser.common.processor.annotation.InjectLogger;
@@ -13,6 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import static org.codepasser.common.exception.CommonException.Error.IDENTIFYING_CODE_CYCLE_ERROR;
 
 /**
  * IdentifyingCodeRepository.
