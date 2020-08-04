@@ -1,9 +1,10 @@
 package org.codepasser.base.model.entity.builder;
 
-import java.util.Date;
 import org.codepasser.base.model.entity.User;
 import org.codepasser.common.model.entity.inner.UserStatus;
 import org.codepasser.common.model.entity.inner.UserType;
+
+import java.util.Date;
 
 /**
  * UserBuilder.

@@ -1,14 +1,16 @@
 package org.codepasser.base.model.entity.dto;
 
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.EnumSet;
+
 import org.codepasser.common.model.entity.inner.LockType;
 import org.codepasser.common.model.entity.inner.UserType;
 import org.codepasser.common.model.security.Authority;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.EnumSet;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 /**
  * UserItem.

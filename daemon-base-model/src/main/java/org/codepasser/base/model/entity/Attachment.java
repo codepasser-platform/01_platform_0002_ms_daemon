@@ -1,16 +1,17 @@
 package org.codepasser.base.model.entity;
 
-import static javax.persistence.EnumType.STRING;
-import static org.codepasser.base.model.entity.inner.AttachmentStatus.INIT;
+import org.codepasser.base.model.entity.inner.AttachmentCategory;
+import org.codepasser.base.model.entity.inner.AttachmentStatus;
+import org.codepasser.base.model.entity.inner.DocumentType;
+import org.codepasser.common.model.entity.Base;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
-import org.codepasser.base.model.entity.inner.AttachmentCategory;
-import org.codepasser.base.model.entity.inner.AttachmentStatus;
-import org.codepasser.base.model.entity.inner.DocumentType;
-import org.codepasser.common.model.entity.Base;
+
+import static javax.persistence.EnumType.STRING;
+import static org.codepasser.base.model.entity.inner.AttachmentStatus.INIT;
 
 /**
  * Attachment.

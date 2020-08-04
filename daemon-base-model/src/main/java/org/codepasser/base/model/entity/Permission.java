@@ -1,13 +1,14 @@
 package org.codepasser.base.model.entity;
 
-import static javax.persistence.EnumType.STRING;
+import org.codepasser.base.model.entity.inner.PermissionMethod;
+import org.codepasser.common.model.entity.Base;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
-import org.codepasser.base.model.entity.inner.PermissionMethod;
-import org.codepasser.common.model.entity.Base;
+
+import static javax.persistence.EnumType.STRING;
 
 /**
  * Permission.

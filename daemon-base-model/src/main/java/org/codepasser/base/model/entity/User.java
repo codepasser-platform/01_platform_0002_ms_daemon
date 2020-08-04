@@ -1,20 +1,5 @@
 package org.codepasser.base.model.entity;
 
-import static javax.persistence.EnumType.STRING;
-import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
-import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
-import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
-
-import java.util.Date;
-import java.util.EnumSet;
-import javax.annotation.Nullable;
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import org.codepasser.base.model.entity.converter.AuthoritySetConverter;
 import org.codepasser.base.model.entity.converter.UserStatusSetConverter;
 import org.codepasser.base.model.validation.UserIdentifier;
@@ -24,6 +9,23 @@ import org.codepasser.common.model.entity.inner.UserStatus;
 import org.codepasser.common.model.entity.inner.UserType;
 import org.codepasser.common.model.security.Authority;
 import org.codepasser.common.model.validation.Group;
+
+import java.util.Date;
+import java.util.EnumSet;
+
+import javax.annotation.Nullable;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import static javax.persistence.EnumType.STRING;
+import static org.codepasser.common.model.RegexPattern.REGEX_MAIL;
+import static org.codepasser.common.model.RegexPattern.REGEX_PHONE;
+import static org.codepasser.common.model.RegexPattern.REGEX_USER_NAME;
 
 /**
  * User.

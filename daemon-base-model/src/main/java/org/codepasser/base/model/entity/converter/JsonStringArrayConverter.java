@@ -1,8 +1,10 @@
 package org.codepasser.base.model.entity.converter;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import java.util.ArrayList;
+
 import org.codepasser.common.model.entity.converter.JsonTypeReferenceConverter;
+
+import java.util.ArrayList;
 
 /**
  * JsonStringArrayConverter.
@@ -13,7 +15,7 @@ import org.codepasser.common.model.entity.converter.JsonTypeReferenceConverter;
  */
 public class JsonStringArrayConverter extends JsonTypeReferenceConverter<ArrayList<String>> {
 
-  private TypeReference<ArrayList<String>> typeReference;
+  private final TypeReference<ArrayList<String>> typeReference;
 
   {
     typeReference = new TypeReference<ArrayList<String>>() {};

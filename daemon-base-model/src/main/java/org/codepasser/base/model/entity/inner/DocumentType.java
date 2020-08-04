@@ -21,9 +21,9 @@ public enum DocumentType {
   BMP("application/x-bmp", ".bmp", "BMP Image"),
   UNKNOWN("application/unknown", ".unknown", "unknown");
 
-  private String type;
-  private String extension;
-  private String description;
+  private final String type;
+  private final String extension;
+  private final String description;
 
   DocumentType(String type, String extension, String description) {
     this.type = type;

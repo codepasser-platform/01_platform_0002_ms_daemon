@@ -1,9 +1,9 @@
 package org.codepasser.base.model.entity.converter;
 
+import javax.persistence.AttributeConverter;
+
 import static org.codepasser.common.utils.Json.readValue;
 import static org.codepasser.common.utils.Json.writeValueAsString;
-
-import javax.persistence.AttributeConverter;
 
 abstract class JsonConverter<T> implements AttributeConverter<T, String> {
 

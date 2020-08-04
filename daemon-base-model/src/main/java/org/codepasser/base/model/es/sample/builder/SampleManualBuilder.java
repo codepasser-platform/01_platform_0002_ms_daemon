@@ -1,9 +1,10 @@
 package org.codepasser.base.model.es.sample.builder;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.codepasser.base.model.es.sample.SampleManual;
 import org.springframework.beans.BeanUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * SampleManualBuilder.

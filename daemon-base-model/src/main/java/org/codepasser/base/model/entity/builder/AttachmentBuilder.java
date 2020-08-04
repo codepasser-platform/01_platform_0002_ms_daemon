@@ -1,10 +1,11 @@
 package org.codepasser.base.model.entity.builder;
 
-import java.util.Date;
 import org.codepasser.base.model.entity.Attachment;
 import org.codepasser.base.model.entity.inner.AttachmentCategory;
 import org.codepasser.base.model.entity.inner.DocumentType;
 import org.springframework.beans.BeanUtils;
+
+import java.util.Date;
 
 /**
  * AttachmentBuilder.

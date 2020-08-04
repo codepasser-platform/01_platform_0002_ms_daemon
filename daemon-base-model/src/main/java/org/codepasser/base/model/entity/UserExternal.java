@@ -1,16 +1,18 @@
 package org.codepasser.base.model.entity;
 
+import org.codepasser.base.model.entity.converter.MapConverter;
+import org.codepasser.common.model.entity.Base;
+import org.codepasser.common.model.entity.inner.UserProvider;
+
 import java.util.Date;
 import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
-import org.codepasser.base.model.entity.converter.MapConverter;
-import org.codepasser.common.model.entity.Base;
-import org.codepasser.common.model.entity.inner.UserProvider;
 
 /**
  * UserExternal.

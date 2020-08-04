@@ -16,8 +16,8 @@ public enum AttachmentCategory {
   REPAIRS_PDF("repairs_pdf", "维修案例反馈PDF"),
   REVIEW("review", "手册错误反馈附件");
 
-  private String key;
-  private String comment;
+  private final String key;
+  private final String comment;
 
   AttachmentCategory(String key, String comment) {
     this.key = key;

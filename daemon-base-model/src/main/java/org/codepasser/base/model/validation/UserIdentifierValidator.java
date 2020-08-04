@@ -1,14 +1,16 @@
 package org.codepasser.base.model.validation;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static org.springframework.beans.BeanUtils.findDeclaredMethod;
+import org.codepasser.common.processor.annotation.InjectLogger;
+import org.slf4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import org.codepasser.common.processor.annotation.InjectLogger;
-import org.slf4j.Logger;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.springframework.beans.BeanUtils.findDeclaredMethod;
 /**
  * UserIdentifierValidator.
  *

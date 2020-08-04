@@ -1,9 +1,11 @@
 package org.codepasser.base.model.entity.converter;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import java.util.EnumSet;
+
 import org.codepasser.common.model.entity.converter.JsonTypeReferenceConverter;
 import org.codepasser.common.model.security.Authority;
+
+import java.util.EnumSet;
 
 /**
  * AuthoritySetConverter.
@@ -14,7 +16,7 @@ import org.codepasser.common.model.security.Authority;
  */
 public class AuthoritySetConverter extends JsonTypeReferenceConverter<EnumSet<Authority.Role>> {
 
-  private TypeReference<EnumSet<Authority.Role>> typeReference;
+  private final TypeReference<EnumSet<Authority.Role>> typeReference;
 
   {
     typeReference = new TypeReference<EnumSet<Authority.Role>>() {};

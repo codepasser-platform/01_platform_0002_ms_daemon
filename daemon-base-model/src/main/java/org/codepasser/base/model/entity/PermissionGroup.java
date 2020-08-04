@@ -1,9 +1,10 @@
 package org.codepasser.base.model.entity;
 
+import org.codepasser.common.model.entity.Base;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.codepasser.common.model.entity.Base;
 
 /**
  * PermissionGroup.

@@ -1,12 +1,14 @@
 package org.codepasser.base.model.entity.security;
 
+import org.codepasser.common.utils.IdGenerator;
+
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.codepasser.common.utils.IdGenerator;
 
 /**
  * PersistentLogins.
