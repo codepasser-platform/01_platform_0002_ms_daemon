@@ -5,6 +5,7 @@ import org.codepasser.common.web.configuration.http.DaemonRequestWrapper;
 import org.slf4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,7 +50,14 @@ public class RequestPreflightFilter implements Filter {
       throws IOException, ServletException {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
     String path = request.getServletPath();
+    // Exclude path
     if (isExclude(path)) {
+      filterChain.doFilter(servletRequest, servletResponse);
+      return;
+    }
+    // Multipart form with file upload
+    String contentType = request.getHeader("Content-Type");
+    if (!StringUtils.isEmpty(contentType) && contentType.startsWith("multipart/form-data")) {
       filterChain.doFilter(servletRequest, servletResponse);
       return;
     }
