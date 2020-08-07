@@ -98,13 +98,9 @@ spring:
         max-wait: -1
   # Spring Data
   data:
-    # Spring Data Mongo
+    # Spring Data Mongo(Cluster support)
     mongodb:
-      host: 172.16.20.121
-      port: 27017
-      database: daemon
-      username: daemon
-      password: cde3VFR$
+      uri: mongodb://daemon:cde3VFR$@172.16.20.121:27017,172.16.20.121:27027,172.16.20.121:27037/daemon
 
 # Application configuration
 daemon:
