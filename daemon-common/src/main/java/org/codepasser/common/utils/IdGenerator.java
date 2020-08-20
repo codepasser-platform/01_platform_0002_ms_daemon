@@ -62,6 +62,7 @@ public class IdGenerator {
   private void calculate() {
     long now = currentSeconds();
     if (now == seconds) {
+      // sequence overflow 2^16-1 = 65535(10 radix) 1111111111111111(2 radix) 0xFFFF (16 radix)
       if (++sequence > 0xFFFF) {
         logger.warn("sequence overflow, waiting.");
         try {
@@ -82,7 +83,8 @@ public class IdGenerator {
   }
 
   private synchronized long generate() {
-    checkArgument(0xFFFFFF >= machineId, "machine id overflow");
+    // Machine id overflow 2^15-1 = 32767(10 radix) 0111111111111111(2 radix) 0x7FFF (16 radix)
+    checkArgument(machineId <= 0x7FFF, "machine id overflow :" + machineId);
     calculate();
     long result = 0;
     result = result | (toUnsignedLong(machineId) << 48);
@@ -91,8 +93,26 @@ public class IdGenerator {
     return result;
   }
 
-  //  public static void main(String... args) {
-  //    System.out.println(next());
-  //    System.out.println(nextVarchar());
-  //  }
+  public static void main(String... args) throws ParseException {
+    //    // Max scope id test
+    //    int machineId = new Double(Math.pow(2, 15) - 1).intValue();
+    //    int sequence = new Double(Math.pow(2, 16) - 1).intValue();
+    //    long seconds = new Double(Math.pow(2, 32) - 1).longValue();
+    //    System.out.println(machineId);
+    //    System.out.println(Long.toBinaryString(machineId));
+    //    System.out.println(sequence);
+    //    System.out.println(Long.toBinaryString(sequence));
+    //    System.out.println(seconds);
+    //    System.out.println(Long.toBinaryString(seconds));
+    //    long result = 0;
+    //    result = result | (toUnsignedLong(machineId) << 48);
+    //    result = result | (toUnsignedLong(sequence) << 32);
+    //    result = result | seconds;
+    //    System.out.println(result);
+    //    System.out.println(Long.toBinaryString(result));
+    //    long id = IdGenerator.next();
+    //    System.out.println(id);
+    //    System.out.println(Long.toBinaryString(id).length());
+    //    System.out.println(Long.toBinaryString(id));
+  }
 }
