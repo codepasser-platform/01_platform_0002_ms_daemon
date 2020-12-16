@@ -15,12 +15,12 @@ daemon:
       admin-settings:
         admin-id: 1
         admin-name: admin
-        admin-password: 123qwe
+        admin-password: Sa*963.-+
         admin-phone: 18516171342
         admin-email: admin@codepasser.com
       oauth-settings:
         client-id: daemon_client
-        client-secret: 1234
+        client-secret: cde3VFR$
         resource-ids: DAEMON_API
         scope: 'read,write,sign'
         authorized-grant-types: 'authorization_code,implicit,password,client_credentials,refresh_token'
