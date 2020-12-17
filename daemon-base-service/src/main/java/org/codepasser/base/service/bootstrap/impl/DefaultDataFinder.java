@@ -153,6 +153,7 @@ public class DefaultDataFinder implements DataFinder {
     clientDetails.setClientId(settings.getOauthSettings().getClientId());
     clientDetails.setClientSecret(
         passwordEncoder.encode(settings.getOauthSettings().getClientSecret()));
+    clientDetails.setSecret(settings.getOauthSettings().getClientSecret());
     clientDetails.setResourceIds(settings.getOauthSettings().getResourceIds());
     clientDetails.setScope(settings.getOauthSettings().getScope());
     clientDetails.setAuthorizedGrantTypes(settings.getOauthSettings().getAuthorizedGrantTypes());
