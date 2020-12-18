@@ -2,58 +2,58 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <groupId>org.codepasser</groupId>
-    <artifactId>daemon-io</artifactId>
-    <version>1.0.0.RELEASE</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.codepasser</groupId>
+        <artifactId>daemon-io</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>daemon-base-dao</artifactId>
-  <packaging>jar</packaging>
-  <name>daemon-base-dao</name>
-  <url>http://maven.apache.org</url>
-  <description>Codepasser IO Platform</description>
-  <dependencies>
-    <!-- # Spring IO Platform # -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis.spring.boot</groupId>
-      <artifactId>mybatis-spring-boot-starter</artifactId>
-    </dependency>
-    <!-- # Page # -->
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper-spring-boot-starter</artifactId>
-    </dependency>
-    <!-- # Alibaba druid # -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid</artifactId>
-    </dependency>
+    <artifactId>daemon-base-dao</artifactId>
+    <packaging>jar</packaging>
+    <name>daemon-base-dao</name>
+    <url>http://maven.apache.org</url>
+    <description>Codepasser IO Platform</description>
+    <dependencies>
+        <!-- # Spring IO Platform # -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- # Page # -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- # Alibaba druid # -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
 
-    <!-- # Codepasser IO Platform # -->
-    <dependency>
-      <groupId>org.codepasser</groupId>
-      <artifactId>daemon-base-model</artifactId>
-    </dependency>
-  </dependencies>
+        <!-- # Codepasser IO Platform # -->
+        <dependency>
+            <groupId>org.codepasser</groupId>
+            <artifactId>daemon-base-model</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
