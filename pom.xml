@@ -21,7 +21,7 @@
         <pagehelper-spring-boot-starter.version>1.2.10</pagehelper-spring-boot-starter.version>
         <pagehelper.version>5.1.8</pagehelper.version>
         <mysql-connector-java.version>8.0.13</mysql-connector-java.version>
-        <druid.version>1.1.14</druid.version>
+        <druid.version>1.2.5</druid.version>
         <poi.version>4.0.1</poi.version>
         <zxing.version>3.3.3</zxing.version>
         <jsoup.version>1.11.3</jsoup.version>
@@ -142,7 +142,7 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
+                <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
             <dependency>
