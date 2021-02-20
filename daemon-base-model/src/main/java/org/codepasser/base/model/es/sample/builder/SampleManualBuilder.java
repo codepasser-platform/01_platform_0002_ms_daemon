@@ -3,7 +3,6 @@ package org.codepasser.base.model.es.sample.builder;
 import org.codepasser.base.model.es.sample.SampleManual;
 import org.springframework.beans.BeanUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -34,7 +33,7 @@ public class SampleManualBuilder {
   public SampleManual get() {
     SampleManual manual = new SampleManual();
     BeanUtils.copyProperties(this, manual);
-    manual.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
+    manual.setCreateTime(new Date());
     return manual;
   }
 

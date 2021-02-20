@@ -1,0 +1,34 @@
+{
+  "number_of_shards": "3",
+  "number_of_replicas": "2",
+  "analysis": {
+    "filter": {
+      "edge_ngram_filter": {
+        "type": "edge_ngram",
+        "min_gram": 1,
+        "max_gram": 50
+      },
+      "pinyin_simple_filter": {
+        "type": "pinyin",
+        "first_letter": "prefix",
+        "padding_char": " ",
+        "limit_first_letter_length": 50,
+        "lowercase": true
+      }
+    },
+    "analyzer": {
+      "ikSearchAnalyzer": {
+        "type": "custom",
+        "tokenizer": "ik_max_word"
+      },
+      "pinyinSimpleIndexAnalyzer": {
+        "tokenizer": "keyword",
+        "filter": [
+          "pinyin_simple_filter",
+          "edge_ngram_filter",
+          "lowercase"
+        ]
+      }
+    }
+  }
+}
