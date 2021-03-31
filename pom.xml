@@ -25,7 +25,7 @@
         <poi.version>4.0.1</poi.version>
         <zxing.version>3.3.3</zxing.version>
         <jsoup.version>1.11.3</jsoup.version>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <logstash.logback.encoder.version>5.3</logstash.logback.encoder.version>
     </properties>
 
